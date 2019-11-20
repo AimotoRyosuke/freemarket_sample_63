@@ -40,6 +40,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'devise'
 
 gem 'carrierwave'
+gem 'fog-aws'
 
 gem 'jquery-rails'
 
