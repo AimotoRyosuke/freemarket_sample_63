@@ -5,7 +5,7 @@ set :application, "freemarket_sample_63h"
 set :repo_url,  'git@github.com:AimotoRyosuke/freemarket_sample_63h.git'
 
 # Default branch is :master
-set :branch, 'deploy'
+set :branch, '25-deploy'
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 set :rbenv_type, :user
