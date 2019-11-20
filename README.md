@@ -48,7 +48,6 @@
 - belongs_to :user
 
 ## itesmsテーブル
-
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
@@ -64,6 +63,7 @@
 |prefecture_id|references|null: false, foreign_key: true|
 |category_id|references|null: false, foreign_key: true|
 |brand_id|references|null: false, foreign_key: true|
+
 
 ### Association
 - belongs_to :user
