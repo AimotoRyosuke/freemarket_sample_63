@@ -15,22 +15,35 @@ https://www.draw.io/?state=%7B%22ids%22:%5B%221sEhle2n1CE_6fTWH9v8_9e-L5-2EO3Bo%
 |first_name_kana|string|null: false|
 |last_name_kana|string|null: false|
 |tel|integer|unique: true|
-|address|text|null: true|
 |profile|text|null: true|
 |point|integer|null: true|
 |assets|integer|null: true|
 |prefecture_id|references|null: false, foreign_key: true|
-|credit_id|references|null: false, foreign_key: true|
+|address_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :prefecture
-- belongs_to :credit
+- belongs_to :address
+- has_one :credit
 - has_many :comments
 - has_many :likes
 - has_many :ratings
 - has_many :notices
 - has_many :todos
 - has_many :items
+
+## address table
+
+|Column|Type|Options|
+|------|----|-------|
+|zip_code|integer|null: false|
+|prefecture|text|null: true|
+|city|text|null: true|
+|address1|text|null: true|
+|address2|text|null: true|
+
+### Association
+- has_many :users
 
 ## credits table
 
@@ -40,6 +53,7 @@ https://www.draw.io/?state=%7B%22ids%22:%5B%221sEhle2n1CE_6fTWH9v8_9e-L5-2EO3Bo%
 |security|integer|null: false|
 |year|date|null: false|
 |month|date|null: false|
+|user_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -184,13 +198,3 @@ https://www.draw.io/?state=%7B%22ids%22:%5B%221sEhle2n1CE_6fTWH9v8_9e-L5-2EO3Bo%
 ### Association
 - belongs_to :item
 - belongs_to :user
-
-## prefecture table
-
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false, unique: true|
-
-### Association
-- has_many :items
-- has_many :users
