@@ -1,4 +1,4 @@
-## usersテーブル
+## users table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -10,7 +10,7 @@
 |last_name|string|null: false|
 |first_name_kana|string|null: false|
 |last_name_kana|string|null: false|
-|tell|integer|unique: true|
+|tel|integer|unique: true|
 |address|text|null: true|
 |payment|integer|null: true|
 |profile|text|null: true|
@@ -25,7 +25,7 @@
 - has_many :todos
 - has_many :items
 
-## likesテーブル
+## likes table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -36,7 +36,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## ratingsテーブル
+## ratings table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -47,7 +47,7 @@
 ### Association
 - belongs_to :user
 
-## itesmsテーブル
+## items table
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
@@ -69,14 +69,14 @@
 - belongs_to :user
 - belongs_to :prefecture
 - belongs_to :brand
-- belongs_to :category
+- belongs_to :categories_hierarchie
 - has_many :likes
 - has_many :comments
 - has_many :images
 - has_many :todos
 - has_many :notices
 
-## imageテーブル
+## image table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -86,7 +86,7 @@
 ### Association
 - belongs_to :item
 
-## commentsテーブル
+## comments table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -98,7 +98,7 @@
 - belongs_to :item
 - belongs_to :user
 
-## noticesテーブル
+## notices table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -110,50 +110,40 @@
 - belongs_to :item
 - belongs_to :user
 
-## categoriesテーブル
+## categories table
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, unique: true|
+|content|string|null: false, unique: true|
+|parent_id|references|null: false, foreign_key: true|
 
 ### Association
-- has_many :items
 - has_many :brands, through: :categories_brands
-- has_many :details
+- has_many :categories_hierarchies
 
-## detailsテーブル
+## categories_hierarchies table
 
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false, unique: true|
-|category_id|references|null: false, foreign_key: true|
+|ancestor_id|references|null: false, foreign_key: true|
+|descendant_id|references|null: false, foreign_key: true|
+|generations|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :category
-- has_many :words
+- has_many :items
 
-## wordsテーブル
+## brands table
 
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, unique: true|
-|details_id|references|null: false, foreign_key: true|
-
-### Association
-- belongs_to :detail
-- has_many :items
-
-## brandsテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|name|string|null: false|ユニーク
 
 ### Association
 - has_many :items
 - has_many :brands, through: :categories_brands
 
-## categories_brandsテーブル
+## categories_brands table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -164,7 +154,7 @@
 - belongs_to :brand
 - belongs_to :category
 
-## todosテーブル
+## todos table
 
 |Column|Type|Options|
 |------|----|-------|
@@ -176,7 +166,7 @@
 - belongs_to :item
 - belongs_to :user
 
-## prefectureテーブル
+## prefecture table
 
 |Column|Type|Options|
 |------|----|-------|
