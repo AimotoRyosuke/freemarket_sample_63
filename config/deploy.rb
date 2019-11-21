@@ -63,9 +63,6 @@ set :default_env, {
   path: "/usr/local/rbenv/shims:/usr/local/rbenv/bin:$PATH",
   BASIC_AUTH_USER: ENV["BASIC_AUTH_USER"],
   BASIC_AUTH_PASSWORD: ENV["BASIC_AUTH_PASSWORD"],
-  AWS_ACCESS_KEY_ID: YAML.load(`rails credentials:show`)['access_key_id'],
-  AWS_SECRET_ACCESS_KEY: YAML.load(`rails credentials:show`)['secret_access_key'],
+  AWS_ACCESS_KEY_ID: YAML.load(`rails credentials:show`)['aws']['access_key_id'],
+  AWS_SECRET_ACCESS_KEY: YAML.load(`rails credentials:show`)['aws']['secret_access_key'],
 }
-
-  # AWS_ACCESS_KEY_ID: Rails.application.credentials.access_key_id ,
-  # AWS_SECRET_ACCESS_KEY: Rails.application.credentials.secret_access_key,
