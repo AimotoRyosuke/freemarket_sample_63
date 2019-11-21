@@ -12,18 +12,33 @@
 |last_name_kana|string|null: false|
 |tel|integer|unique: true|
 |address|text|null: true|
-|payment|integer|null: true|
 |profile|text|null: true|
+|point|integer|null: true|
+|assets|integer|null: true|
 |prefecture_id|references|null: false, foreign_key: true|
+|credit_id|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :prefecture
+- belongs_to :credit
 - has_many :comments
 - has_many :likes
 - has_many :ratings
 - has_many :notices
 - has_many :todos
 - has_many :items
+
+## credits table
+
+|Column|Type|Options|
+|------|----|-------|
+|number|integer|null: false|
+|security|integer|null: false|
+|year|date|null: false|
+|month|date|null: false|
+
+### Association
+- belongs_to :user
 
 ## likes table
 
@@ -57,7 +72,7 @@
 |explanation|string|null: false|
 |shipping_cost|integer|null: false|
 |shipping_method|integer|null: false|
-|days|integer|null: false|
+|days|date|null: false|
 |seller_id|references|null: false, foreign_key: true|
 |buyer_id|references|null: false, foreign_key: true|
 |prefecture_id|references|null: false, foreign_key: true|
