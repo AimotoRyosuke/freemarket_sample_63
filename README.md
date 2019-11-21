@@ -1,3 +1,7 @@
+## ER図
+
+https://www.draw.io/?state=%7B%22ids%22:%5B%221sEhle2n1CE_6fTWH9v8_9e-L5-2EO3Bo%22%5D,%22action%22:%22open%22,%22userId%22:%22103206935538130992501%22%7D#G1sEhle2n1CE_6fTWH9v8_9e-L5-2EO3Bo
+
 ## users table
 
 |Column|Type|Options|
