@@ -18,6 +18,7 @@ https://www.draw.io/?state=%7B%22ids%22:%5B%221sEhle2n1CE_6fTWH9v8_9e-L5-2EO3Bo%
 |profile|text|
 |point|integer|default: 0|
 |assets|integer|default: 0|
+|image|text||
 
 ### Association
 - has_one :address, dependent: destroy
@@ -42,7 +43,7 @@ https://www.draw.io/?state=%7B%22ids%22:%5B%221sEhle2n1CE_6fTWH9v8_9e-L5-2EO3Bo%
 |last_name|string|null: false|
 |first_name_kana|string|null: false|
 |last_name_kana|string|null: false|
-|tel|integer|null: false|
+|tel|integer||
 |user_id|references|null: false, foreign_key: true|
 
 ### Association
