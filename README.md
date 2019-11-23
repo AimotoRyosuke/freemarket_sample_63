@@ -20,13 +20,13 @@ https://www.draw.io/?state=%7B%22ids%22:%5B%221sEhle2n1CE_6fTWH9v8_9e-L5-2EO3Bo%
 |assets|integer|default: 0|
 
 ### Association
-- has_one :address
-- belongs_to :credit
+- has_one :address, dependent: destroy
+- has_one :credit, dependent: destroy
 - has_many :comments
 - has_many :likes
 - has_many :ratings
-- has_many :notices
-- has_many :todos
+- has_many :notices, dependent: destroy
+- has_many :todos, dependent: destroy
 - has_many :items
 
 ## address table
@@ -59,7 +59,6 @@ https://www.draw.io/?state=%7B%22ids%22:%5B%221sEhle2n1CE_6fTWH9v8_9e-L5-2EO3Bo%
 |user_id|references|null: false, foreign_key: true|
 
 ### Association
-- has_many :users
 
 ## likes table
 
@@ -108,11 +107,11 @@ https://www.draw.io/?state=%7B%22ids%22:%5B%221sEhle2n1CE_6fTWH9v8_9e-L5-2EO3Bo%
 - belongs_to :prefecture
 - belongs_to :brand
 - belongs_to :categories_hierarchie
-- has_many :likes
-- has_many :comments
-- has_many :images
-- has_many :todos
-- has_many :notices
+- has_many :likes, dependent: destroy
+- has_many :comments, dependent: destroy
+- has_many :images, dependent: destroy
+- has_many :todos, dependent: destroy
+- has_many :notices, dependent: destroy
 
 ## image table
 
@@ -157,7 +156,7 @@ https://www.draw.io/?state=%7B%22ids%22:%5B%221sEhle2n1CE_6fTWH9v8_9e-L5-2EO3Bo%
 
 ### Association
 - has_many :brands, through: :categories_brands
-- has_many :categories_hierarchies
+- has_many :categories_hierarchies, dependent: destroy
 - belongs_to :parent class_name: 'Category' :foreign key parent_id
 
 ## categories_hierarchies table
