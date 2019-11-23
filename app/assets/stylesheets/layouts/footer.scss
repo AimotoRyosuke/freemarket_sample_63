@@ -1,0 +1,186 @@
+.banner {
+  height :260px;
+  background: url(footerbannerbgi.jpeg) center center / cover;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  &__container {
+    width: 750px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    &__downloads {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      &__head {
+        height: 24px;
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+      &__head2 {
+        height: 35px;
+        font-size: 35px;
+        margin-bottom: 20px;
+      }
+      &__logos {
+        display: flex;
+        &__icon {
+          background-color: #fff;
+          width: 68px;
+          height: 68px;
+          border-radius: 15px;
+          margin-right: 20px;
+          svg{
+            padding: 15%;
+            max-width: 70%;
+            max-height: 70%;
+          }
+        }
+        &__appstore {
+          display: flex;
+          align-items: center;
+          margin-right: 8px;
+          cursor: pointer;
+        }
+        &__appstore:hover {
+          opacity: 0.6;
+        }
+        &__googleplay{
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+        }
+        &__googleplay:hover {
+          opacity: 0.6;
+        }
+      }
+
+    }
+    &__image {
+      img{
+        height: 260px;
+        width: auto;
+      }
+    }
+  }
+}
+.banner::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  bottom: -10px;
+  left: -10px;
+  right: -10px;
+  background: inherit;
+  filter: blur(8px);
+  z-index: -1;
+}
+.footer{
+  background-color: rgb(34, 34, 34);
+  padding: 0px 20px 10px;
+  &__top {
+    width: 1020px;
+    margin: 0 auto;
+    color: #ffffff;
+    &__container {
+      display: flex;
+      &__cell {
+        padding: 0px 40px 0px 0px;
+        margin-top: 18px;
+        &__sns {
+          margin-top: 30px;
+          font-size:30px;
+          .twitter {
+            margin-right: 20px;
+            cursor: pointer;
+            i {
+              width: 30px;
+              max-width: 100%;
+              height: auto;
+              max-height: 100%;
+            }
+          }
+          .facebook {
+            cursor: pointer;
+            i {
+              width: 30px;
+              max-width: 100%;
+              height: auto;
+              max-height: 100%;
+              margin: 16px 18px 0 0;
+            }
+          }
+        }
+        h2 {
+          font-weight: bold;
+          font-size: 16px;
+        }
+        ul {
+          opacity: 0.6;
+          line-height: 1.4em;
+          margin: 16px 0px 0px;
+          font-size: 12px;
+          a:hover {
+            text-decoration: underline;
+          }
+        }
+        ul:hover {
+          cursor: pointer;
+        }
+        &__inner {
+          display: flex;
+          &__left {
+            width: 50%;
+            padding: 0px 10px 0px 0px;
+          }
+          &__right {
+            width: 50%;
+            padding: 0px 0px 0px 10px;
+          }
+        }
+      }
+      .first {
+        width: auto;
+      }
+      .secound {
+        width: auto;
+      }
+      .third {
+        width: 42%;
+      }
+      .fourth {
+        width: auto;
+      }
+    }
+  }
+  &__bottom {
+    &__container {
+      width: 1020px;
+      margin: 30px auto 20px;
+      color:#ffffff;
+      display: flex;
+      &__logo:hover {
+        opacity: 0.6;
+      }
+      &__logo {
+        margin-right: 10px;
+        width:134px;
+        height: 33px;
+        line-height: 33px;
+        cursor: pointer;
+      }
+      &__copyright {
+        width: calc(100% - 288px);
+        &__2019 {
+          display: flex;
+          justify-content: center;
+          line-height: 33px;
+        }
+      }
+    }
+  }
+}

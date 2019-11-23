@@ -1,0 +1,32 @@
+%header.header
+  .header__container
+    .header__container__top
+      %a.header__container__top__icon
+        = render "shared/fmarket_logo_red"
+      .header__container__top__search
+        %input{name: "keyword", type: "search", placeholder: "何かお探しですか？", class: "header__top__search__input"}
+        %button
+          = fa_icon 'search', class: 'icon'
+    .header__container__bottom
+      .header__container__bottom__left
+        %a.header__container__bottom__left__category
+          .header__container__bottom__left__category__icon
+            = fa_icon 'list', class: 'icon'
+          .header__container__bottom__left__category__character
+            カテゴリーから探す
+        %a.header__container__bottom__left__brands
+          .header__container__bottom__left__brands__icon
+            = fa_icon 'tag', class: 'icon'
+          .header__container__bottom__left__brands__character
+            ブランドから探す
+      .header__container__bottom__right
+        .header__container__bottom__right__logout
+          %a{class: "header__container__bottom__right__logout__registration", href: '', type: ''}
+            新規会員登録
+          %a{class: "header__container__bottom__right__logout__login", href: '', type: ''}
+            ログイン
+        .header__container__bottom__right__logout
+          
+          
+        
+

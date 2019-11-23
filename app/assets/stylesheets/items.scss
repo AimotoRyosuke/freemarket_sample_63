@@ -1,3 +1,37 @@
-// Place all the styles related to the items controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.item-show {
+  width: 700px;
+  background-color: #fff;
+  margin: 40px auto 0;
+  padding: 24px 40px 40px;
+  box-sizing: border-box;
+  &__name {
+    font-size: 24px;
+    text-align: center;
+    line-height: 1.4;
+    font-weight: bold;
+  }
+  &__wording {
+    margin: 8px 0 0;
+    font-size: 14px;
+    color: #888;
+    line-height: 1.5;
+  }
+  &__main {
+    margin: 16px 0 0;
+    display: flex;
+    justify-content: space-between;
+    &__image {
+      width: 300px;
+    }
+    &__detail {
+      
+    }
+
+  }
+  &__price {
+    margin: 24px 0 0;
+    justify-content: center;
+    display: flex;
+    
+  }
+}

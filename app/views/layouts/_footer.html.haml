@@ -1,0 +1,109 @@
+%aside.banner
+  .banner__container
+    .banner__container__downloads
+      .banner__container__downloads__head
+        スマホでかんたんフリマアプリ
+      .banner__container__downloads__head2
+        今すぐ無料ダウンロード！
+      .banner__container__downloads__logos
+        .banner__container__downloads__logos__icon
+          = render "shared/logo_red"
+        %a.banner__container__downloads__logos__appstore
+          = render "shared/appstore"
+        %a.banner__container__downloads__logos__googleplay
+          = render "shared/googleplay"
+          
+    .banner__container__image
+      = image_tag 'footerbannerright.png'
+      
+      
+%footer.footer
+  .footer__top
+    .footer__top__container
+      .footer__top__container__cell.first
+        %h2 メルカリについて
+        %ul 
+          %a
+            会社概要（運営会社）
+        %ul 
+          %a
+            採用情報
+        %ul 
+          %a
+            プレスリリース
+        %ul  
+          %a
+            公式ブログ
+        %ul  
+          %a
+            メルカリロゴ利用ガイドライン
+        .footer__top__container__cell__sns
+          %a
+            = fa_icon 'twitter', class: 'twitter'
+          %a
+            = fa_icon 'facebook-square', class: 'facebook'
+      .footer__top__container__cell.secound
+        %h2 ヘルプ＆ガイド
+        %ul  
+          %a
+            メルカリガイド
+        %ul  
+          %a
+            らくらくメルカリ便
+        %ul  
+          %a
+            ゆうゆうメルカリ便
+        %ul  
+          %a
+            大型メルカリ便
+        %ul  
+          %a
+            車体取引ガイド
+        %ul  
+          %a
+            メルカリあんしん・あんぜん宣言！
+        %ul  
+          %a
+            偽ブランド品撲滅への取り組み
+        %ul  
+          %a
+            メルカリボックス
+      .footer__top__container__cell.third
+        %h2 プライバシーと利用規約
+        .footer__top__container__cell__inner
+          .footer__top__container__cell__inner__left
+            %ul  
+              %a
+                プライバシーポリシー
+            %ul   
+              %a
+                メルカリ利用規約
+            %ul   
+              %a
+                あんしんスマホサポート制度に関する利用特約
+            %ul   
+              %a
+                コンプライアンスポリシー
+          .footer__top__container__cell__inner__right
+            %ul 個人データの安全管理に係る基本方針
+            %ul 特定商取引に関する表記
+            %ul 資金決済法に基づく表示
+            %ul 法令順守と犯罪抑止のために
+      .footer__top__container__cell.fourth
+        %h2 国
+        %ul  
+          %a
+            日本
+        %ul  
+          %a
+            United States
+  .footer__bottom
+    .footer__bottom__container
+      %a.footer__bottom__container__logo
+        = render "shared/fmarket_logo_white"
+      %span.footer__bottom__container__copyright
+        %small.footer__bottom__container__copyright__2019
+          © 2019 Mercari
+
+
+  
