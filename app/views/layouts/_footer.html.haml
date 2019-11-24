@@ -8,9 +8,9 @@
       .banner__container__downloads__logos
         .banner__container__downloads__logos__icon
           = render "shared/logo_red"
-        %a.banner__container__downloads__logos__appstore
+        = link_to '', class: "banner__container__downloads__logos__appstore" do
           = render "shared/appstore"
-        %a.banner__container__downloads__logos__googleplay
+        = link_to '', class: "banner__container__downloads__logos__googleplay" do
           = render "shared/googleplay"
           
     .banner__container__image
@@ -23,83 +23,91 @@
       .footer__top__container__cell.first
         %h2 メルカリについて
         %ul 
-          %a
+          = link_to '' do
             会社概要（運営会社）
         %ul 
-          %a
+          = link_to '' do
             採用情報
         %ul 
-          %a
+          = link_to '' do
             プレスリリース
         %ul  
-          %a
+          = link_to '' do
             公式ブログ
         %ul  
-          %a
+          = link_to '' do
             メルカリロゴ利用ガイドライン
         .footer__top__container__cell__sns
-          %a
+          = link_to '' do
             = fa_icon 'twitter', class: 'twitter'
-          %a
+          = link_to '' do
             = fa_icon 'facebook-square', class: 'facebook'
       .footer__top__container__cell.secound
         %h2 ヘルプ＆ガイド
         %ul  
-          %a
+          = link_to '' do
             メルカリガイド
         %ul  
-          %a
+          = link_to '' do
             らくらくメルカリ便
         %ul  
-          %a
+          = link_to '' do
             ゆうゆうメルカリ便
         %ul  
-          %a
+          = link_to '' do
             大型メルカリ便
         %ul  
-          %a
+          = link_to '' do
             車体取引ガイド
         %ul  
-          %a
+          = link_to '' do
             メルカリあんしん・あんぜん宣言！
         %ul  
-          %a
+          = link_to '' do
             偽ブランド品撲滅への取り組み
         %ul  
-          %a
+          = link_to '' do
             メルカリボックス
       .footer__top__container__cell.third
         %h2 プライバシーと利用規約
         .footer__top__container__cell__inner
           .footer__top__container__cell__inner__left
             %ul  
-              %a
+              = link_to '' do
                 プライバシーポリシー
             %ul   
-              %a
+              = link_to '' do
                 メルカリ利用規約
             %ul   
-              %a
+              = link_to '' do
                 あんしんスマホサポート制度に関する利用特約
             %ul   
-              %a
+              = link_to '' do
                 コンプライアンスポリシー
           .footer__top__container__cell__inner__right
-            %ul 個人データの安全管理に係る基本方針
-            %ul 特定商取引に関する表記
-            %ul 資金決済法に基づく表示
-            %ul 法令順守と犯罪抑止のために
+            %ul
+              = link_to '' do
+                個人データの安全管理に係る基本方針
+            %ul
+              = link_to '' do
+                特定商取引に関する表記
+            %ul
+              = link_to '' do
+                資金決済法に基づく表示
+            %ul
+              = link_to '' do
+                法令順守と犯罪抑止のために
       .footer__top__container__cell.fourth
         %h2 国
         %ul  
-          %a
+          = link_to '' do
             日本
         %ul  
-          %a
+          = link_to '' do
             United States
   .footer__bottom
     .footer__bottom__container
-      %a.footer__bottom__container__logo
+      = link_to '', class: "footer__bottom__container__logo" do
         = render "shared/fmarket_logo_white"
       %span.footer__bottom__container__copyright
         %small.footer__bottom__container__copyright__2019

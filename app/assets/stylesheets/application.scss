@@ -1,9 +1,8 @@
 @import "reset";
-// @import 'font-awesome-sprockets';
 @import "font-awesome";
 @import "layouts/header";
 @import "layouts/footer";
-@import "items";
+@import "items/show";
 
 body {
   font-family: Arial,游ゴシック体,YuGothic,メイリオ,Meiryo,sans-serif;

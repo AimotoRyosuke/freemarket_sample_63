@@ -1,9 +1,11 @@
 .blue{
   color: #0099e8;
+  text-decoration: none;
   cursor: pointer;
 }
 .blue:hover {
   opacity: 0.6;
+  text-decoration: underline;
 }
 .item-show {
   &__item {
@@ -178,6 +180,7 @@
           border-radius: 40px;
           margin: 0 0 0 16px;
           font-size: 14px;
+          text-decoration: none;
           &__icon {
             display: flex;
             align-items: center;
@@ -186,7 +189,9 @@
             margin: 1px 0 0 8px
           }
         }
-
+        &__report:hover {
+          opacity: 0.6;
+        }
       }
       &__right {
         display: flex;
@@ -199,6 +204,9 @@
         &__title {
           margin: 1px 0 0 8px
         }
+      }
+      &__right:hover {
+        text-decoration: none;
       }
     }
   }
@@ -282,7 +290,6 @@
           width: 44px;
           border-radius: 4px;
           display: flex;
-          // justify-content: center;
           i {
             width: 100%;
             height: 100%;
@@ -290,6 +297,9 @@
             display: flex;
             justify-content: center;
           }
+        }
+        a:hover {
+          opacity: 0.6;
         }
       }
       &__facebook {

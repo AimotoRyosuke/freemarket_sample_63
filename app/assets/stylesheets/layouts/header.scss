@@ -65,8 +65,11 @@
       margin-top: 8px;
       height: 44px;
       &__left {
+        a {
+          text-decoration: none;
+          color: #333333;
+        }
         display: flex;
-        // align-items: center;
         font-weight: bold;
         &__category {
           display: flex;
@@ -75,11 +78,10 @@
           line-height: 36px;
           &__icon {
             color: rgb(234, 53, 45);
-            // margin:auto 0;
             margin-right: 4px;
           }
           &__character {
-            font-size: 14px
+            font-size: 14px;
           }
           &__character:hover {
             color:rgb(0, 149, 238);
@@ -92,7 +94,6 @@
           line-height: 36px;
           &__icon {
             color: rgb(234, 53, 45);
-            // margin:auto 0;
             margin-right: 4px;
           }
           &__character {
@@ -106,7 +107,6 @@
       }
       &__right {
         &__logout {
-          // line-height: 44px;
           margin-top: 8px;
           &__registration {
             background-color: rgb(234, 53, 45);

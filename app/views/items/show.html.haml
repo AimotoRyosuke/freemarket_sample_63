@@ -21,7 +21,7 @@
             出品者
           %th 
             .item-show__item__main__detail__exhibitor__name
-              %a.blue
+              = link_to '', class: "blue" do
                 玲奈
             .item-show__item__main__detail__exhibitor__reviews
               .item-show__item__main__detail__exhibitor__reviews__good.review
@@ -44,21 +44,21 @@
             カテゴリー
           %th.item-show__item__main__detail__category.contents
             .item-show__item__main__detail__category__top
-              %a.blue
+              = link_to '', class: "blue" do
                 家電・スマホ・カメラ
             .item-show__item__main__detail__category__middle
-              %a.blue
+              = link_to '', class: "blue" do
                 >
                 PC/タブレット
             .item-show__item__main__detail__category__bottom
-              %a.blue
+              = link_to '', class: "blue" do
                 >
                 その他
         %tr
           %th.title
             ブランド
           %th.item-show__item__main__detail__brand.contents
-            %a.blue
+            = link_to '', class: "blue"
         %tr
           %th.title
             商品の状態
@@ -78,7 +78,7 @@
           %th.title
             配送元地域
           %th.item-show__item__main__detail__prefecture.contents
-            %a.blue
+            = link_to '', class: "blue" do
               埼玉県
         %tr
           %th.title
@@ -107,12 +107,12 @@
             いいね!
           .item-show__item__btn-container__left__iine__count
             1
-        %a.item-show__item__btn-container__left__report
+        = link_to '', class: "item-show__item__btn-container__left__report" do
           .item-show__item__btn-container__left__report__icon
             = fa_icon 'flag-o', class: 'flag'
           .item-show__item__btn-container__left__report__title
             不適切な商品の報告
-      %a.item-show__item__btn-container__right.blue
+      = link_to '', class: "item-show__item__btn-container__right blue" do
         .item-show__item__btn-container__right__icon
           = fa_icon 'lock', class: 'lock'
         .item-show__item__btn-container__right__title
@@ -136,11 +136,11 @@
     .item-show__media-box__text
     %ul.item-show__media-box__medias
       %li
-        %a.item-show__media-box__medias__facebook{href: "http://www.facebook.com/share.php?u=hoge", rel: "nofollow", target: "_blank"}
+        = link_to '', class: "item-show__media-box__medias__facebook", href: "http://www.facebook.com/share.php?u=hoge", rel: "nofollow", target: "_blank" do
           = fa_icon 'facebook', class: 'facebook'
       %li
-        %a.item-show__media-box__medias__twitter{href: "http://www.twitter.com/share.php?u=hoge", rel: "nofollow", target: "_blank"}
+        = link_to '', class: "item-show__media-box__medias__twitter", href: "http://www.twitter.com/share.php?u=hoge", rel: "nofollow", target: "_blank" do
           = fa_icon 'twitter', class: 'twitter'
       %li
-        %a.item-show__media-box__medias__pinterest{href: "http://pinterest.com/pin/create/button/?url=hoge", rel: "nofollow", target: "_blank"}
+        = link_to '', class: "item-show__media-box__medias__pinterest", href: "http://pinterest.com/pin/create/button/?url=hoge", rel: "nofollow", target: "_blank" do
           = fa_icon 'pinterest', class: 'pinterest'
