@@ -18,21 +18,21 @@ ActiveRecord::Schema.define(version: 2019_11_23_123014) do
     t.string "first_name_kana", null: false
     t.string "last_name_kana", null: false
     t.integer "zip_code", null: false
-    t.string "prefecture", null: false
+    t.bigint "prefecture_id", null: false
     t.string "city", null: false
     t.string "address", null: false
     t.string "building"
-    t.integer "tel"
+    t.string "tel", limit: 16
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["prefecture_id"], name: "index_addresses_on_prefecture_id"
     t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "credits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "number", null: false
+    t.string "number", limit: 16, null: false
     t.integer "security", null: false
-    t.string "name", null: false
     t.date "year", null: false
     t.date "month", null: false
     t.bigint "user_id", null: false
@@ -49,14 +49,14 @@ ActiveRecord::Schema.define(version: 2019_11_23_123014) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.date "birth", null: false
-    t.text "image", null: false
+    t.text "image"
     t.integer "assetes", default: 0
     t.integer "point", default: 500
     t.string "first_name", null: false
     t.string "last_name", null: false
     t.string "first_name_kana", null: false
     t.string "last_name_kana", null: false
-    t.integer "tel", null: false
+    t.string "tel", limit: 16, null: false
     t.text "profile"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

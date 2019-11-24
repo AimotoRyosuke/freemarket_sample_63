@@ -1,0 +1,25 @@
+.wrapper
+  %h2.top クレジットカード情報入力
+  = form_with model: @credit, url: registrate_credit_path, local: true, class: 'form' do |f|
+    .form__group
+      .form__group__name カード番号
+      .form__group__require 必須
+      = f.text_field :number, class: 'form__group__input', placeholder: '半角数字のみ'
+      .form__group__img
+        %img(src="/assets/VISA.png" alt="VISA" width="40")
+        %img(src="/assets/Mastercard-logo.svg" alt="mastercard" width="30")
+        %img(src="/assets/Saison_card_logo.svg" alt="SAISON" width="30")
+        %img(src="/assets/jcb.png" alt="JCB" width="50")
+        %img(src="/assets/americane.png" alt="AMERICAN EXPRESS" width="45")
+        %img(src="/assets/DinersClub.png" alt="Diners Club" width="40")
+        %img(src="/assets/discover-png-7.png" alt="DISCOVER" width="30")
+    .form__group
+      .form__group__name 有効期限
+      .form__group__require 必須
+      != sprintf(f.date_select(:date,with_css_classes:'XXXXX', order:[:month,:year,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
+    .form__group
+      .form__group__name セキュリティコード
+      .form__group__require 必須
+      = f.text_field :security, class: 'form__group__input', placeholder: 'カード背面4桁もしくは3桁の番号'
+      %a カード裏面の番号とは？
+    = f.submit '追加する', class: 'form__submit'

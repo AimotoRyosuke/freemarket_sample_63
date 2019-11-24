@@ -11,14 +11,14 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.datetime   :reset_password_sent_at
       t.datetime   :remember_created_at
       t.date       :birth, null: false
-      t.text       :image, null: false
+      t.text       :image
       t.integer    :assetes, default: 0
       t.integer    :point, default: 500
       t.string     :first_name, null: false
       t.string     :last_name, null: false
       t.string     :first_name_kana, null: false
       t.string     :last_name_kana, null: false
-      t.integer    :tel, null: false, unique: true
+      t.string     :tel, null: false, unique: true, limit: 16
       t.text       :profile
       t.timestamps null: false
     end

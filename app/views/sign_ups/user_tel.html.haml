@@ -1,48 +1,9 @@
 .wrapper
   %h2.top 電話番号の確認
-  = form_with(url: signup_path) do |f|
-    .form
-      .form__group
-        .form__group__name 携帯電話の電話番号
-        .form__group__require 必須
-        = f.text_field :nickname, class: 'form__group__input', placeholder: '例)メルカリ太郎'
-      .form__gruop
-        .nickname__name メールアドレス
-        .form_group__require 必須
-        = f.text_field :email, class: 'form__group__input', placeholder: 'PC・携帯どちらでも可'
-      .form__group-pass
-        .form__group__name パスワード
-        .form__group__require 必須
-        = f.password_field :password, autocomplete: "new-password"
-        %input.form__group__checkbox{type: 'submit'}
-        %p パスワードを表示する
-        %spab abcd
-      .form__group
-        %h3 本人確認
-        %p 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
-      .form__group
-        .form__group__name お名前(全角)
-        .form__group__require 必須
-        = f.text_field :first_name, class: 'form__group__input--small', placeholder: '例)山田'
-        = f.text_field :first_name, class: 'form__group__input--small', placeholder: '例)彩'
-      .form__group
-        .form__group__name お名前カナ(全角)
-        .form__group__require 必須
-        = f.text_field :first_name, class: 'form__group__input--small', placeholder: '例)ヤマダ'
-        = f.text_field :first_name, class: 'form__group__input--small', placeholder: '例)アヤ'
-      .form__group
-        .from__group__name 生年月日
-        .form__group__require 必須
-        -# = f.date_select :birth, start_year: 1900, end_year: Time.current.year, use_month_numbers: true, date_separator: "%s",'年','月'
-        != sprintf(f.date_select(:birth, prefix:'birthday',with_css_classes:'XXXXX', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
-        %i.icon-arroow-botton
-        %p.form__group.info ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
-
-      .form__group
-        .g-recaptcha{"data-callback": "validateRecaptcha", "data-sitekey": "{6Le89cMUAAAAAAeb99rrFc47etRW6YfXytC1NXQs}"}
-      .form__ok
-        %p 「次へ進む」のボタンを押すことにより、
-        %a 利用規約
-        %p に同意したものとみなします
-      = f.submit '次へ進む', class: 'form__submit'
-      .form__about 本人情報の登録について
+  = form_with model: @user, url: signup_tel_path, local: true, class: 'form' do |f|
+    .form__group
+      .form__group__name 携帯電話の電話番号
+      = f.text_field :tel, class: 'form__group__input', placeholder: '携帯電話の番号を入力'
+      %p 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+    = f.submit 'SMSを送信する', class: 'form__group'
+    .form__about 本人情報の登録について
