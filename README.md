@@ -54,7 +54,6 @@ https://www.draw.io/?state=%7B%22ids%22:%5B%221sEhle2n1CE_6fTWH9v8_9e-L5-2EO3Bo%
 |------|----|-------|
 |number|integer|null: false|
 |security|integer|null: false|
-|name|string|null: false|
 |year|date|null: false|
 |month|date|null: false|
 |user_id|references|null: false, foreign_key: true|
