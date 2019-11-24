@@ -1,98 +1,146 @@
-%section.item-show
-  %h1.item-show__name
-    【多機能】スマホ・タブレットスタンド　折りたたみ式　角度調整可能　ホワイト
-  %p.item-show__wording
-    『【多機能】スマホ・タブレットスタンド　折りたたみ式　角度調整可能　ホワイト』は、2205回の取引実績を持つ玲奈さんから出品されました。その他/家電・スマホ・カメラの商品で、埼玉県から1~2日で発送されます。
-  .item-show__main
-    .item-show__main__image
-      .item-show__main__image__display
-      .item-show__main__image__list
-    %table.item-show__main__detail
-      %tr.item-show__main__detail__exhibitor
-        %th 出品者
-        %th 
-          .item-show__main__detail__exhibitor__name
-            玲奈
-          .item-show__main__detail__exhibitor__reviews
-            .item-show__main__detail__exhibitor__reviews__good
-              .item-show__main__detail__exhibitor__reviews__good__icon
-                = fa_icon 'frown-o', class: 'icon'
-              .item-show__main__detail__exhibitor__reviews__good__count
-                2216
-            .item-show__main__detail__exhibitor__reviews__normal
-              .item-show__main__detail__exhibitor__reviews__normal__icon
-                = fa_icon 'frown-o', class: ''
-              .item-show__main__detail__exhibitor__reviews__normal__count
-                51
-            .item-show__main__detail__exhibitor__reviews__bad
-              .item-show__main__detail__exhibitor__reviews__bad__icon
-                = fa_icon 'frown-o', class: ''
-              .item-show__main__detail__exhibitor__reviews__bad__count
-                11
-      %tr
-        %th カテゴリー
-        %th.item-show__main__detail__category
-          .item-show__main__detail__category__top
-            家電・スマホ・カメラ
-          .item-show__main__detail__category__middle
-            = fa_icon 'angle-detail', class: ''
-            PC/タブレット
-          .item-show__main__detail__category__bottom
-            = fa_icon 'angle-detail', class: ''
-            その他
-      %tr
-        %th ブランド
-        %th.item-show__main__detail__brand
-      %tr
-        %th 商品の状態
-        %th.item-show__main__detail__condition
-          新品、未使用
-      %tr
-        %th 配送料の負担
-        %th.item-show__main__detail__shipping-charge
-          送料込み(出品者負担)
-      %tr
-        %th 配送の方法
-        %th.item-show__main__detail__shipping__method
-          らくらくメルカリ便
-      %tr
-        %th 配送元地域
-        %th.item-show__main__detail__prefecture
-          埼玉県
-      %tr
-        %th 発送日の目安
-        %th.item-show__main__detail__shipping-date
-          1~2日で発送
-  .item-show__price
-    .item-show__price__mount
-      ¥900
-    .item-show__price__tax
-      (税込)
-    .item-show__price__postage
-      送料込み
-  .item-show__button
-    購入画面に進む
-  .item-show__introduction
-    - text = "大人気のスマホ・タブレットスタンドです♪\n\n\n【対応機種】iphone全種類、ipad Air、ipad mini、ipad 4,3,2、kindle、電子書籍などあらゆる11インチまでのスマホやタブレット。\n\n【どこでもオフィスになる！】iPad利用時に、Bluetoothのキーボードを併用し、何処でもコンパクトにオフィスの出来がり！\n\n【22段階調整可能】下部の支えは２段階に調整可能。狭く開けばスマホ用として、広く開けばタブレット用としてお使いいただけます。\n\n【軽量設計】テーブル・ベット・喫茶店・飛行機などで活躍重さわずか約100gなので、使わない時はポケットに入れて、持ち運びにとても便利です。\n\n【パッドにすべり止め機能付きゴム製を採用】本を読んだりネットサーフィンを楽しんだり、映画を鑑賞するためにデバイスを任意の角度に固定できます。\n\n\n☆発送に関しまして☆基本的に即日か翌日発送致します！安心、迅速なメルカリ便にてお届け致します♪8"
-    = simple_format text
-  .item-show__btn-container
-    .item-show__btn-container__left
-      .item-show__btn-container__left__iine
-        .item-show__btn-container__left__iine__icon
-          = fa_icon 'heart-o', class: 'iine'
-        .item-show__btn-container__left__iine__title
-          いいね!
-        .item-show__btn-container__left__iine__count
-          1
-      .item-show__btn-container__left__report
-        .item-show__btn-container__left__report__icon
-          = fa_icon 'flag-o', class: 'flag'
-        .item-show__btn-container__left__report__title
-          不適切な商品の報告
-    .item-show__btn-container__right
-      .item-show__btn-container__right__icon
-        = fa_icon 'lock', class: 'lock'
-      .item-show__btn-container__right__title
-        あんしん・あんぜんへの取り組み
-
-      
+.item-show
+  %section.item-show__item
+    %h1.item-show__item__name
+      【多機能】スマホ・タブレットスタンド　折りたたみ式　角度調整可能　ホワイト
+    %p.item-show__item__wording
+      『【多機能】スマホ・タブレットスタンド　折りたたみ式　角度調整可能　ホワイト』は、2205回の取引実績を持つ玲奈さんから出品されました。その他/家電・スマホ・カメラの商品で、埼玉県から1~2日で発送されます。
+    .item-show__item__main
+      .item-show__item__main__image
+        .item-show__item__main__image__display
+          = image_tag "stand_1"
+        .item-show__item__main__image__list
+          = image_tag "stand_1", {class: "active"}
+          = image_tag "stand_2"
+          = image_tag "stand_3"
+          = image_tag "stand_4"
+          = image_tag "stand_5"
+          = image_tag "stand_6"
+      %table.item-show__item__main__detail
+        %tr.item-show__item__main__detail__exhibitor
+          %th.title
+            出品者
+          %th 
+            .item-show__item__main__detail__exhibitor__name
+              %a.blue
+                玲奈
+            .item-show__item__main__detail__exhibitor__reviews
+              .item-show__item__main__detail__exhibitor__reviews__good.review
+                .item-show__item__main__detail__exhibitor__reviews__good__icon.icon
+                  = fa_icon 'frown-o', class: 'good'
+                .item-show__item__main__detail__exhibitor__reviews__good__count.count
+                  2216
+              .item-show__item__main__detail__exhibitor__reviews__normal.review
+                .item-show__item__main__detail__exhibitor__reviews__normal__icon.icon
+                  = fa_icon 'frown-o', class: 'normal'
+                .item-show__item__main__detail__exhibitor__reviews__normal__count.count
+                  51
+              .item-show__item__main__detail__exhibitor__reviews__bad.review
+                .item-show__item__main__detail__exhibitor__reviews__bad__icon.icon
+                  = fa_icon 'frown-o', class: 'bad'
+                .item-show__item__main__detail__exhibitor__reviews__bad__count.count
+                  11
+        %tr
+          %th.title
+            カテゴリー
+          %th.item-show__item__main__detail__category.contents
+            .item-show__item__main__detail__category__top
+              %a.blue
+                家電・スマホ・カメラ
+            .item-show__item__main__detail__category__middle
+              %a.blue
+                >
+                PC/タブレット
+            .item-show__item__main__detail__category__bottom
+              %a.blue
+                >
+                その他
+        %tr
+          %th.title
+            ブランド
+          %th.item-show__item__main__detail__brand.contents
+            %a.blue
+        %tr
+          %th.title
+            商品の状態
+          %th.item-show__item__main__detail__condition.contents
+            新品、未使用
+        %tr
+          %th.title
+            配送料の負担
+          %th.item-show__item__main__detail__shipping-charge.contents
+            送料込み(出品者負担)
+        %tr
+          %th.title
+            配送の方法
+          %th.item-show__item__main__detail__shipping__method
+            らくらくメルカリ便
+        %tr
+          %th.title
+            配送元地域
+          %th.item-show__item__main__detail__prefecture.contents
+            %a.blue
+              埼玉県
+        %tr
+          %th.title
+            発送日の目安
+          %th.item-show__item__main__detail__shipping-date.contents
+            1~2日で発送
+    .item-show__item__price-box
+      .item-show__item__price-box__price
+        ¥
+        900
+      .item-show__item__price-box__tax
+        (税込)
+      .item-show__item__price-box__postage
+        送料込み
+    .item-show__item__button
+      購入画面に進む
+    .item-show__item__introduction
+      - text = "大人気のスマホ・タブレットスタンドです♪\n\n\n【対応機種】iphone全種類、ipad Air、ipad mini、ipad 4,3,2、kindle、電子書籍などあらゆる11インチまでのスマホやタブレット。\n\n【どこでもオフィスになる！】iPad利用時に、Bluetoothのキーボードを併用し、何処でもコンパクトにオフィスの出来がり！\n\n【22段階調整可能】下部の支えは２段階に調整可能。狭く開けばスマホ用として、広く開けばタブレット用としてお使いいただけます。\n\n【軽量設計】テーブル・ベット・喫茶店・飛行機などで活躍重さわずか約100gなので、使わない時はポケットに入れて、持ち運びにとても便利です。\n\n【パッドにすべり止め機能付きゴム製を採用】本を読んだりネットサーフィンを楽しんだり、映画を鑑賞するためにデバイスを任意の角度に固定できます。\n\n\n☆発送に関しまして☆基本的に即日か翌日発送致します！安心、迅速なメルカリ便にてお届け致します♪8"
+      = simple_format text
+    .item-show__item__btn-container
+      .item-show__item__btn-container__left
+        %button.item-show__item__btn-container__left__iine{type: "button",}
+          .item-show__item__btn-container__left__iine__icon
+            = fa_icon 'heart-o', class: 'iine'
+          .item-show__item__btn-container__left__iine__title
+            いいね!
+          .item-show__item__btn-container__left__iine__count
+            1
+        %a.item-show__item__btn-container__left__report
+          .item-show__item__btn-container__left__report__icon
+            = fa_icon 'flag-o', class: 'flag'
+          .item-show__item__btn-container__left__report__title
+            不適切な商品の報告
+      %a.item-show__item__btn-container__right.blue
+        .item-show__item__btn-container__right__icon
+          = fa_icon 'lock', class: 'lock'
+        .item-show__item__btn-container__right__title
+          あんしん・あんぜんへの取り組み
+  .item-show__comment
+    .item-show__comment__container
+      .item-show__comment__container__caution
+        相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      .item-show__comment__container__form
+        %textarea{type: "text"}
+      %button.item-show__comment__container__submit
+        %span コメントする
+  .item-show__prev-next
+    .item-show__prev-next__prev.blue
+      <
+      ダウンジャケット 子供用 BABYDOLL
+    .item-show__prev-next__next.blue
+      キルカバー✩レフィル 替えパフ付
+      >
+  .item-show__media-box
+    .item-show__media-box__text
+    %ul.item-show__media-box__medias
+      %li
+        %a.item-show__media-box__medias__facebook{href: "http://www.facebook.com/share.php?u=hoge", rel: "nofollow", target: "_blank"}
+          = fa_icon 'facebook', class: 'facebook'
+      %li
+        %a.item-show__media-box__medias__twitter{href: "http://www.twitter.com/share.php?u=hoge", rel: "nofollow", target: "_blank"}
+          = fa_icon 'twitter', class: 'twitter'
+      %li
+        %a.item-show__media-box__medias__pinterest{href: "http://pinterest.com/pin/create/button/?url=hoge", rel: "nofollow", target: "_blank"}
+          = fa_icon 'pinterest', class: 'pinterest'
