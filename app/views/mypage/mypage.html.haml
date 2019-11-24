@@ -1,0 +1,49 @@
+%main
+  = render "shared/side_bar"
+  .l-container.cleafix
+    .l-content
+      %section.mypage-user-icon
+        %a{href: "https://www.mercari.com/jp/u/408297438/"}
+          %figure
+            = image_tag "//static.mercdn.net/images/member_photo_noimage_thumb.png", alt: "", width: "60", height: "60"
+          %h2.bold
+            テスよテスよ
+            -# = current_user.nickname
+          .mypage-number
+            %div
+              評価
+              %span.bold 0
+            %div
+              出品数
+              %span.bold 0
+      %section.mypage-tab-container-notification-todo
+        %ul.mypage-tabs
+          %li#mypage-top_left.active
+            %h3.mypage-tab
+              %a{"data-toggle": "tab"}
+                お知らせ
+          %li#mypage-top_right
+            %h3.mypage-tab
+              %a{"data-toggle": "tab"}
+                やることリスト
+        .tab-content
+          %ul.mypage-tab-notification_top.mypage-top_left
+            %li.mypage-item-not-found.bold お知らせはありません
+          %ul.mypage-tab-notification_top.mypage-top_right
+            %li.mypage-item-not-found.bold やることリストはありません
+      %section.mypage-tab-container
+        %h2.mypage-tab-head 購入した商品
+        %ul.mypage-tabs
+          %li#mypage-bottom_left.active
+            %h3.mypage-tab
+              %a{"data-toggle": "tab"}
+                取引中
+          %li#mypage-bottom_right
+            %h3.mypage-tab
+              %a{"data-toggle": "tab"}
+                過去の取引
+        .tab-content
+          %ul.mypage-tab-notification_bottom.mypage-bottom_left
+            %li.mypage-item-not-found.bold 取引中の商品がありません
+          %ul.mypage-tab-notification_bottom.mypage-bottom_right
+            %li.mypage-item-not-found.bold 過去の取引はありません
