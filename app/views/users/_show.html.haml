@@ -1,0 +1,43 @@
+.user-show
+  .user-show__container
+    = render "shared/user-side"
+    .user-show__container__contents
+      %section.user-show__container__contents__user
+        = link_to root_path do
+          .user-show__container__contents__user__icon
+            = image_tag "user_icon_default", alt: "", width: "60", height: "60"
+          .user-show__container__contents__user__nickname
+            玲奈
+          .user-show__container__contents__user__counts
+            .user-show__container__contents__user__counts__review
+              .user-show__container__contents__user__counts__review__title
+                評価
+              .user-show__container__contents__user__counts__review__count
+                255
+            .user-show__container__contents__user__counts__exhibit
+              .user-show__container__contents__user__counts__exhibit__title
+                出品数
+              .user-show__container__contents__user__counts__exhibit__count
+                40
+      %section.user-show__container__contents__notification-todo
+        %ul.user-show__container__contents__notification-todo__tab
+          %li.notification-todo-active
+            %h3 お知らせ
+          %li
+            %h3 やることリスト
+        .user-show__container__contents__notification-todo__contents
+          %ul 
+            %li 
+              %h3 お知らせがありません
+      %section.user-show__container__contents__buy
+        %h2 購入した商品
+        %ul.user-show__container__contents__buy__tab
+          %li.buy-active
+            %h3 取引中
+          %li
+            %h3 過去の取引
+        .user-show__container__contents__buy__contents
+          %ul 
+            %li 
+              %h3 取引中の商品がありません
+        
