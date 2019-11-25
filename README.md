@@ -28,6 +28,33 @@ https://www.draw.io/?state=%7B%22ids%22:%5B%221sEhle2n1CE_6fTWH9v8_9e-L5-2EO3Bo%
 - has_many :notices, dependent: destroy
 - has_many :todos, dependent: destroy
 - has_many :items
+- has_many :messages
+- has_many :purchases
+
+## messeages table
+
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null: false|
+|item_id|references|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+
+### Association
+
+- belongs_to :user
+- belongs_to :item
+
+## purchases table
+
+|Column|Type|Options|
+|------|----|-------|
+|item_id|references|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
+
+### Association
+
+- has_one    :item
+- belongs_to :user
 
 ## address table
 
@@ -112,6 +139,7 @@ https://www.draw.io/?state=%7B%22ids%22:%5B%221sEhle2n1CE_6fTWH9v8_9e-L5-2EO3Bo%
 - has_many :images, dependent: destroy
 - has_many :todos, dependent: destroy
 - has_many :notices, dependent: destroy
+- has_many :messages
 
 ## image table
 
