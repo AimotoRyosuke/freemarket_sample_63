@@ -22,8 +22,15 @@
 ---
 ja:
   activerecord:
-    attributes:
-      user: "ユーザーモデル"
+    errors:
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+  models:
+    user: ユーザーモデル
+      attributes:
         birth: '生年月日'
         nickname: 'ニックネーム'
         email: "メールアドレス"
@@ -32,13 +39,10 @@ ja:
         last_name: "名"
         first_name_kana: "性（カナ）"
         last_name_kana: "名（カナ）"
-    errors:
-      messages:
-        record_invalid: 'バリデーションに失敗しました: %{errors}'
-        restrict_dependent_destroy:
-          has_one: "%{record}が存在しているので削除できません"
-          has_many: "%{record}が存在しているので削除できません"
-  date:
+        birthday: '生年月日（仮）'
+    birthday:
+      attributes:
+        birthday:
     abbr_day_names:
     - 日
     - 月

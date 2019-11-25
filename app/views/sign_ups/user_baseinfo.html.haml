@@ -12,7 +12,7 @@
     .form__group-pass
       .form__group__name パスワード
       .form__group__require 必須
-      = f.password_field :password, autocomplete: "new-password"
+      = f.password_field :password, autocomplete: "new-password", placehoolder: '7文字以上'
       %input.form__group__checkbox{type: 'submit'}
       %p パスワードを表示する
       %span abcd
