@@ -1,6 +1,6 @@
 .wrapper
   %h2.top 会員情報入力
-  = form_with model: @user, url: signup_path, local: true, class: 'form' do |f|
+  = form_with model: @user, url: signup_registrate_path, local: true, class: 'form' do |f|
     .form__group
       .form__group__name ニックネーム
       .form__group__require 必須
@@ -41,10 +41,10 @@
       .g-recaptcha{"data-callback": "validateRecaptcha", "data-sitekey": "{6Le89cMUAAAAAAeb99rrFc47etRW6YfXytC1NXQs}"}
     .form__ok
       %p 「次へ進む」のボタンを押すことにより、
-      %a 利用規約
+      = link_to '利用規約', ''
       %p に同意したものとみなします
     = f.submit '次へ進む', class: 'form__submit'
-    .form__about 本人情報の登録について
+    = link_to '本人の登録について', '', class: 'form_group_about'
 
 -# 6Le89cMUAAAAAAeb99rrFc47etRW6YfXytC1NXQs
 -# 6Le89cMUAAAAAAPLC_0c8tv4j7f0vPMKswQokp6p
