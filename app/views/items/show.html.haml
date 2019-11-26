@@ -3,7 +3,10 @@
     %h1.item-show__item__name
       = @item.name
     %p.item-show__item__wording
-      『【多機能】スマホ・タブレットスタンド　折りたたみ式　角度調整可能　ホワイト』は、2205回の取引実績を持つ玲奈さんから出品されました。その他/家電・スマホ・カメラの商品で、埼玉県から1~2日で発送されます。
+      = @item.name
+      は、2205回の取引実績を持つ玲奈さんから出品されました。その他/家電・スマホ・カメラの商品で、埼玉県から
+      = @item.item_days(@item)
+      で発送されます。
     .item-show__item__main
       .item-show__item__main__image
         .item-show__item__main__image__display
