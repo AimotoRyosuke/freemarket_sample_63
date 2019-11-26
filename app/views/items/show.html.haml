@@ -101,8 +101,7 @@
       .item-show__item__button
         購入画面に進む
     .item-show__item__introduction
-      - text = "大人気のスマホ・タブレットスタンドです♪\n\n\n【対応機種】iphone全種類、ipad Air、ipad mini、ipad 4,3,2、kindle、電子書籍などあらゆる11インチまでのスマホやタブレット。\n\n【どこでもオフィスになる！】iPad利用時に、Bluetoothのキーボードを併用し、何処でもコンパクトにオフィスの出来がり！\n\n【22段階調整可能】下部の支えは２段階に調整可能。狭く開けばスマホ用として、広く開けばタブレット用としてお使いいただけます。\n\n【軽量設計】テーブル・ベット・喫茶店・飛行機などで活躍重さわずか約100gなので、使わない時はポケットに入れて、持ち運びにとても便利です。\n\n【パッドにすべり止め機能付きゴム製を採用】本を読んだりネットサーフィンを楽しんだり、映画を鑑賞するためにデバイスを任意の角度に固定できます。\n\n\n☆発送に関しまして☆基本的に即日か翌日発送致します！安心、迅速なメルカリ便にてお届け致します♪8"
-      = simple_format text
+      = simple_format(@item.explanation)
     - if false
       .item-show__item__btn-container
         .item-show__item__btn-container__left
