@@ -1,9 +1,13 @@
-.item-show
+%div{class: "#{"item-show" if false}" "#{"item-show my-shipping" if true}"}
   %section.item-show__item
     %h1.item-show__item__name
       = @item.name
-    %p.item-show__item__wording
-      『【多機能】スマホ・タブレットスタンド　折りたたみ式　角度調整可能　ホワイト』は、2205回の取引実績を持つ玲奈さんから出品されました。その他/家電・スマホ・カメラの商品で、埼玉県から1~2日で発送されます。
+    - if false
+      %p.item-show__item__wording
+        = @item.name
+        は、2205回の取引実績を持つ玲奈さんから出品されました。その他/家電・スマホ・カメラの商品で、埼玉県から
+        = @item.item_days(@item)
+        で発送されます。
     .item-show__item__main
       .item-show__item__main__image
         .item-show__item__main__image__display
@@ -93,30 +97,40 @@
         (税込)
       .item-show__item__price-box__postage
         = @item.price_box_shippingcost(@item)
-    .item-show__item__button
-      購入画面に進む
+    - if false
+      .item-show__item__button
+        購入画面に進む
     .item-show__item__introduction
       - text = "大人気のスマホ・タブレットスタンドです♪\n\n\n【対応機種】iphone全種類、ipad Air、ipad mini、ipad 4,3,2、kindle、電子書籍などあらゆる11インチまでのスマホやタブレット。\n\n【どこでもオフィスになる！】iPad利用時に、Bluetoothのキーボードを併用し、何処でもコンパクトにオフィスの出来がり！\n\n【22段階調整可能】下部の支えは２段階に調整可能。狭く開けばスマホ用として、広く開けばタブレット用としてお使いいただけます。\n\n【軽量設計】テーブル・ベット・喫茶店・飛行機などで活躍重さわずか約100gなので、使わない時はポケットに入れて、持ち運びにとても便利です。\n\n【パッドにすべり止め機能付きゴム製を採用】本を読んだりネットサーフィンを楽しんだり、映画を鑑賞するためにデバイスを任意の角度に固定できます。\n\n\n☆発送に関しまして☆基本的に即日か翌日発送致します！安心、迅速なメルカリ便にてお届け致します♪8"
       = simple_format text
-    .item-show__item__btn-container
-      .item-show__item__btn-container__left
-        %button.item-show__item__btn-container__left__iine{type: "button",}
-          .item-show__item__btn-container__left__iine__icon
-            = fa_icon 'heart-o', class: 'iine'
-          .item-show__item__btn-container__left__iine__title
-            いいね!
-          .item-show__item__btn-container__left__iine__count
-            1
-        = link_to '', class: "item-show__item__btn-container__left__report" do
-          .item-show__item__btn-container__left__report__icon
-            = fa_icon 'flag-o', class: 'flag'
-          .item-show__item__btn-container__left__report__title
-            不適切な商品の報告
-      = link_to '', class: "item-show__item__btn-container__right blue" do
-        .item-show__item__btn-container__right__icon
-          = fa_icon 'lock', class: 'lock'
-        .item-show__item__btn-container__right__title
-          あんしん・あんぜんへの取り組み
+    - if false
+      .item-show__item__btn-container
+        .item-show__item__btn-container__left
+          %button.item-show__item__btn-container__left__iine{type: "button",}
+            .item-show__item__btn-container__left__iine__icon
+              = fa_icon 'heart-o', class: 'iine'
+            .item-show__item__btn-container__left__iine__title
+              いいね!
+            .item-show__item__btn-container__left__iine__count
+              1
+          = link_to '', class: "item-show__item__btn-container__left__report" do
+            .item-show__item__btn-container__left__report__icon
+              = fa_icon 'flag-o', class: 'flag'
+            .item-show__item__btn-container__left__report__title
+              不適切な商品の報告
+        = link_to '', class: "item-show__item__btn-container__right blue" do
+          .item-show__item__btn-container__right__icon
+            = fa_icon 'lock', class: 'lock'
+          .item-show__item__btn-container__right__title
+            あんしん・あんぜんへの取り組み
+  - if true
+    .item-show__change
+      = link_to "商品の編集", root_path, class: "item-show__change__edit"
+      %p.item-show__change__or
+        or
+      %form.item-show__change__stop
+        出品を一旦停止する
+      = link_to "この商品を削除する", item_path(@item), class: "item-show__change__delete", method: :delete, data: { confirm: '消すよ？' }
   .item-show__comment
     .item-show__comment__container
       .item-show__comment__container__caution
@@ -125,22 +139,23 @@
         %textarea{type: "text"}
       %button.item-show__comment__container__submit
         %span コメントする
-  .item-show__prev-next
-    .item-show__prev-next__prev.blue
-      <
-      ダウンジャケット 子供用 BABYDOLL
-    .item-show__prev-next__next.blue
-      キルカバー✩レフィル 替えパフ付
-      >
-  .item-show__media-box
-    .item-show__media-box__text
-    %ul.item-show__media-box__medias
-      %li
-        = link_to '', class: "item-show__media-box__medias__facebook", href: "http://www.facebook.com/share.php?u=hoge", rel: "nofollow", target: "_blank" do
-          = fa_icon 'facebook', class: 'facebook'
-      %li
-        = link_to '', class: "item-show__media-box__medias__twitter", href: "http://www.twitter.com/share.php?u=hoge", rel: "nofollow", target: "_blank" do
-          = fa_icon 'twitter', class: 'twitter'
-      %li
-        = link_to '', class: "item-show__media-box__medias__pinterest", href: "http://pinterest.com/pin/create/button/?url=hoge", rel: "nofollow", target: "_blank" do
-          = fa_icon 'pinterest', class: 'pinterest'
+  - if false
+    .item-show__prev-next
+      .item-show__prev-next__prev.blue
+        <
+        ダウンジャケット 子供用 BABYDOLL
+      .item-show__prev-next__next.blue
+        キルカバー✩レフィル 替えパフ付
+        >
+    .item-show__media-box
+      .item-show__media-box__text
+      %ul.item-show__media-box__medias
+        %li
+          = link_to '', class: "item-show__media-box__medias__facebook", href: "http://www.facebook.com/share.php?u=hoge", rel: "nofollow", target: "_blank" do
+            = fa_icon 'facebook', class: 'facebook'
+        %li
+          = link_to '', class: "item-show__media-box__medias__twitter", href: "http://www.twitter.com/share.php?u=hoge", rel: "nofollow", target: "_blank" do
+            = fa_icon 'twitter', class: 'twitter'
+        %li
+          = link_to '', class: "item-show__media-box__medias__pinterest", href: "http://pinterest.com/pin/create/button/?url=hoge", rel: "nofollow", target: "_blank" do
+            = fa_icon 'pinterest', class: 'pinterest'
