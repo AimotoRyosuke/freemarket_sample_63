@@ -3,6 +3,10 @@ class SignUpsController < ApplicationController
   before_action :address_params, only: :user_address_create 
   before_action :credit_params, only: :user_credit_create
 
+  def signup_select
+  
+  end
+
   def user_baseinfo
     @user = User.new
   end
