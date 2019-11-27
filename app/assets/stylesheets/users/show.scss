@@ -1,0 +1,136 @@
+.user-show {
+  &__container {
+    margin: 40px auto 0;
+    padding: 0 0 40px;
+    width: 1020px;
+    display: flex;
+    &__contents {
+      width: 700px;
+      &__user {
+        display: flex;
+        align-items: center;
+        a{
+          width:100%;
+          color: #333;
+          font-size: 14px;
+          text-decoration: none;
+        }
+        height: 200px;
+        padding: 20px;
+        box-sizing: border-box;
+        background: url(https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?72951459);
+        text-align: center;
+        &__icon {
+          img {
+            border-radius: 40px;
+          }
+        }
+        &__nickname {
+          margin: 8px 0 0;
+          font-weight: 600;
+        }
+        &__counts {
+          display: flex;
+          justify-content: center;
+          margin: 8px 0 0;
+          &__review {
+            display: flex;
+            &__title {
+
+            }
+            &__count {
+              margin: 0 0 0 8px;
+              font-size: 16px;
+              font-weight: 600;
+              line-height: 21px;
+            }
+          }
+          &__exhibit {
+            margin: 0 0 0 16px;
+            display: flex;
+            &__title {
+  
+            }
+            &__count {
+              margin: 0 0 0 8px;
+              font-size: 16px;
+              font-weight: 600;
+              line-height: 21px;
+            }
+          }
+        }
+      }
+      &__notification-todo {
+        background: #fff;
+        &__tab {
+          background: #eee;
+          display: flex;
+          .notification-todo-active {
+            border-top: 2px solid #ea352d;
+            background: #fff;
+          }
+          li {
+            width: 50%;
+            h3 {
+              font-weight: bold;
+              position: relative;
+              color: #333;
+              font-size: 16px;
+              line-height: 72px;
+              text-align: center;
+            }
+          }
+        }
+        &__contents {
+          background: url(logo_gray.svg);
+          padding: 160px 0 60px;
+          background-repeat: no-repeat;
+          background-position: center 40px;
+          background-size: 78px 85px;
+          text-align: center;
+          font-size: 16px;
+          color: #ccc;
+        }
+      }
+      &__buy {
+        margin: 40px 0 0;
+        background: #fff;
+        h2 {
+          padding: 0 16px;
+          background: #fafafa;
+          font-size: 16px;
+          line-height: 72px;
+        }
+        &__tab {
+          background: #eee;
+          display: flex;
+          .buy-active {
+            border-top: 2px solid #ea352d;
+            background: #fff;
+          }
+          li {
+            width: 50%;
+            h3 {
+              font-weight: bold;
+              position: relative;
+              color: #333;
+              font-size: 16px;
+              line-height: 72px;
+              text-align: center;
+            }
+          }
+        }
+        &__contents {
+          background: url(logo_gray.svg);
+          padding: 160px 0 60px;
+          background-repeat: no-repeat;
+          background-position: center 40px;
+          background-size: 78px 85px;
+          text-align: center;
+          font-size: 16px;
+          color: #ccc;
+        }
+      }
+    }
+  }
+}

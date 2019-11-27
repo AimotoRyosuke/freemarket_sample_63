@@ -1,2 +1,13 @@
 @import "reset";
 @import "font-awesome";
+@import "layouts/header";
+@import "layouts/footer";
+@import "items/show";
+@import "users/logouts";
+@import "users/show";
+@import "shared/user-side";
+
+body {
+  font-family: Arial,游ゴシック体,YuGothic,メイリオ,Meiryo,sans-serif;
+  background: rgb(245, 245, 245);
+}
