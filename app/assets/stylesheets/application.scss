@@ -1,6 +1,5 @@
 @import "reset";
 @import "font-awesome";
-@import "users";
 @import "layouts/header";
 @import "layouts/footer";
 @import "items/show";
@@ -8,6 +7,7 @@
 @import "users/show";
 @import "shared/user-side";
 @import "items";
+@import "users";
 
 body {
   font-family: Arial,游ゴシック体,YuGothic,メイリオ,Meiryo,sans-serif;
