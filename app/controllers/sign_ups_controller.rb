@@ -23,21 +23,23 @@ class SignUpsController < ApplicationController
       nickname:              session[:nickname],
       birth:                 session[:birth],
       email:                 session[:email],
-      encrypted_password:    session[:password],
-      # password_confirmation: session[:password_confirmation],
+      password:              session[:password],
+      password_confirmation: session[:password_confirmation],
       first_name:            session[:first_name],
       last_name:             session[:last_name],
       first_name_kana:       session[:first_name_kana],
       last_name_kana:        session[:last_name_kana],
     )
-    @user.valid?
 
+    @user.valid?
+    change_birthday_validate_message(params)
     skip_tel_validate(@user.errors)
-    binding.pry
-    if @user.errors 
-      render :user_baseinfo
-    else
+
+    if @user.errors.details == {} && @user.errors.messages == {}
+       
       redirect_to signup_tel_path
+    else
+      render :user_baseinfo
     end
   end
 
@@ -48,26 +50,24 @@ class SignUpsController < ApplicationController
   def user_tel_validate
     session[:tel] = params[:user][:tel]
 
-    @user = User.create(
-      nickname:              session[:nickname],
-      email:                 session[:email],
-      password:              session[:password],
+    @user = User.new(
+      nickname:           session[:nickname],
+      birth:              session[:birth],
+      email:              session[:email],
+      password: session[:password],
       password_confirmation: session[:password_confirmation],
-      first_name:            session[:first_name],
-      last_name:             session[:last_name],
-      first_name_kana:       session[:first_name_kana],
-      last_name_kana:        session[:last_name_kana],
-      birth:                 session[:birth],
-      tel:                   session[:tel],
+      first_name:         session[:first_name],
+      last_name:          session[:last_name],
+      first_name_kana:    session[:first_name_kana],
+      last_name_kana:     session[:last_name_kana],
+      tel:                session[:tel],
     )
 
     @user.valid?
 
-    if true
-      # @user.errors.messages.blank? && @user.errors.details.blank?
+    if @user.errors.details == {} && @user.errors.messages == {}
       redirect_to signup_tel_auth_path
     else
-      @user.errors.messages[:birth] = change_birthday_validate_message(@user)
       render :user_tel
     end
   end
@@ -77,32 +77,40 @@ class SignUpsController < ApplicationController
   end
 
   def user_create
-    if params[:user][:auth] == "111111"
-      @user = User.create(
-        nickname:              session[:nickname],
-        email:                 session[:email],
-        password:              session[:password],
-        password_confirmation: session[:password_confirmation],
-        first_name:            session[:first_name],
-        last_name:             session[:last_name],
-        first_name_kana:       session[:first_name_kana],
-        last_name_kana:        session[:last_name_kana],
-        birth:                 session[:birth],
-        tel:                   session[:tel],
-        )
+    @user = User.new(
+      nickname:           session[:nickname],
+      birth:              session[:birth],
+      email:              session[:email],
+      password: session[:password],
+      password_confirmation: session[:password_confirmation],
+      first_name:         session[:first_name],
+      last_name:          session[:last_name],
+      first_name_kana:    session[:first_name_kana],
+      last_name_kana:     session[:last_name_kana],
+      tel:                session[:tel],
+      )
 
-        # sign_in User.find(@user.id) unless user_signed_in?
-          session.delete(:nickname)
-          session.delete(:birth)
-          session.delete(:email)
-          session.delete(:password)
-          session.delete(:first_name)
-          session.delete(:last_name)
-          session.delete(:first_name_kana)
-          session.delete(:last_name_kana)
-          session.delete(:tel)
-          redirect_to registrate_address_path
-    else
+    if params[:user][:auth].match(/\A[0-9]+\z/)
+      if params[:user][:auth] == "111111"
+        @user.save
+        sign_in User.find(@user.id)
+        session.delete(:nickname)
+        session.delete(:birth)
+        session.delete(:email)
+        session.delete(:password)
+        session.delete(:password_confirmation)
+        session.delete(:first_name)
+        session.delete(:last_name)
+        session.delete(:first_name_kana)
+        session.delete(:last_name_kana)
+        session.delete(:tel)
+        redirect_to registrate_address_path
+      else
+        @msg = "認証番号が一致しません"
+        render :user_tel_auth
+      end
+    else  
+      @msg = "認証番号を入力してください"
       render :user_tel_auth
     end
   end
@@ -125,14 +133,12 @@ class SignUpsController < ApplicationController
       tel:             address_params[:tel],
       user_id:         address_params[:user_id]
     )
-
-    @address.save
     @address.valid?
-
-    if @address.errors.messages.blank? && @address.errors.details.blank?
+    tel_confirmation
+    if @address.errors.messages == {} && @address.errors.details == {}
+      @address.save
       redirect_to registrate_credit_path
     else
-      # @user.errors.messages[:birth] = change_birthday_validate_message(@user)
       render :user_address
     end
 
@@ -143,12 +149,6 @@ class SignUpsController < ApplicationController
   end
   
   def user_credit_create
-      credit_validate
-      @credit.save
-      redirect_to root_path
-  end
-
-  def credit_validate
     @credit = Credit.new(
       number:   credit_params[:number],
       year:     credit_params[:year],
@@ -157,11 +157,11 @@ class SignUpsController < ApplicationController
       user_id:  credit_params[:user_id]
     )
     @credit.valid?
-
     if @credit.errors.messages.blank? && @credit.errors.details.blank?
-      return @credit
+      @credit.save
+       
+      redirect_to root_path
     else
-      # @user.errors.messages[:birth] = change_birthday_validate_message(@user)
       render :user_credit
     end
   end
@@ -183,8 +183,26 @@ class SignUpsController < ApplicationController
     errors.details.delete(:tel)
   end
 
+  def change_birthday_validate_message(params)
+    if params[:birthday]['birthday(1i)'] == "" && params[:birthday]['birthday(2i)'] == "" && params[:birthday]['birthday(3i)'] == ""
+      @user.errors.messages[:birth] = ["生年月日を入力してください"]
+    elsif params[:birthday]['birthday(1i)'] == "" || params[:birthday]['birthday(2i)'] == "" || params[:birthday]['birthday(3i)'] == ""
+      @user.errors.messages[:birth] = ["生年月日を正しく入力してください"]
+    else
+      return
+    end
+  end
+
   def address_params
     params.require(:address).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :tel, :zip_code, :prefecture_id, :city, :address, :building, :tel).merge(user_id: current_user.id)
+  end
+
+  def tel_confirmation
+    if @address.errors.messages.has_key?(:tel) && @address.errors.details.has_key?(:tel)
+      @address.delete[:tel]
+      @address.errors.messages.delete(:tel)
+      @address.errors.details.delete(:tel)
+    end
   end
 
   def credit_params

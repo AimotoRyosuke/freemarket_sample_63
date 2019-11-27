@@ -1,38 +1,96 @@
 .wrapper
   %h2.top 発送元・お届け先住所変更
   = form_with model: @address, url: registrate_address_path, local: true, class: 'form' do |f|
-    .form__group
-      .form__group__name お名前(全角)
-      .form__group__require 必須
-      = f.text_field :first_name, class: 'form__group__input', placeholder: '例)山田'
-      = f.text_field :last_name, class: 'form__group__input', placeholder: '例)彩'
-    .form__group
-      .form__group__name お名前カナ(全角)
-      .form__group__require 必須
-      = f.text_field :first_name_kana, class: 'form__group__input', placeholder: '例)ヤマダ'
-      = f.text_field :last_name_kana, class: 'form__group__input', placeholder: '例)アヤ'
-    .form__group
-      .from__group__name 郵便番号
-      .form__group__require 必須
-      = f.text_field :zip_code, class: 'form__group__input', placeholder: '例)'
-    .form__group
-      .from__group__name 都道府県
-      .form__group__require 必須
-      = f.collection_select :prefecture_id, Prefecture.all, :id, :name
-    .form__group
-      .from__group__name 市町村区
-      .form__group__require 必須
-      = f.text_field :city, class: 'form__group__input', placeholder: '例)横浜市緑区'
-    .form__group
-      .from__group__name 番地
-      .form__group__require 必須
-      = f.text_field :address, class: 'form__group__input', placeholder: '例青山1-1-1)'
-    .form__group
-      .from__group__name 建物名
-      .form__group__require--any 任意
-      = f.text_field :building, class: 'form__group__input', placeholder: '例)柳ビル103'
-    .form__group
-      .from__group__name 電話
-      .form__group__require--any 任意
-      = f.text_field :tel, class: 'form__group__input', placeholder: '例)09012345678'
-    = f.submit '登録する', class: 'form__submit'
+    - if @address.errors.any?
+      .form__group
+        .form__group__name お名前(全角)
+        .form__group__require 必須
+        = f.text_field :first_name, class: 'form__group__input', placeholder: '例)山田'
+        = f.text_field :last_name, class: 'form__group__input', placeholder: '例)彩'
+        .form__group__err
+          - @address.errors.messages[:first_name].each do |message|
+            .form__group__err__msg= message
+        .form__group__err
+          - @address.errors.messages[:last_name].each do |message|
+            .form__group__err__msg= message
+      .form__group
+        .form__group__name お名前カナ(全角)
+        .form__group__require 必須
+        = f.text_field :first_name_kana, class: 'form__group__input', placeholder: '例)ヤマダ'
+        = f.text_field :last_name_kana, class: 'form__group__input', placeholder: '例)アヤ'
+        .form__group__err
+          - @address.errors.messages[:first_name_kana].each do |message|
+            .form__group__err__msg= message
+        .form__group__err
+          - @address.errors.messages[:last_name_kana].each do |message|
+            .form__group__err__msg= message
+      .form__group
+        .from__group__name 郵便番号
+        .form__group__require 必須
+        = f.text_field :zip_code, class: 'form__group__input', placeholder: '例)123-4567'
+        .form__group__err
+          - @address.errors.messages[:zip_code].each do |message|
+            .form__group__err__msg= message
+      .form__group
+        .from__group__name 都道府県
+        .form__group__require 必須
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+      .form__group
+        .from__group__name 市町村区
+        .form__group__require 必須
+        = f.text_field :city, class: 'form__group__input', placeholder: '例)横浜市緑区'
+        .form__group__err
+          - @address.errors.messages[:city].each do |message|
+            .form__group__err__msg= message
+      .form__group
+        .from__group__name 番地
+        .form__group__require 必須
+        = f.text_field :address, class: 'form__group__input', placeholder: '例青山1-1-1)'
+        .form__group__err
+          - @address.errors.messages[:address].each do |message|
+            .form__group__err__msg= message
+      .form__group
+        .from__group__name 建物名
+        .form__group__require--any 任意
+        = f.text_field :building, class: 'form__group__input', placeholder: '例)柳ビル103'
+      .form__group
+        .from__group__name 電話
+        .form__group__require--any 任意
+        = f.text_field :tel, class: 'form__group__input', placeholder: '例)09012345678'
+      = f.submit '登録する', class: 'form__submit'
+    - else
+      .form__group
+        .form__group__name お名前(全角)
+        .form__group__require 必須
+        = f.text_field :first_name, class: 'form__group__input', placeholder: '例)山田'
+        = f.text_field :last_name, class: 'form__group__input', placeholder: '例)彩'
+      .form__group
+        .form__group__name お名前カナ(全角)
+        .form__group__require 必須
+        = f.text_field :first_name_kana, class: 'form__group__input', placeholder: '例)ヤマダ'
+        = f.text_field :last_name_kana, class: 'form__group__input', placeholder: '例)アヤ'
+      .form__group
+        .from__group__name 郵便番号
+        .form__group__require 必須
+        = f.text_field :zip_code, class: 'form__group__input', placeholder: '例)123-4567'
+      .form__group
+        .from__group__name 都道府県
+        .form__group__require 必須
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+      .form__group
+        .from__group__name 市町村区
+        .form__group__require 必須
+        = f.text_field :city, class: 'form__group__input', placeholder: '例)横浜市緑区'
+      .form__group
+        .from__group__name 番地
+        .form__group__require 必須
+        = f.text_field :address, class: 'form__group__input', placeholder: '例青山1-1-1)'
+      .form__group
+        .from__group__name 建物名
+        .form__group__require--any 任意
+        = f.text_field :building, class: 'form__group__input', placeholder: '例)柳ビル103'
+      .form__group
+        .from__group__name 電話
+        .form__group__require--any 任意
+        = f.text_field :tel, class: 'form__group__input', placeholder: '例)09012345678'
+      = f.submit '登録する', class: 'form__submit'

@@ -22,14 +22,7 @@
 ---
 ja:
   activerecord:
-    errors:
-      messages:
-        record_invalid: 'バリデーションに失敗しました: %{errors}'
-        restrict_dependent_destroy:
-          has_one: "%{record}が存在しているので削除できません"
-          has_many: "%{record}が存在しているので削除できません"
-  models:
-    user: ユーザーモデル
+    user:
       attributes:
         birth: '生年月日'
         nickname: 'ニックネーム'
@@ -39,10 +32,38 @@ ja:
         last_name: "名"
         first_name_kana: "性（カナ）"
         last_name_kana: "名（カナ）"
-        birthday: '生年月日（仮）'
-    birthday:
+        birth: '生年月日'
+        nickname: 'ニックネーム'
+        email: "メールアドレス"
+        encrypted_password: "パスワード"
+        password: "パスワード"
+      address:
+        attributes:
+        first_name: "性"
+        last_name: "名"
+        first_name_kana: "性（カナ）"
+        last_name_kana: "名（カナ）"
+        zip_code: "郵便番号"
+        city: "市町村区"
+        address: "番地"
+
+    errors:
+      messages:
+        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        restrict_dependent_destroy:
+          has_one: "%{record}が存在しているので削除できません"
+          has_many: "%{record}が存在しているので削除できません"
+  models:
+    user:
       attributes:
-        birthday:
+        birth: '生年月日'
+        nickname: 'ニックネーム'
+        email: "メールアドレス"
+        encrypted_password: "パスワード"
+        first_name: "性"
+        last_name: "名"
+        first_name_kana: "性（カナ）"
+        last_name_kana: "名（カナ）"
     abbr_day_names:
     - 日
     - 月
@@ -141,13 +162,28 @@ ja:
       day: 日
       month: 月
       year: 年
+  attributes:
+    birth: '生年月日'
+    nickname: 'ニックネーム'
+    email: "メールアドレス"
+    encrypted_password: "パスワード"
+    first_name: "性"
+    last_name: "名"
+    first_name_kana: "性（カナ）"
+    last_name_kana: "名（カナ）"
+    zip_code: "郵便番号"
+    city: "市町村区"
+    address: "番地"
   errors:
     format: "%{attribute}%{message}"
+    fullmessages: 
+      format: "%{attribute}%{message}"    
     messages:
+      format: "%{attribute}%{message}"
       accepted: を受諾してください
-      blank: を入力してください
+      blank: "%{attribute}を入力してください"
       confirmation: と%{attribute}の入力が一致しません
-      empty: を入力してください
+      empty: "%{attribute}を入力してください"
       equal_to: は%{count}にしてください
       even: は偶数にしてください
       exclusion: は予約されています

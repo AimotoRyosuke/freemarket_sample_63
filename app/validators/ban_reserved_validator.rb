@@ -9,5 +9,4 @@ class BanReservedValidator < ActiveModel::EachValidator
       record.errors[attribute] << (options[:message] || "ニックネームに使えない文字列が含まれています")
     end
   end
-
 end
