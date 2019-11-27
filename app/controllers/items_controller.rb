@@ -3,12 +3,10 @@ class ItemsController < ApplicationController
 
   def index
   end
-<<<<<<< HEAD
+
   def new
   end
-=======
 
->>>>>>> ec1d5cb4f2818ddcc1290563d81e7dbdc782f048
   def show
   end
 
