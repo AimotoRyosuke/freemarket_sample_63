@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   root                         to: 'items#index'
   get  'signin',               to: 'sign_in#signin'
@@ -13,6 +14,6 @@ Rails.application.routes.draw do
   post 'registrate/address',   to: 'sign_ups#user_address_create'
   get  'registrate/credit',    to: 'sign_ups#user_credit'
   post 'registrate/credit',    to: 'sign_ups#user_credit_create'
-  
+  root to: 'items#index'
   resources :items
 end
