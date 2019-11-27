@@ -67,17 +67,17 @@
           %th.title
             商品の状態
           %th.item-show__item__main__detail__condition.contents
-            = @item.item_status(@item)
+            = item_status(@item)
         %tr
           %th.title
             配送料の負担
           %th.item-show__item__main__detail__shipping-charge.contents
-            = @item.detail_shipping_cost(@item)
+            = detail_shipping_cost(@item)
         %tr
           %th.title
             配送の方法
           %th.item-show__item__main__detail__shipping__method
-            = @item.item_shipping_method(@item)
+            = item_shipping_method(@item)
         %tr
           %th.title
             配送元地域
@@ -88,7 +88,7 @@
           %th.title
             発送日の目安
           %th.item-show__item__main__detail__shipping-date.contents
-            = @item.item_days(@item)
+            = item_days(@item)
     .item-show__item__price-box
       .item-show__item__price-box__price
         ¥
@@ -100,6 +100,7 @@
     - if false
       .item-show__item__button
         購入画面に進む
+
     .item-show__item__introduction
       = simple_format(@item.explanation)
     - if false
