@@ -1,0 +1,46 @@
+= render "shared/header"
+.purchase-new
+  %section.purchase-new__item
+    %h2.purchase-new__item__head
+      購入内容の確認
+    .purchase-new__item__details
+      .purchase-new__item__details__head
+        .purchase-new__item__details__head__image
+          = image_tag "stand_1"
+        .purchase-new__item__details__head__name
+          ジャランスリウァヤ　タッセルローファー　レアサイズ　27cm
+      .purchase-new__item__details__price
+        .purchase-new__item__details__price__amount
+          ¥17,100
+          %span.purchase-new__item__details__price__amount__tax
+            送料込み
+      .purchase-new__item__details__point
+        ポイントはありません
+      .purchase-new__item__details__amount-payment
+        .purchase-new__item__details__amount-payment__head
+          支払い金額
+        .purchase-new__item__details__amount-payment__amount
+          ¥17,100
+      = link_to "購入する", root_path, class: "purchase-new__item__details__purchase"
+  %section.purchase-new__shipping
+    .purchase-new__shipping__contents
+      %h3.purchase-new__shipping__contents__head
+        配送先
+      %address.purchase-new__shipping__contents__address
+        〒981-3116
+        %br
+        宮城県 仙台市泉区 高玉町5-7 シャーメゾン高玉
+        %br
+        幾世橋 良太
+      = link_to "変更する", root_path, class: "purchase-new__shipping__contents__edit blue"
+  %section.purchase-new__pay-method
+    .purchase-new__pay-method__contents
+      .purchase-new__pay-method__contents__head
+        支払い方法
+      .purchase-new__pay-method__contents__number
+        ************8727
+      .purchase-new__pay-method__contents__date
+        04 / 20
+      .purchase-new__pay-method__contents__brand
+      = link_to "変更する", root_path, class: "purchase-new__pay-method__contents__edit blue"
+= render "shared/footer"
