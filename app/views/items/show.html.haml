@@ -1,9 +1,12 @@
 .item-show
   %section.item-show__item
     %h1.item-show__item__name
-      【多機能】スマホ・タブレットスタンド　折りたたみ式　角度調整可能　ホワイト
+      = @item.name
     %p.item-show__item__wording
-      『【多機能】スマホ・タブレットスタンド　折りたたみ式　角度調整可能　ホワイト』は、2205回の取引実績を持つ玲奈さんから出品されました。その他/家電・スマホ・カメラの商品で、埼玉県から1~2日で発送されます。
+      = @item.name
+      は、2205回の取引実績を持つ玲奈さんから出品されました。その他/家電・スマホ・カメラの商品で、埼玉県から
+      = item_days(@item)
+      で発送されます。
     .item-show__item__main
       .item-show__item__main__image
         .item-show__item__main__image__display
@@ -63,17 +66,17 @@
           %th.title
             商品の状態
           %th.item-show__item__main__detail__condition.contents
-            新品、未使用
+            = item_status(@item)
         %tr
           %th.title
             配送料の負担
           %th.item-show__item__main__detail__shipping-charge.contents
-            送料込み(出品者負担)
+            = detail_shipping_cost(@item)
         %tr
           %th.title
             配送の方法
           %th.item-show__item__main__detail__shipping__method
-            らくらくメルカリ便
+            = item_shipping_method(@item)
         %tr
           %th.title
             配送元地域
@@ -84,15 +87,15 @@
           %th.title
             発送日の目安
           %th.item-show__item__main__detail__shipping-date.contents
-            1~2日で発送
+            = item_days(@item)
     .item-show__item__price-box
       .item-show__item__price-box__price
         ¥
-        900
+        = @item.price
       .item-show__item__price-box__tax
         (税込)
       .item-show__item__price-box__postage
-        送料込み
+        = price_box_shippingcost(@item)
     .item-show__item__button
       購入画面に進む
     .item-show__item__introduction
