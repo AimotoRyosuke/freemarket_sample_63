@@ -1,55 +1,73 @@
-.wrapper
-  %h2.top クレジットカード情報入力
-  = form_with model: @credit, url: registrate_credit_path, local: true, class: 'form' do |f|
-    - if @credit.errors.any?
-      .form__group
-        .form__group__name カード番号
-        .form__group__require 必須
-        = f.text_field :number, class: 'form__group__input', placeholder: '半角数字のみ'
-        .form__group__err
-          - @credit.errors.messages[:number].each do |message|
-            .form__group__err__msg= message
-        .form__group__img
-          =image_tag "/assets/VISA.png", alt: "VISA" width: "40"
-          %img(src="/assets/Mastercard-logo.svg" alt="mastercard" width="30")
-          %img(src="/assets/Saison_card_logo.svg" alt="SAISON" width="30")
-          %img(src="/assets/jcb.png" alt="JCB" width="50")
-          %img(src="/assets/americane.png" alt="AMERICAN EXPRESS" width="45")
-          %img(src="/assets/DinersClub.png" alt="Diners Club" width="40")
-          %img(src="/assets/discover-png-7.png" alt="DISCOVER" width="30")
-      .form__group
-        .form__group__name 有効期限
-        .form__group__require 必須
-        != sprintf(f.date_select(:date,with_css_classes:'XXXXX', order:[:month,:year,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
-      .form__group
-        .form__group__name セキュリティコード
-        .form__group__require 必須
-        = f.text_field :security, class: 'form__group__input', placeholder: 'カード背面4桁もしくは3桁の番号'
-        .form__group__err
-          - @credit.errors.messages[:security].each do |message|
-            .form__group__err__msg= message
-        %a カード裏面の番号とは？
-      = f.submit '追加する', class: 'form__submit'
-    - else
-      .form__group
-        .form__group__name カード番号
-        .form__group__require 必須
-        = f.text_field :number, class: 'form__group__input', placeholder: '半角数字のみ'
-        .form__group__img
-          %img(src="/assets/VISA.png" alt="VISA" width="40")
-          %img(src="/assets/Mastercard-logo.svg" alt="mastercard" width="30")
-          %img(src="/assets/Saison_card_logo.svg" alt="SAISON" width="30")
-          %img(src="/assets/jcb.png" alt="JCB" width="50")
-          %img(src="/assets/americane.png" alt="AMERICAN EXPRESS" width="45")
-          %img(src="/assets/DinersClub.png" alt="Diners Club" width="40")
-          %img(src="/assets/discover-png-7.png" alt="DISCOVER" width="30")
-      .form__group
-        .form__group__name 有効期限
-        .form__group__require 必須
-        != sprintf(f.date_select(:date,with_css_classes:'XXXXX', order:[:month,:year,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
-      .form__group
-        .form__group__name セキュリティコード
-        .form__group__require 必須
-        = f.text_field :security, class: 'form__group__input', placeholder: 'カード背面4桁もしくは3桁の番号'
-        %a カード裏面の番号とは？
-      = f.submit '追加する', class: 'form__submit'
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
+    %title FreemarketSample63h
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'users/user_credit', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %header.credit-header
+      = link_to root_path, class: "credit-header__logo" do
+        = image_tag "fmarket_logo_red.svg", size: "185x49", alt: "mercari"
+      %ol.nav
+        %li.nav__box
+          %p.nav__box__progress 会員情報
+          .nav__box__status#status
+            .nav__box__status__bar1
+        %li.nav__box
+          %p.nav__box__progress 電話番号認証
+          .nav__box__status#status
+            .nav__box__status__bar2
+        %li.nav__box
+          %p.nav__box__progress お届け先住所入力
+          .nav__box__status#status
+            .nav__box__status__bar3
+        %li.nav__box
+          %p.nav__box__progress#progress 支払い方法
+          .nav__box__status#status
+            .nav__box__status__bar4
+        %li.nav__box
+          %p.nav__box__progress 完了
+          .nav__box__status
+    .wrapper
+      %h2.top 支払い方法
+      = form_with model: @credit, url: registrate_credit_path, local: true, class: 'form' do |f|
+        .form__group
+          .form__group__name カード番号
+          .form__group__require 必須
+          = f.text_field :number, class: 'form__group__input', placeholder: '半角数字のみ'
+          .form__group__err
+            - @credit.errors.messages[:number].each do |message|
+              .form__group__err__msg= message
+          .form__group__img
+            =image_tag "/assets/VISA.png", size: "55x40", alt: "VISA"
+            =image_tag "/assets/Mastercard-logo.svg", size: "35x25", alt: "mastercard"
+            =image_tag "/assets/Saison_card_logo.svg", size: "35x28", alt: "SAISON"
+            =image_tag "/assets/jcb.png", size: "55x43", alt: "JCB"
+            =image_tag "/assets/americane.png", size: "45x32", alt: "AMERICAN EXPRESS"
+            =image_tag "/assets/DinersClub.png", size: "40x30", alt: "Diners Club"
+            =image_tag "/assets/discover-png-7.png", size: "30x23", alt: "DISCOVER"
+        .form__group
+          .form__group__name 有効期限
+          .form__group__require 必須
+          .form__group__limit
+            != sprintf(f.date_select(:date,with_css_classes:'XXXXX', order:[:month,:year,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
+        .form__group
+          .form__group__name セキュリティコード
+          .form__group__require 必須
+          = f.text_field :security, class: 'form__group__input', placeholder: 'カード背面4桁もしくは3桁の番号'
+          .form__group__err
+            - @credit.errors.messages[:security].each do |message|
+              .form__group__err__msg= message
+          %a カード裏面の番号とは？
+        = f.submit '追加する', class: 'form__submit'
+    %footer.footer
+      .footer__link
+        = link_to "プライバシーポリシー", ""
+        = link_to "メルカリ利用規約"
+        = link_to "特定商取引に関する表記"
+      = link_to root_path, class: "footer__logo" do
+        = image_tag "logo_gray.svg", size: "85x65", alt: "mercari"
+      %p &copy2019 Mercari

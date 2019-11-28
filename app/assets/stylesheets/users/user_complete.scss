@@ -1,0 +1,235 @@
+@import "reset";
+@import "font-awesome";
+
+body {
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ','Meiryo', sans-serif;
+  background: rgb(245, 245, 245);
+  font-size: 14px;
+}
+
+.complete-header {
+  height: 128px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__logo{
+    width: 185px;
+    height: 45px;
+  }
+  &__logo:hover {
+    opacity: .7;
+  }
+  .nav {
+    display: flex;
+    color: #888888;
+    padding: 35px 0 0 48px;
+    align-self: flex-start;
+    &__box {
+      margin-right: 44px;
+      &__progress {
+        height: 15px;
+        font-size: 12px;
+      }
+      &__status {
+        height: 12px;
+        width: 12px;
+        background-color: #ccc;
+        margin: 8px auto 0;
+        border-radius: 50%;
+        position: relative;
+        &__bar1 {
+          position: absolute;
+          height: 2px;
+          background-color: #ea352d;
+          top: 50%;
+          left: 100%;
+          width: 92px;
+        }
+        &__bar2 {
+          position: absolute;
+          height: 2px;
+          background-color: #ea352d;
+          top: 50%;
+          left: 100%;
+          width: 116px;
+        }
+        &__bar3 {
+          position: absolute;
+          height: 2px;
+          background-color: #ea352d;
+          top: 50%;
+          left: 100%;
+          width: 110px;
+        }
+        &__bar4 {
+          position: absolute;
+          height: 2px;
+          background-color: #ea352d;
+          top: 50%;
+          left: 100%;
+          width: 74px;
+        }
+      }
+      #progress {
+        color: #ea352d;
+        font-weight: 600;
+      }
+      #status {
+        background-color: #ea352d;
+      }
+    }
+    &__box:last-child {
+      margin: 0;
+    }
+  }
+}
+
+.wrapper {
+  width: 700px;
+  margin: 0 auto;
+  background-color: #fff;
+  .top {
+    font-size: 22px;
+    height: 97px;
+    width: 100%;
+    text-align: center;
+    line-height: 97px;
+    font-weight: bold;
+  }
+  .form {
+    width: 343px;
+    padding: 40px 178.5px 64px;
+    border-top: 1px solid #eee;
+    &__comment {
+      text-align: center;
+    }
+    &__submit {
+      display: block;
+      height: 50px;
+      width: 343px;
+      background-color: #ea352d;
+      color: #fff;
+      margin-top: 32px;
+      cursor: pointer;
+      text-align: center;
+      line-height: 50px;
+      text-decoration: none;
+    }
+  }
+}
+
+.banner {
+  height :260px;
+  background: url(../footerbannerbgi.jpeg) center center / cover;
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  &__container {
+    width: 750px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    &__downloads {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      &__head {
+        height: 24px;
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+      &__head2 {
+        height: 35px;
+        font-size: 35px;
+        margin-bottom: 20px;
+      }
+      &__logos {
+        display: flex;
+        &__icon {
+          background-color: #fff;
+          width: 68px;
+          height: 68px;
+          border-radius: 15px;
+          margin-right: 20px;
+          svg{
+            padding: 15%;
+            max-width: 70%;
+            max-height: 70%;
+          }
+        }
+        &__appstore {
+          display: flex;
+          align-items: center;
+          margin-right: 8px;
+          cursor: pointer;
+        }
+        &__appstore:hover {
+          opacity: 0.6;
+        }
+        &__googleplay{
+          display: flex;
+          align-items: center;
+          cursor: pointer;
+        }
+        &__googleplay:hover {
+          opacity: 0.6;
+        }
+      }
+
+    }
+    &__image {
+      img{
+        height: 260px;
+        width: auto;
+      }
+    }
+  }
+}
+.banner::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  bottom: -10px;
+  left: -10px;
+  right: -10px;
+  background: inherit;
+  filter: blur(8px);
+  z-index: -1;
+}
+
+.footer {
+  height: 140px;
+  width: 456px;
+  padding: 40px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  &__link {
+    margin: 0 auto;
+    align-self: flex-start;
+    a {
+      color: black;
+      padding: 0 8px;
+      font-size: 12px;
+      text-decoration: none;
+    }
+    a:hover {
+      opacity: .7;
+      text-decoration: underline;
+    }
+  }
+  &__logo {
+    display: block;
+    width: 85px;
+    margin: 40px auto 0;
+  }
+  p {
+    font-size: 13px;
+    margin: 0 auto;
+  }
+}

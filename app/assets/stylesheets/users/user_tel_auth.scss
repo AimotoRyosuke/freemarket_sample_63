@@ -41,7 +41,7 @@ body {
         &__bar1 {
           position: absolute;
           height: 2px;
-          background-color: #ccc;
+          background-color: #ea352d;
           top: 50%;
           left: 100%;
           width: 92px;
@@ -136,98 +136,67 @@ body {
         color: #ea352d;
         margin-top: 8px;
       }
-      &__check {
-        margin-top: 16px;
-        &__checkbox {
-          cursor: pointer;
-        }
-        label {
-          padding-left: 5px;
-          cursor: pointer;
-        }
-      }
-      &__show-password {
-        display: inline-block;
-        width: auto;
-        background-color: #f5f5f5;
-        padding: 4px 8px;
-        margin: 14px 0 0;
-        height: 24px;
-        font-size: 16px;
-        line-height: 24px;
-      }
-      h3 {
-        font-size: 16px;
-        margin-top: 8px;
-        font-weight: 600;
-      }
-      &__box {
-        width: 343px;
-        margin-top: 8px;
-        display: flex;
-        justify-content: space-between;
-        &__input {
-          height: 28px;
-          width: 131.5px;
-          padding: 10px 16px 8px;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-        }
-      }
-      &__birthday {
-        height: 56px;
-        width: 343px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        select {
-          display: block;
-          height: 48px;
-          width: 90px;
-          padding: 0 10px;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          background-color: #fff;
-        }
-      }
       &__info {
-        color: #888888;
+        color: #333333;
         margin-top: 8px;
+        p {
+          display: inline;
+        }
+        a {
+          display: inline;
+        }
       }
-      &__about {
+      &__notice {
+        font-size: 16px;
+        font-weight: bold;
+      }
+      &__return {
         display: block;
         color: #0099e8;
         text-decoration: none;
-        width: 126px;
-        margin-top: 24px;
-        margin-left: auto;
+        width: 156px;
+        margin-top: 8px;
       }
-      &__about:hover {
+      &__return:hover {
         opacity: .7;
         text-decoration: underline;
       }
-    }
-    &__ok {
-      display: flex;
-      flex-wrap: wrap;
-      a {
-        color: #0099e8;
-        text-decoration: none;
-      }
-      a:hover {
-        opacity: .7;
+      &__about {
+        margin-top: 8px;
+        width: 100%;
+        font-size: 13.5px;
+        p {
+          display: inline;
+        }
+        a {
+          display: inline;
+          color: #0099e8;
+          text-decoration: none;
+        }
+        a:hover {
+          opacity: .7;
+          text-decoration: underline;
+        }
       }
     }
     &__submit {
+      display: block;
       height: 50px;
       width: 343px;
       background-color: #ea352d;
       color: #fff;
       margin-top: 32px;
       cursor: pointer;
+      text-decoration: none;
+      line-height: 50px;
+      text-align: center;
+    }
+    &__group:last-child {
+      margin: 0;
     }
   }
 }
+
 
 .footer {
   height: 140px;
