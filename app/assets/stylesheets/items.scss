@@ -1,3 +1,354 @@
-// Place all the styles related to the items controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.popularity {
+  height: 85px;
+  width: 100%;
+  background-color: #ffffff;
+  margin: 0px 0px 0px 0px;
+  padding: 56px 0px 30px;
+  text-align: center;
+  left: 50%;
+
+
+  &__title {
+    height: 36px;
+    width: 100%;
+    font-size: 28px;
+    color: #333333;
+    margin-bottom: 16px;
+    font-weight: 600;
+    line-height: 1.4em;
+    padding: 0;
+
+  }
+  &__item {
+    display: flex;
+    justify-content: center;
+    
+    &__bottom {
+      padding: 8px 16px;
+      background-color: #EFEFEF;
+      margin-left: 10px;
+      border-radius: 20px;
+      cursor: pointer;
+
+    }
+  }
+}
+.new {
+  width: 100%;
+  background-color: #F5F5F5;
+  padding-bottom: 40px;
+  
+  &__items {
+    text-align: center;
+    width: 1020px;
+    margin: 0 auto;
+    padding: 42px 0px 60px;
+    
+    
+    &__upper {
+      display: flex;
+      // font: inherit;
+      
+      &__title {
+        height: 33px;
+        width: 609px;
+        text-align: left;
+        font-size: 24px;
+        line-height: 1.4em;
+        flex: 1 1 0%;
+      }
+      &__btn {
+        display:inline-block;
+        height: 24px;
+        width: 91px;
+        color: #0095EE;
+        display: block;
+        font-size: 12px;
+        font-weight: 600;
+        padding: 5px 16px 5px 5px;
+        text-decoration: none;
+      }
+    }
+    
+    &__list {
+      // text-align: center;
+      height: 544px;
+      width: 1040px;
+      display: flex;
+      flex-wrap: wrap;
+      list-style: none;
+      vertical-align: baseline;
+      padding: 0px;
+      border-width: 0px;
+      border-style: initial;
+      border-color: initial;
+      border-image: initial;
+      font: inherit;
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+      margin-inline-start: 0px;
+      margin-inline-end: 0px;
+
+      &__item {
+        height: 252px;
+        width: 188px;
+        padding: 10px;
+        
+        a {
+          text-decoration: none;
+        }
+
+        &__upper {
+          // background-col・or: green;
+          height: 188px;
+          width: 188px;
+          position: relative;
+
+          &__price {
+            color: #fff;
+            height: 28px;
+            padding: 0 12px;
+            position: absolute;
+            top: 152px;
+            background-color: rgba(0,0,0,.4);
+            border-top-right-radius: 14px;
+            border-bottom-right-radius: 14px;
+            font-size: 17px;
+
+          }
+
+          &__img {
+            height: 188px;
+            width: 188px;
+          }
+        }
+        &__description {
+          color: black;
+          background-color: #fff;
+          height: 38px;
+          width: 164px;
+          padding: 13px 12px;
+          white-space: normal;
+          word-break: break-word;
+          font-size: 13px;
+          overflow: hidden;
+          // background: linear-gradient( to rigth,  rgb(0, 0, 0) 75%, rgb(232, 229, 235) 90%);
+          // -webkit-background-clip: text;
+          color: transparent;
+          p {
+            color: black;
+            position: relative;
+          }
+          p:after {
+            background: linear-gradient(90deg,hsla(0,0%,100%,0),#fff 72%);
+            bottom: 0;
+            content: "";
+            height: 50%;
+            position: absolute;
+            right: 0;
+            width: 50%;
+          }
+        }
+      }
+    }
+  }
+}
+    // &__list {
+  //     display: flex;
+  //     align-content: stretch;
+  //     height: 1040px;
+  //     width: 544px;
+  //     margin: -10px;
+  //     flex-wrap: wrap;
+  //     list-style: none;
+  //     box-sizing: border-box;
+  //     margin-block-start: 1em;
+  //     margin-block-end: 1em;
+  //     margin-inline-start: 0px;
+  //     margin-inline-end: 0px;
+  //     padding-inline-start: 40px;
+
+  //     &__item {
+  //       height: 272px;
+  //       width: 208px;
+  //       visibility: visible;
+  //       transition: all 0.5s ease 0s;
+  //       opacity: 1;
+  //       vertical-align: baseline;
+  //       margin: 0px;
+  //       padding: 0px;
+  //       border-width: 0px;
+  //       border-style: initial;
+  //       border-color: initial;
+  //       border-image: initial;
+  //       font: inherit;
+  //       box-sizing: border-box;
+  //       // display: block;
+  //       text-align: -webkit-match-parent;
+  //       list-style: none;
+
+  //       &__link {
+  //         width: 100%;
+  //         cursor: pointer;
+  //         display: inline-block;
+  //         position: relative;
+  //         text-decoration: none;
+  //         vertical-align: top;
+  //         color: inherit;
+  //         vertical-align: baseline;
+  //         margin: 0px;
+  //         padding: 0px;
+  //         border-width: 0px;
+  //         border-style: initial;
+  //         border-color: initial;
+  //         border-image: initial;
+  //         font: inherit;
+  //       }
+
+  //         &__box {
+  //           height: 188px;
+  //           width: 100%;
+  //           -webkit-box-align: center;
+  //           align-items: center;
+  //           display: flex;
+  //           background-color: #FFF;
+  //           box-shadow: 0 2px 4px rgba(0,0,0,.18);
+  //           -webkit-box-orient: vertical;
+  //           -webkit-box-direction: reverse;
+  //           flex-direction: column-reverse;
+  //           margin: 0;
+  //           overflow: hidden;
+  //           z-index: 0;
+  //           vertical-align: baseline;
+  //           margin: 0px;
+  //           padding: 0px;
+  //           border-width: 0px;
+  //           border-style: initial;
+  //           border-color: initial;
+  //           border-image: initial;
+  //           font: inherit;
+  //           cursor: pointer;
+  //           color: inherit;
+
+  //           &__description {
+  //             height: 188px;
+  //             width: 100%;
+  //             box-sizing: border-box;
+  //             color: #222;
+  //             font-size: 14px;
+  //             height: 64px;
+  //             line-height: 1.4em;
+  //             padding: 0 12px;
+  //             white-space: normal;
+  //             word-break: break-word;
+  //             -webkit-box-align: center;
+  //             align-items: center;
+  //             display: flex;
+  //             vertical-align: baseline;
+  //             margin: 0px;
+  //             padding: 0px;
+  //             border-width: 0px;
+  //             border-style: initial;
+  //             border-color: initial;
+  //             border-image: initial;
+  //             font: inherit;
+  //             -webkit-box-direction: reverse;
+  //             cursor: pointer;
+  //             list-style: none;
+
+  //             &__name {
+  //               height: 2.8em;
+  //               width: 164px;
+  //               display: inline-block;
+  //               overflow: hidden;
+  //               position: relative;
+  //               vertical-align: baseline;
+  //               margin: 0px;
+  //               padding: 0px;
+  //               border-width: 0px;
+  //               border-style: initial;
+  //               border-color: initial;
+  //               border-image: initial;
+  //               font: inherit;
+  //               box-sizing: border-box;
+  //               cursor: pointer;
+  //             }
+  //           }
+
+  //           &__style {
+  //             height: 0;
+  //             width: 100%;
+  //             overflow: hidden;
+  //             padding: 0 0 100%;
+  //             position: relative;
+  //             vertical-align: baseline;
+  //             margin: 0px;
+  //             padding: 0px;
+  //             border-width: 0px;
+  //             border-style: initial;
+  //             border-color: initial;
+  //             border-image: initial;
+  //             font: inherit;
+  //             box-sizing: border-box;
+  //             display:block;
+  //             -webkit-box-direction: reverse;
+  //             cursor:pointer;
+  //             visibility: visible;
+  //             list-style:none;
+
+  //             &__price {
+  //               height: 28px;
+  //               width: 63.28px;
+  //               -webkit-box-align: center;
+  //               align-items: center;
+  //               background: rgba(0,0,0,.4);
+  //               border-radius: 0 14px 14px 0;
+  //               bottom: 8px;
+  //               box-sizing: border-box;
+  //               display: inline-flex;
+  //               font-size: 17px;
+  //               height: 28px;
+  //               letter-spacing: .02em;
+  //               margin: 0;
+  //               padding: 0 12px;
+  //               position: absolute;
+  //               z-index: 2;
+  //               vertical-align: baseline;
+  //               border-width: 0px;
+  //               border-style: initial;
+  //               border-color: initial;
+  //               border-image: initial;
+  //               font: inherit;
+  //               -webkit-box-direction: reverse;
+  //               cursor: pointer;
+  //               visibility: visible;
+  //             }
+
+  //             &__img {
+  //               height: 188px;
+  //               width: 188px;
+  //               border: 0;
+  //               cursor: pointer;
+  //               visibility: visible;
+  //               list-style: none;
+  //               position:absolute;
+  //               top: 0;
+  //               z-index: 1;
+  //               object-fit: cover;
+  //               vertical-align: top;
+  //               margin: 0px;
+  //               padding: 0px;
+  //               border-width: 0px;
+  //               border-style: initial;
+  //               border-color: initial;
+  //               border-image: initial;
+  //               font: inherit;
+  //             }
+  //         }
+
+                
+  //         }
+  //     }
+  //   }
+  // }
+// }
