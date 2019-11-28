@@ -4,11 +4,12 @@ class SignUpsController < ApplicationController
   before_action :credit_params, only: :user_credit_create
 
   def signup_select
-  
+    render layout: false
   end
 
   def user_baseinfo
     @user = User.new
+    render layout: false
   end
 
   def user_baseinfo_validate
@@ -43,12 +44,13 @@ class SignUpsController < ApplicationController
        
       redirect_to signup_tel_path
     else
-      render :user_baseinfo
+      render :user_baseinfo,layout: false
     end
   end
 
   def user_tel
     @user = User.new
+    render layout: false
   end
 
   def user_tel_validate

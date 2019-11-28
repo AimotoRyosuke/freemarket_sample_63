@@ -1,0 +1,156 @@
+@import "reset";
+@import "font-awesome";
+
+body {
+  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ','Meiryo', sans-serif;
+  background: rgb(245, 245, 245);
+  font-size: 14px;
+}
+
+.signup-header {
+  height: 128px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__logo {
+    width: 185px;
+    height: 45px;
+  }
+  &__logo:hover {
+    opacity: .7;
+  }
+}
+
+.wrapper {
+  height: 384px;
+  width: 700px;
+  margin: 0 auto;
+  background-color: #fff;
+  .title {
+    height: 33px;
+    width: 636px;
+    padding: 32px;
+    line-height: 33px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+  }
+  .registration {
+    height: 182px;
+    width: 343px;
+    padding: 40px 178.5px 64px;
+    border-top: solid 1px #eee;
+    font-size: 14px;
+    &__email {
+      display: block;
+      height: 50px;
+      width: 343px;
+      background-color: #ea352d;
+      border-radius: 4px;
+      color: white;
+      text-decoration: none;
+      position: relative;
+      margin: 0 auto 16px;
+      i {
+        font-size: 20px;
+        position: absolute;
+        top: 15px;
+        left: 14px;
+      }
+      p {
+        width: 100%;
+        text-align: center;
+        line-height: 50px;
+
+      }
+    }
+    &__email:hover {
+      opacity: .7;
+    }
+    &__facebook {
+      display: block;
+      text-decoration: none;
+      color: white;
+      background-color: #385185;
+      height: 50px;
+      width: 100%;
+      margin-bottom: 16px;
+      position: relative;
+      border-radius: 4px;
+      i {
+        height: 26px;
+        width: 23px;
+        padding-right: 3px;
+        color: #385185;
+        background-color: #fff;
+        font-size: 24px;
+        text-align: end;
+        line-height: 32px;
+        border-radius: 1px;
+        position: absolute;
+        top: 12px;
+        left: 14px;
+      }
+      p {
+        width: 100%;
+        text-align: center;
+        line-height: 50px;
+      }
+    }
+    &__google {
+      display: block;
+      text-decoration: none;
+      color: black;
+      height: 48px;
+      width: 343px;
+      border: 1px solid #979797;
+      margin-bottom: 56px;
+      position: relative;
+      border-radius: 4px;
+      img {
+        position: absolute;
+        top: 14px;
+        left:15px;
+      }
+      p {
+        width: 100%;
+        line-height: 50px;
+        text-align: center;
+      }
+    }
+  }
+}
+
+.signup-footer {
+  height: 140px;
+  width: 456px;
+  padding: 40px;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  &__link {
+    margin: 0 auto;
+    align-self: flex-start;
+    a {
+      color: black;
+      padding: 0 8px;
+      font-size: 12px;
+      text-decoration: none;
+    }
+    a:hover {
+      opacity: .7;
+      text-decoration: underline;
+    }
+  }
+  &__logo {
+    display: block;
+    width: 85px;
+    margin: 40px auto 0;
+  }
+  p {
+    font-size: 13px;
+    margin: 0 auto;
+  }
+}

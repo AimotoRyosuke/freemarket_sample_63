@@ -10,7 +10,7 @@
           - @credit.errors.messages[:number].each do |message|
             .form__group__err__msg= message
         .form__group__img
-          %img(src="/assets/VISA.png" alt="VISA" width="40")
+          =image_tag "/assets/VISA.png", alt: "VISA" width: "40"
           %img(src="/assets/Mastercard-logo.svg" alt="mastercard" width="30")
           %img(src="/assets/Saison_card_logo.svg" alt="SAISON" width="30")
           %img(src="/assets/jcb.png" alt="JCB" width="50")

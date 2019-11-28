@@ -1,15 +1,34 @@
-.wrapper
-  %h2.top 新規会員登録
-  .registration
-    .registration__email
-      = link_to signup_registration_path do
-        = fa_icon 'envelope-o'
-        %p メールアドレスで登録する
-    .registration__facebook
-      -# = link_to signup_facebook_path do
-      = fa_icon 'facebook'
-      %p Facebookで登録する
-    .registration__google
-      -# = link_to signup_google_path do
-      = fa_icon 'google'
-      %p Googleで登録する
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
+    %title FreemarketSample63h
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'users/signup', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %header.signup-header
+      = link_to root_path, class: "signup-header__logo" do
+        = image_tag "fmarket_logo_red.svg", size: "185x49", alt: "mercari"
+    .wrapper
+      %h2.title 新規会員登録
+      .registration
+        = link_to signup_registration_path, class: "registration__email" do
+          = fa_icon 'envelope-o'
+          %p メールアドレスで登録する
+        = link_to "", class: "registration__facebook" do
+          = fa_icon 'facebook'
+          %p Facebookで登録する
+        = link_to "", class: "registration__google" do
+          = image_tag "google.svg", size: "18x18", alt: "google-logo"
+          %p Googleで登録する
+    %footer.signup-footer
+      .signup-footer__link
+        = link_to "プライバシーポリシー", ""
+        = link_to "メルカリ利用規約"
+        = link_to "特定商取引に関する表記"
+      = link_to root_path, class: "signup-footer__logo" do
+        = image_tag "logo_gray.svg", size: "85x65", alt: "mercari"
+      %p &copy2019 Mercari
+      
