@@ -5,6 +5,9 @@ class ItemsController < ApplicationController
   end
 
   def new
+      @item = Item.new
+      @prefecture = Prefecture.all
+      render layout: false 
   end
 
   def show

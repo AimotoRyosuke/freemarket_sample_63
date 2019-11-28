@@ -122,6 +122,7 @@ https://www.draw.io/?state=%7B%22ids%22:%5B%221sEhle2n1CE_6fTWH9v8_9e-L5-2EO3Bo%
 |shipping_method|integer|null: false|
 |days|date|null: false|
 |status|integer|null: false|
+|prefecture|text|null: false|!
 |seller_id|references|null: false, foreign_key: true|
 |buyer_id|references|null: false, foreign_key: true|
 |categories_hierarchie_id|references|null: false, foreign_key: true|
