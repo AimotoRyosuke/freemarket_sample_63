@@ -1,0 +1,51 @@
+%nav.bread-crumbs 
+  %span.bread-crumbs__page メルカリ
+  = fa_icon "angle-right", class: "bread-crumbs__icon"
+  %span.bread-crumbs__page マイページ
+  = fa_icon "angle-right", class: "bread-crumbs__icon"
+  %span.bread-crumbs__page#in-page 本人情報の登録
+
+.identification
+  = link_to "", class: "menu-bar" do
+    %p.menu-bar__title 本人情報
+    = fa_icon "angle-right", class: "menu-bar__icon"
+  = render "shared/user-side"
+  .main
+    .top 本人情報の登録
+    = form_with model: current_user, url: root_path, local: true, class: 'form' do |f|
+      %p.form__info お客さまの本人情報をご登録ください。
+      %p.form__info 登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。
+      = link_to "本人確認書類のアップロードについて", "", class: "form__about"
+      .form__group
+        .form__group__name お名前
+        .form__group__result= current_user.first_name + " " + current_user.last_name
+      .form__group
+        .form__group__name お名前カナ
+        .form__group__result= current_user.first_name_kana + " " + current_user.last_name_kana
+      .form__group
+        .form__group__name 生年月日
+        .form__group__result= current_user.birth.strftime("%Y/%m/%d")
+      .form__group
+        .form__group__name 郵便番号
+        .form__group__any 任意
+        = f.text_field :zip_code, placeholder: "例）1234567", class: "form__group__input"
+      .form__group
+        .form__group__name 都道府県
+        .form__group__any 任意
+        .form__group__input
+      .form__group
+        .form__group__name 市町村区
+        .form__group__any 任意
+        = f.text_field :city, placeholder: "例)横浜市緑区", class: "form__group__input"
+      .form__group
+        .form__group__name 番地
+        .form__group__any 任意
+        = f.text_field :address, placeholder: "例)青山1-1-1", class: "form__group__input", value: ""
+      .form__group
+        .form__group__name 建物名
+        .form__group__any 任意
+        = f.text_field :building, placeholder: "例)柳ビル103", class: "form__group__input"
+      .form__group
+        = f.submit "登録する", class: "form__group__submit"
+      .form__group
+        = link_to "本人情報の登録について", "", class: "form__group__about"

@@ -1,0 +1,153 @@
+.bread-crumbs {
+  height: 48px;
+  width: 1020px;
+  padding: 0 calc(50% - 510px);
+  background-color: #fff;
+  border-top: 1px solid #eee;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  &__icon {
+    margin: 0 6px;
+    color: #888;
+    font-size: 17px;
+    line-height: 49px;
+  }
+  &__page {
+    text-decoration: none;
+    line-height: 49px;
+    font-size: 14px;
+  }
+  #in-page {
+    font-weight: bold;
+  }
+}
+
+.identification  {
+  display: flex;
+  margin-top: 40px;
+  padding-bottom: 40px;
+  padding: 0 calc(50% - 510px);
+  position: relative;
+  .menu-bar {
+    position: absolute;
+    height: 16px;
+    width: 248px;
+    padding: 16px;
+    background-color: #eee;
+    bottom: 102px;
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+    &__title {
+      font-weight: 600px;
+    }
+    &__icon {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 16px;
+    }
+  }
+  .menu-bar:hover {
+    padding-right: 11px;
+    width: 253px;
+    transition: all ease-out .2s;
+  }
+  .main{
+    width: 700px;
+    background-color: #fff;
+    font-size: 14px;
+    .top {
+      font-size: 24px;
+      height: 50px;
+      width: 100%;
+      text-align: center;
+      line-height: 50px;
+      font-weight: bold;
+    }
+    .form {
+      width: 572px;
+      padding: 72px 64px 64px;
+      border-top: 1px solid #eee;
+      &__info {
+        color: #333333;
+      }
+      &__about {
+        display: block;
+        color: #0099e8;
+        text-decoration: none;
+        width: 238px;
+        margin-top: 8px;
+        margin-left: auto;
+      }
+      &__about:hover {
+        opacity: .7;
+        text-decoration: underline;
+      }
+      &__group {
+        width: 100%;
+        margin-top: 40px;
+        &__name {
+          font-weight: 600;
+          display: inline-block;
+        }
+        &__result {
+          margin-top: 8px;
+          font-size: 14px;
+          font-weight: 100;
+        }
+        &__any {
+          height: 15px;
+          width: 24px;
+          padding: 2px 4px;
+          margin-left: 8px;
+          text-align: center;
+          line-height:16px;
+          background-color: #ccc;
+          font-size: 12px;
+          color: #fff;
+          border-radius: 2px;
+          display: inline-block;
+          vertical-align: top;
+        }
+        &__input {
+          margin-top: 8px;
+          height: 28px;
+          width: 538px;
+          padding: 10px 16px 8px;
+          border: 1px solid #ccc;
+          font-size: 16px;
+          border-radius: 4px;
+        }
+        &__prefecture {
+          display: block;
+          margin-top: 8px;
+          width: 570px;
+          height: 48px;
+          background-color: #fff;
+          font-size: 16px;
+        }
+        &__submit {
+          height: 50px;
+          width: 100%;
+          background-color: #ea352d;
+          color: #fff;
+          cursor: pointer;
+        }
+        &__about {
+          display: block;
+          color: #0099e8;
+          text-decoration: none;
+          width: 154px;
+          margin-top: 24px;
+          margin-left: auto;
+        }
+        &__about:hover {
+          opacity: .7;
+          text-decoration: underline;
+        }
+      }
+
+    }
+  }
+}
