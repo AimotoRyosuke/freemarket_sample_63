@@ -168,7 +168,6 @@ class SignUpsController < ApplicationController
     @credit.valid?
     if @credit.errors.messages.blank? && @credit.errors.details.blank?
       @credit.save
-       
       redirect_to registrate_complete_path
     else
       render :user_credit, layout: false

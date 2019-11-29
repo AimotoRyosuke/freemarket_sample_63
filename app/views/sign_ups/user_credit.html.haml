@@ -61,7 +61,9 @@
           .form__group__err
             - @credit.errors.messages[:security].each do |message|
               .form__group__err__msg= message
-          %a カード裏面の番号とは？
+          = link_to "", class: "form__group__about" do
+            .form__group__mark ?
+            %p.form__group__text カード裏面の番号とは？
         = f.submit '追加する', class: 'form__submit'
     %footer.footer
       .footer__link

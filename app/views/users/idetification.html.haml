@@ -32,7 +32,7 @@
       .form__group
         .form__group__name 都道府県
         .form__group__any 任意
-        .form__group__input
+        = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: "--"}, {class: "form__group__prefecture"}
       .form__group
         .form__group__name 市町村区
         .form__group__any 任意
