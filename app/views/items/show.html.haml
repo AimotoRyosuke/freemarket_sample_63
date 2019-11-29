@@ -1,0 +1,161 @@
+%div{class: "#{"item-show" if false}" "#{"item-show my-shipping" if true}"}
+  %section.item-show__item
+    %h1.item-show__item__name
+      = @item.name
+    - if false
+      %p.item-show__item__wording
+        = @item.name
+        は、2205回の取引実績を持つ玲奈さんから出品されました。その他/家電・スマホ・カメラの商品で、埼玉県から
+        = item_days(@item)
+        で発送されます。
+    .item-show__item__main
+      .item-show__item__main__image
+        .item-show__item__main__image__display
+          = image_tag "stand_1"
+        .item-show__item__main__image__list
+          = image_tag "stand_1", {class: "active"}
+          = image_tag "stand_2"
+          = image_tag "stand_3"
+          = image_tag "stand_4"
+          = image_tag "stand_5"
+          = image_tag "stand_6"
+      %table.item-show__item__main__detail
+        %tr.item-show__item__main__detail__exhibitor
+          %th.title
+            出品者
+          %th 
+            .item-show__item__main__detail__exhibitor__name
+              = link_to '', class: "blue" do
+                玲奈
+            .item-show__item__main__detail__exhibitor__reviews
+              .item-show__item__main__detail__exhibitor__reviews__good.review
+                .item-show__item__main__detail__exhibitor__reviews__good__icon.icon
+                  = icon 'fas', 'laugh', class: 'good'
+                .item-show__item__main__detail__exhibitor__reviews__good__count.count
+                  2216
+              .item-show__item__main__detail__exhibitor__reviews__normal.review
+                .item-show__item__main__detail__exhibitor__reviews__normal__icon.icon
+                  = icon 'fas', 'meh', class: 'normal'
+                .item-show__item__main__detail__exhibitor__reviews__normal__count.count
+                  51
+              .item-show__item__main__detail__exhibitor__reviews__bad.review
+                .item-show__item__main__detail__exhibitor__reviews__bad__icon.icon
+                  = icon 'fas', 'frown', class: 'bad'
+                .item-show__item__main__detail__exhibitor__reviews__bad__count.count
+                  11
+        %tr
+          %th.title
+            カテゴリー
+          %th.item-show__item__main__detail__category.contents
+            .item-show__item__main__detail__category__top
+              = link_to '', class: "blue" do
+                家電・スマホ・カメラ
+            .item-show__item__main__detail__category__middle
+              = link_to '', class: "blue" do
+                = icon 'fas', 'angle-right', class: 'angle-right'
+                PC/タブレット
+            .item-show__item__main__detail__category__bottom
+              = link_to '', class: "blue" do
+                = icon 'fas', 'angle-right', class: 'angle-right'
+                その他
+        %tr
+          %th.title
+            ブランド
+          %th.item-show__item__main__detail__brand.contents
+            = link_to '', class: "blue"
+        %tr
+          %th.title
+            商品の状態
+          %th.item-show__item__main__detail__condition.contents
+            = item_status(@item)
+        %tr
+          %th.title
+            配送料の負担
+          %th.item-show__item__main__detail__shipping-charge.contents
+            = detail_shipping_cost(@item)
+        %tr
+          %th.title
+            配送の方法
+          %th.item-show__item__main__detail__shipping__method
+            = item_shipping_method(@item)
+        %tr
+          %th.title
+            配送元地域
+          %th.item-show__item__main__detail__prefecture.contents
+            = link_to '', class: "blue" do
+              埼玉県
+        %tr
+          %th.title
+            発送日の目安
+          %th.item-show__item__main__detail__shipping-date.contents
+            = item_days(@item)
+    .item-show__item__price-box
+      .item-show__item__price-box__price
+        ¥
+        = @item.price
+      .item-show__item__price-box__tax
+        (税込)
+      .item-show__item__price-box__postage
+        = price_box_shippingcost(@item)
+    - if false
+      .item-show__item__button
+        購入画面に進む
+
+    .item-show__item__introduction
+      = simple_format(@item.explanation)
+    - if true
+      .item-show__item__btn-container
+        .item-show__item__btn-container__left
+          %button.item-show__item__btn-container__left__iine{type: "button",}
+            .item-show__item__btn-container__left__iine__icon
+              = icon 'far', 'heart', class: 'iine'
+            .item-show__item__btn-container__left__iine__title
+              いいね!
+            .item-show__item__btn-container__left__iine__count
+              1
+          = link_to '', class: "item-show__item__btn-container__left__report" do
+            .item-show__item__btn-container__left__report__icon
+              = icon 'far', 'flag', class: 'flag'
+            .item-show__item__btn-container__left__report__title
+              不適切な商品の報告
+        = link_to '', class: "item-show__item__btn-container__right blue" do
+          .item-show__item__btn-container__right__icon
+            = icon 'fas', 'lock', class: 'lock'
+          .item-show__item__btn-container__right__title
+            あんしん・あんぜんへの取り組み
+  - if true
+    .item-show__change
+      = link_to "商品の編集", root_path, class: "item-show__change__edit"
+      %p.item-show__change__or
+        or
+      %form.item-show__change__stop
+        出品を一旦停止する
+      = link_to "この商品を削除する", item_path(@item), class: "item-show__change__delete", method: :delete, data: { confirm: '消すよ？' }
+  .item-show__comment
+    .item-show__comment__container
+      .item-show__comment__container__caution
+        相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      .item-show__comment__container__form
+        %textarea{type: "text"}
+      %button.item-show__comment__container__submit
+        %span コメントする
+  - if false
+    .item-show__prev-next
+      .item-show__prev-next__prev.blue
+        = icon 'fas', 'angle-left', class: 'angle-left'
+        ダウンジャケット 子供用 BABYDOLL
+      .item-show__prev-next__next.blue
+        キルカバー✩レフィル 替えパフ付
+        = icon 'fas', 'angle-right', class: 'angle-right'
+    .item-show__media-box
+      .item-show__media-box__text
+      %ul.item-show__media-box__medias
+        %li
+          = link_to '', class: "item-show__media-box__medias__facebook", href: "http://www.facebook.com/share.php?u=hoge", rel: "nofollow", target: "_blank" do
+            = icon 'fab','facebook-square', class: 'facebook-square'
+        %li
+          = link_to '', class: "item-show__media-box__medias__twitter", href: "http://www.twitter.com/share.php?u=hoge", rel: "nofollow", target: "_blank" do
+            = icon 'fab', 'twitter', class: 'twitter'
+        %li
+          = link_to '', class: "item-show__media-box__medias__pinterest", href: "http://pinterest.com/pin/create/button/?url=hoge", rel: "nofollow", target: "_blank" do
+            = icon 'fab', 'pinterest', class: 'pinterest'

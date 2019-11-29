@@ -1,3 +1,10 @@
+- if user_signed_in?
+  = current_user.nickname
+  = link_to "ログアウト", destroy_user_session_path, method: :delete
+- else
+  = link_to "新規登録", signin_path
+  = link_to "ログイン", signup_path
+
 -# 広告
 %div.advertisement 画像を入れる
 
@@ -131,128 +138,3 @@
           %div.new__items__list__item__description 
             %p 商品説明商品説明商品説明商品説明商品説明商品説明
       
-      
-
-      -# %li.new__items__list__item
-      -#   %div.new__items__list__item__box
-      -#     =link_to "https://item.mercari.com/jp/m83719687124" do
-      -#       %figure.new__items__list__item__box__link__inner-box
-      -#         %figcaption.new__items__list__item__box__link__inner-box__description
-      -#           %span.new__items__list__item__box__link__inner-box__description__name 大人気ダニエルウェリントン腕時計 28mm DW00100227 新品未使用
-      -#         %div.new__items__list__item__box__link__inner-box__style
-      -#           %span.new__items__list__item__box__link__inner-box__style__price
-      -#             ¥
-      -#             7,000
-      -#             %br
-      -#           %img.new__items__list__item__box__style__img(src="https://static.mercdn.net/thumb/photos/m83719687124_1.jpg?1574431137" alt="大人気ダニエルウェリントン腕時計 28mm DW00100227 新品未使用")
-      -# %li.new__items__list__item
-      -#   %div.new__items__list__item__box__inner-box
-      -#     =link_to "https://item.mercari.com/jp/m83719687124" do
-      -#       %figure.new__items__list__item__box__link__inner-box
-      -#         %figcaption.new__items__list__item__box__link__inner-box__description
-      -#           %span.new__items__list__item__box__link__inner-box__description__name 大人気ダニエルウェリントン腕時計 28mm DW00100227 新品未使用
-      -#         %div.new__items__list__item__box__link__inner-box__style
-      -#           %span.new__items__list__item__box__link__inner-box__style__price
-      -#             ¥
-      -#             7,000
-      -#             %br
-      -#           %img.new__items__list__item__box__style__img(src="https://static.mercdn.net/thumb/photos/m83719687124_1.jpg?1574431137" alt="大人気ダニエルウェリントン腕時計 28mm DW00100227 新品未使用")
-      -# %li.new__items__list__item
-      -#   %div.new__items__list__item__box__inner-box
-      -#     =link_to "https://item.mercari.com/jp/m83719687124" do
-      -#       %figure.new__items__list__item__box__link__inner-box
-      -#         %figcaption.new__items__list__item__box__link__inner-box__description
-      -#           %span.new__items__list__item__box__link__inner-box__description__name 大人気ダニエルウェリントン腕時計 28mm DW00100227 新品未使用
-      -#         %div.new__items__list__item__box__link__inner-box__style
-      -#           %span.new__items__list__item__box__link__inner-box__style__price
-      -#             ¥
-      -#             7,000
-      -#             %br
-      -#           %img.new__items__list__item__box__style__img(src="https://static.mercdn.net/thumb/photos/m83719687124_1.jpg?1574431137" alt="大人気ダニエルウェリントン腕時計 28mm DW00100227 新品未使用")
-      -# %li.new__items__list__item
-      -#   %div.new__items__list__item__box__inner-box
-      -#     =link_to "https://item.mercari.com/jp/m83719687124" do
-      -#       %figure.new__items__list__item__box__link__inner-box
-      -#         %figcaption.new__items__list__item__box__link__inner-box__description
-      -#           %span.new__items__list__item__box__link__inner-box__description__name 大人気ダニエルウェリントン腕時計 28mm DW00100227 新品未使用
-      -#         %div.new__items__list__item__box__link__inner-box__style
-      -#           %span.new__items__list__item__box__link__inner-box__style__price
-      -#             ¥
-      -#             7,000
-      -#             %br
-      -#           %img.new__items__list__item__box__style__img(src="https://static.mercdn.net/thumb/photos/m83719687124_1.jpg?1574431137" alt="大人気ダニエルウェリントン腕時計 28mm DW00100227 新品未使用")
-      -# %li.new__items__list__item
-      -#   %div.new__items__list__item__box__inner-box
-      -#     =link_to "https://item.mercari.com/jp/m83719687124" do
-      -#       %figure.new__items__list__item__box__link__inner-box
-      -#         %figcaption.new__items__list__item__box__link__inner-box__description
-      -#           %span.new__items__list__item__box__link__inner-box__description__name 大人気ダニエルウェリントン腕時計 28mm DW00100227 新品未使用
-      -#         %div.new__items__list__item__box__link__inner-box__style
-      -#           %span.new__items__list__item__box__link__inner-box__style__price
-      -#             ¥
-      -#             7,000
-      -#             %br
-      -#           %img.new__items__list__item__box__style__img(src="https://static.mercdn.net/thumb/photos/m83719687124_1.jpg?1574431137" alt="大人気ダニエルウェリントン腕時計 28mm DW00100227 新品未使用")
-      -# %li.new__items__list__item
-      -#   %div.new__items__list__item__box__inner-box
-      -#     =link_to "https://item.mercari.com/jp/m83719687124" do
-      -#       %figure.new__items__list__item__box__link__inner-box
-      -#         %figcaption.new__items__list__item__box__link__inner-box__description
-      -#           %span.new__items__list__item__box__link__inner-box__description__name 大人気ダニエルウェリントン腕時計 28mm DW00100227 新品未使用
-      -#         %div.new__items__list__item__box__link__inner-box__style
-      -#           %span.new__items__list__item__box__link__inner-box__style__price
-      -#             ¥
-      -#             7,000
-      -#             %br
-      -#           %img.new__items__list__item__box__style__img(src="https://static.mercdn.net/thumb/photos/m83719687124_1.jpg?1574431137" alt="大人気ダニエルウェリントン腕時計 28mm DW00100227 新品未使用")
-      -# %li.new__items__list__item
-      -#   %div.new__items__list__item__box__inner-box
-      -#     =link_to "https://item.mercari.com/jp/m83719687124" do
-      -#       %figure.new__items__list__item__box__link__inner-box
-      -#         %figcaption.new__items__list__item__box__link__inner-box__description
-      -#           %span.new__items__list__item__box__link__inner-box__description__name 大人気ダニエルウェリントン腕時計 28mm DW00100227 新品未使用
-      -#         %div.new__items__list__item__box__link__inner-box__style
-      -#           %span.new__items__list__item__box__link__inner-box__style__price
-      -#             ¥
-      -#             7,000
-      -#             %br
-      -#           %img.new__items__list__item__box__style__img(src="https://static.mercdn.net/thumb/photos/m83719687124_1.jpg?1574431137" alt="大人気ダニエルウェリントン腕時計 28mm DW00100227 新品未使用")
-      -# %li.new__items__list__item
-      -#   %div.new__items__list__item__box__inner-box
-      -#     =link_to "https://item.mercari.com/jp/m83719687124" do
-      -#       %figure.new__items__list__item__box__link__inner-box
-      -#         %figcaption.new__items__list__item__box__link__inner-box__description
-      -#           %span.new__items__list__item__box__link__inner-box__description__name 大人気ダニエルウェリントン腕時計 28mm DW00100227 新品未使用
-      -#         %div.new__items__list__item__box__link__inner-box__style
-      -#           %span.new__items__list__item__box__link__inner-box__style__price
-      -#             ¥
-      -#             7,000
-      -#             %br
-      -#           %img.new__items__list__item__box__style__img(src="https://static.mercdn.net/thumb/photos/m83719687124_1.jpg?1574431137" alt="大人気ダニエルウェリントン腕時計 28mm DW00100227 新品未使用")
-      -# %li.new__items__list__item
-      -#   %div.new__items__list__item__box__inner-box
-      -#     =link_to "https://item.mercari.com/jp/m83719687124" do
-      -#       %figure.new__items__list__item__box__link__inner-box
-      -#         %figcaption.new__items__list__item__box__link__inner-box__description
-      -#           %span.new__items__list__item__box__link__inner-box__description__name 大人気ダニエルウェリントン腕時計 28mm DW00100227 新品未使用
-      -#         %div.new__items__list__item__box__link__inner-box__style
-      -#           %span.new__items__list__item__box__link__inner-box__style__price
-      -#             ¥
-      -#             7,000
-      -#             %br
-      -#           %img.new__items__list__item__box__style__img(src="https://static.mercdn.net/thumb/photos/m83719687124_1.jpg?1574431137" alt="大人気ダニエルウェリントン腕時計 28mm DW00100227 新品未使用")
-      -# %li.new__items__list__item
-      -#   %div.new__items__list__item__box__inner-box
-      -#     =link_to "https://item.mercari.com/jp/m83719687124" do
-      -#       %figure.new__items__list__item__box__link__inner-box
-      -#         %figcaption.new__items__list__item__box__link__inner-box__description
-      -#           %span.new__items__list__item__box__link__inner-box__description__name 大人気ダニエルウェリントン腕時計 28mm DW00100227 新品未使用
-      -#         %div.new__items__list__item__box__link__inner-box__style
-      -#           %span.new__items__list__item__box__link__inner-box__style__price
-      -#             ¥
-      -#             7,000
-      -#             %br
-      -#           %img.new__items__list__item__box__style__img(src="https://static.mercdn.net/thumb/photos/m83719687124_1.jpg?1574431137" alt="大人気ダニエルウェリントン腕時計 28mm DW00100227 新品未使用")
-
-
-
