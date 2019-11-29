@@ -8,7 +8,6 @@
     = stylesheet_link_tag    'users/signin', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     %script{src: 'https://www.google.com/recaptcha/api.js'}
-
   %body
     %header.signin-header
       = link_to root_path, class: "signin-header__logo" do
@@ -19,7 +18,7 @@
         = link_to "新規会員登録", signup_path
       .signin
         = link_to "", class: "signin__facebook" do
-          = fa_icon 'facebook'
+           = icon 'fab','facebook'
           %p Facebookでログイン
         = link_to "", class: "signin__google" do
           = image_tag "google.svg", size: "18x18", alt: "google-logo"
@@ -30,14 +29,13 @@
           .form__group__recaptch.g-recaptcha{"data-callback": "clearcall", "data-sitekey": "6Le89cMUAAAAAAeb99rrFc47etRW6YfXytC1NXQs"}
           = f.submit "ログイン", class: "signin__form__submit"
           = link_to "パスワードをお忘れの方", ""
-
-    %footer.footer
-      .footer__link
-        = link_to "プライバシーポリシー", ""
-        = link_to "メルカリ利用規約"
-        = link_to "特定商取引に関する表記"
-      = link_to root_path, class: "footer__logo" do
-        = image_tag "logo_gray.svg", size: "85x65", alt: "mercari"
-      %p &copy2019 Mercari
+  %footer.footer
+    .footer__link
+      = link_to "プライバシーポリシー", ""
+      = link_to "メルカリ利用規約"
+      = link_to "特定商取引に関する表記"
+    = link_to root_path, class: "footer__logo" do
+      = image_tag "logo_gray.svg", size: "85x65", alt: "mercari"
+    %p &copy2019 Mercari
       
       
