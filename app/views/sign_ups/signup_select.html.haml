@@ -3,13 +3,13 @@
   .registration
     .registration__email
       = link_to signup_registration_path do
-        = fa_icon 'envelope-o'
+        = icon 'fas', 'envelope'
         %p メールアドレスで登録する
     .registration__facebook
       -# = link_to signup_facebook_path do
-      = fa_icon 'facebook'
+      = icon 'fab', 'facebook'
       %p Facebookで登録する
     .registration__google
       -# = link_to signup_google_path do
-      = fa_icon 'google'
+      = icon 'fab', 'google'
       %p Googleで登録する

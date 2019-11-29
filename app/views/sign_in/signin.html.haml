@@ -7,11 +7,11 @@
   .signin
     .signin__facebook
       -# = link_to signup_facebook_path do
-      = fa_icon 'facebook'
+      = icon 'fab','facebook'
       %p Facebookでログイン
     .signin__google
       -# = link_to signup_google_path do
-      = fa_icon 'google'
+      = icon 'fab','google'
       %p Googleで登録する
 
     = form_with model: @user, url: user_session_path, local: true, class:'signin__form' do |f|
