@@ -1,0 +1,65 @@
+!!!
+%html
+  %head
+    %meta{content: "text/html; charset=UTF-8", "http-equiv": "Content-Type"}/
+    %title FreemarketSample63h
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'users/user_complete', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %header.complete-header
+      = link_to root_path, class: "credit-header__logo" do
+        = image_tag "fmarket_logo_red.svg", size: "185x49", alt: "mercari"
+      %ol.nav
+        %li.nav__box
+          %p.nav__box__progress 会員情報
+          .nav__box__status#status
+            .nav__box__status__bar1
+        %li.nav__box
+          %p.nav__box__progress 電話番号認証
+          .nav__box__status#status
+            .nav__box__status__bar2
+        %li.nav__box
+          %p.nav__box__progress お届け先住所入力
+          .nav__box__status#status
+            .nav__box__status__bar3
+        %li.nav__box
+          %p.nav__box__progress 支払い方法
+          .nav__box__status#status
+            .nav__box__status__bar4
+        %li.nav__box
+          %p.nav__box__progress#progress 完了
+          .nav__box__status#status
+
+    .wrapper
+      %h2.top 会員登録完了
+      .form
+        .form__comment
+          %p  ありがとうございます。
+          %p  会員登録が完了しました。
+        = link_to "メルカリをはじめる", root_path, class: "form__submit"
+    %aside.banner
+      .banner__container
+        .banner__container__downloads
+          .banner__container__downloads__head
+            スマホでかんたんフリマアプリ
+          .banner__container__downloads__head2
+            今すぐ無料ダウンロード！
+          .banner__container__downloads__logos
+            .banner__container__downloads__logos__icon
+              = render "shared/logo_red"
+            = link_to '', class: "banner__container__downloads__logos__appstore" do
+              = render "shared/appstore"
+            = link_to '', class: "banner__container__downloads__logos__googleplay" do
+              = render "shared/googleplay"
+        .banner__container__image
+          = image_tag '/assets/footerbannerright.png'
+    %footer.footer
+      .footer__link
+        = link_to "プライバシーポリシー", ""
+        = link_to "メルカリ利用規約"
+        = link_to "特定商取引に関する表記"
+      = link_to root_path, class: "footer__logo" do
+        = image_tag "logo_gray.svg", size: "85x65", alt: "mercari"
+      %p &copy2019 Mercari
