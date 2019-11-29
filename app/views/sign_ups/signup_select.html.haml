@@ -15,7 +15,7 @@
       %h2.title 新規会員登録
       .registration
         = link_to signup_registration_path, class: "registration__email" do
-          = fa_icon 'envelope-o'
+          = icon 'fas', 'envelope'
           %p メールアドレスで登録する
         = link_to "", class: "registration__facebook" do
           = fa_icon 'facebook'
@@ -23,12 +23,12 @@
         = link_to "", class: "registration__google" do
           = image_tag "google.svg", size: "18x18", alt: "google-logo"
           %p Googleで登録する
-    %footer.footer
-      .footer__link
-        = link_to "プライバシーポリシー", ""
-        = link_to "メルカリ利用規約"
-        = link_to "特定商取引に関する表記"
-      = link_to root_path, class: "footer__logo" do
-        = image_tag "logo_gray.svg", size: "85x65", alt: "mercari"
-      %p &copy2019 Mercari
+  %footer.footer
+    .footer__link
+      = link_to "プライバシーポリシー", ""
+      = link_to "メルカリ利用規約"
+      = link_to "特定商取引に関する表記"
+    = link_to root_path, class: "footer__logo" do
+      = image_tag "logo_gray.svg", size: "85x65", alt: "mercari"
+    %p &copy2019 Mercari
       

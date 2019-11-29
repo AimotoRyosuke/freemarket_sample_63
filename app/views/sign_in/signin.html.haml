@@ -8,7 +8,6 @@
     = stylesheet_link_tag    'users/signin', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     %script{src: 'https://www.google.com/recaptcha/api.js'}
-
   %body
     %header.signin-header
       = link_to root_path, class: "signin-header__logo" do
@@ -30,7 +29,20 @@
           .form__group__recaptch.g-recaptcha{"data-callback": "clearcall", "data-sitekey": "6Le89cMUAAAAAAeb99rrFc47etRW6YfXytC1NXQs"}
           = f.submit "ログイン", class: "signin__form__submit"
           = link_to "パスワードをお忘れの方", ""
+  .signin
+    .signin__facebook
+      -# = link_to signup_facebook_path do
+      = icon 'fab','facebook'
+      %p Facebookでログイン
+    .signin__google
+      -# = link_to signup_google_path do
+      = icon 'fab','google'
+      %p Googleで登録する
 
+    = form_with model: @user, url: user_session_path, local: true, class:'signin__form' do |f|
+      = f.email_field :email, placeholder: "メールアドレス"
+      = f.password_field :password, placeholder: "パスワード"
+      = f.submit "ログイン"
     %footer.footer
       .footer__link
         = link_to "プライバシーポリシー", ""
