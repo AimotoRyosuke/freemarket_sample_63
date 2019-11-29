@@ -56,7 +56,6 @@
     
     &__upper {
       display: flex;
-      // font: inherit;
       
       &__title {
         height: 33px;
@@ -126,7 +125,7 @@
 
           }
 
-          &__img {
+          &__btm {
             height: 188px;
             width: 188px;
           }
@@ -141,8 +140,6 @@
           word-break: break-word;
           font-size: 13px;
           overflow: hidden;
-          // background: linear-gradient( to rigth,  rgb(0, 0, 0) 75%, rgb(232, 229, 235) 90%);
-          // -webkit-background-clip: text;
           color: transparent;
           p {
             color: black;
