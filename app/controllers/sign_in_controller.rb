@@ -1,6 +1,6 @@
 class SignInController < ApplicationController
   def signin
     @user = User.all
-    render layout: false
+    render layout: "application_sub"
   end
 end

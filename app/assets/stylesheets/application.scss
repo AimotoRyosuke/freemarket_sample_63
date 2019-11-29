@@ -1,22 +1,16 @@
 @import "reset";
 @import "font-awesome-sprockets";
 @import "font-awesome";
-@import "layouts/header";
-@import "layouts/footer";
-@import "items/show";
-@import "users/logouts";
-@import "users/show";
-@import "shared/user-side";
-@import "users/identification";
-@import "credits/credits";
-@import "purchases/new";
-@import "shared/header";
-@import "shared/footer";
-@import "items";
-@import "users";
+@import "shared/*";
+@import "layouts/*";
+@import "items/*";
+@import "credits/*";
+@import "purchases/*";
+@import "users/*";
 
 
 body {
   font-family: Arial,游ゴシック体,YuGothic,メイリオ,Meiryo,sans-serif;
   background: rgb(245, 245, 245);
+  font-size: 14px;
 }
