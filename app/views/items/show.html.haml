@@ -6,7 +6,7 @@
       %p.item-show__item__wording
         = @item.name
         は、2205回の取引実績を持つ玲奈さんから出品されました。その他/家電・スマホ・カメラの商品で、埼玉県から
-        = @item.item_days(@item)
+        = item_days(@item)
         で発送されます。
     .item-show__item__main
       .item-show__item__main__image
@@ -96,7 +96,7 @@
       .item-show__item__price-box__tax
         (税込)
       .item-show__item__price-box__postage
-        = @item.price_box_shippingcost(@item)
+        = price_box_shippingcost(@item)
     - if false
       .item-show__item__button
         購入画面に進む

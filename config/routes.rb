@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   root                          to: 'items#index'
   get  'signin',                to: 'sign_in#signin'
@@ -19,5 +20,4 @@ Rails.application.routes.draw do
     resources :credits
     resources :address
   end
-  resources :items
 end
