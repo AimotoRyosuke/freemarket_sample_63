@@ -1,4 +1,5 @@
 @import "reset";
+@import "font-awesome-sprockets";
 @import "font-awesome";
 @import "layouts/header";
 @import "layouts/footer";
@@ -6,6 +7,9 @@
 @import "users/logouts";
 @import "users/show";
 @import "shared/user-side";
+@import "purchases/new";
+@import "shared/header";
+@import "shared/footer";
 @import "items";
 @import "users";
 
