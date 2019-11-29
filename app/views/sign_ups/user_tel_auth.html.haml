@@ -1,0 +1,26 @@
+.wrapper
+  %h2.top 電話番号認証
+  = form_with model: @user, url: signup_tel_auth_path, local: true, class: 'form' do |f|
+    .form__group
+      .form__group__name 認証番号（111111を入力してください）
+      = f.text_field :auth, class: 'form__group__input', placeholder: '認証番号を入力'
+      - if @msg != ""
+        .form__group__err
+          .form__group__err__msg= @msg
+      %p SMSで届いた認証番号を入力してください
+    = f.submit '認証して完了', class: 'form__group'
+  = form_with model: @user, url: signup_tel_auth_path, local: true, class: 'form' do |f|
+    .form__group
+      .form__group__name 30秒たっても認証番号が届かない方へ
+      %p 電話で認証番号を聞くこともできます。
+    = f.submit '電話で認証番号を聞く（通話無料）', class: 'form__group__submit'
+  .form
+    .form__group__name 
+      %p 認証番号を再送することもできます。もう一度
+      %p 電話番号を入力して下さい。
+    = link_to "電話番号を再度入力する", signup_tel_path
+    .form__group__about 
+      %p ※SMSが届かない場合は
+      = link_to "SMS受信設定", ""
+      %p を確認して、もう
+      %p 一度電話番号を入力してください。
