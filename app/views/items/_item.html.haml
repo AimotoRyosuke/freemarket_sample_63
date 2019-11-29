@@ -1,0 +1,13 @@
+%li.new__items__list__item
+  -# = link_to "https://item.mercari.com/jp/m83719687124" do
+  = link_to item_path(item.id) do
+    .new__items__list__item__upper
+      %span.new__items__list__item__upper__price
+        ¥
+        = item.price
+        %br
+      =image_tag "https://static.mercdn.net/thumb/photos/m83719687124_1.jpg?1574431137", class: 'new__items__list__item__upper__btm'
+    .new__items__list__item__description 
+      %p
+        = item.name
+      
