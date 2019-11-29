@@ -6,17 +6,17 @@
       .header__container__top__search
         %input{name: "keyword", type: "search", placeholder: "何かお探しですか？", class: "header__top__search__input"}
         %button
-          = fa_icon 'search', class: 'icon'
+          = icon 'fas', 'search'
     .header__container__bottom
       .header__container__bottom__left
         = link_to '', class: "header__container__bottom__left__category" do
           .header__container__bottom__left__category__icon
-            = fa_icon 'list', class: 'icon'
+            = icon 'fas','list-ul', class: 'icon'
           .header__container__bottom__left__category__character
             カテゴリーから探す
         = link_to '', class: "header__container__bottom__left__brands" do
           .header__container__bottom__left__brands__icon
-            = fa_icon 'tag', class: 'icon'
+            = icon 'fas', 'tag', class: 'icon'
           .header__container__bottom__left__brands__character
             ブランドから探す
       .header__container__bottom__right
