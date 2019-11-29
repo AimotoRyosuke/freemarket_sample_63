@@ -5,6 +5,7 @@
   background-color: #fff;
   border-top: 1px solid #eee;
   box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  position: relative;
   &__icon {
     margin: 0 6px;
     color: #888;
@@ -43,14 +44,13 @@
       font-weight: 600px;
     }
     &__icon {
-      font-size: 24px;
-      font-weight: 400;
+      font-size: 22px;
       line-height: 16px;
     }
   }
   .menu-bar:hover {
-    padding-right: 11px;
-    width: 253px;
+    padding-right: 10px;
+    width: 255px;
     transition: all ease-out .2s;
   }
   .main{

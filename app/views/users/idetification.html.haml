@@ -1,14 +1,14 @@
 %nav.bread-crumbs 
   %span.bread-crumbs__page メルカリ
-  = fa_icon "angle-right", class: "bread-crumbs__icon"
+  = icon "fas", "angle-right", class: "bread-crumbs__icon"
   %span.bread-crumbs__page マイページ
-  = fa_icon "angle-right", class: "bread-crumbs__icon"
+  = icon "fas", "angle-right", class: "bread-crumbs__icon"
   %span.bread-crumbs__page#in-page 本人情報の登録
 
 .identification
   = link_to "", class: "menu-bar" do
     %p.menu-bar__title 本人情報
-    = fa_icon "angle-right", class: "menu-bar__icon"
+    = icon "fas", "angle-right", class: "menu-bar__icon"
   = render "shared/user-side"
   .main
     .top 本人情報の登録
