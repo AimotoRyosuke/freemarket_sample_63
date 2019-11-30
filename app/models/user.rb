@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable
   has_one :address
   has_one :credit
 
@@ -23,5 +23,18 @@ class User < ApplicationRecord
     self.first_name_kana    = self.first_name_kana.tr('ぁ-ん','ァ-ン')
     self.last_name_kana     = self.last_name_kana.tr('ぁ-ん','ァ-ン')
     self.password = self.password.tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')
+  end
+
+  def self.find_for_oauth(auth)
+    user = User.where(uid: auth.uid, provider: auth.provider).first
+    unless user
+      user = User.create(
+        uid:      auth.uid,
+        provider: auth.provider,
+        email:    auth.info.email,
+        password: Devise.friendly_token[0, 20]
+      )
+    end
+    user
   end
 end

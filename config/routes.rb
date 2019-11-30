@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root                          to: 'items#index'
   get  'signin',                to: 'sign_in#signin'
   get  'signup',                to: 'sign_ups#signup_select'
