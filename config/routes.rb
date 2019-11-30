@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   devise_for :users
+
   root                          to: 'items#index'
   get  'signin',                to: 'sign_in#signin'
   get  'signup',                to: 'sign_ups#signup_select'
@@ -16,6 +17,9 @@ Rails.application.routes.draw do
   post 'registrate/credit',     to: 'sign_ups#user_credit_create'
   get  'registrate/complete',   to: 'sign_ups#user_complete'
   get  'mypage/identification', to: 'users#idetification'
+  resources :items do
+    resources :images
+  end
   resources :users do
     resources :credits
     resources :address
