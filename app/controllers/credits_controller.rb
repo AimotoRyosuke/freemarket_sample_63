@@ -10,6 +10,7 @@ class CreditsController < ApplicationController
       redirect_to user_credits_path
     else
       render :index
+    end
   end
 
   def new
