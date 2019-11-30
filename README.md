@@ -62,7 +62,7 @@ https://www.draw.io/?state=%7B%22ids%22:%5B%221sEhle2n1CE_6fTWH9v8_9e-L5-2EO3Bo%
 |Column|Type|Options|
 |------|----|-------|
 |zip_code|integer|null: false|
-|prefecture|text|null: false|
+|prefecture_id|integer|null: false|
 |city|text|null: false|
 |address|text|null: false|
 |building|text||
@@ -116,22 +116,27 @@ https://www.draw.io/?state=%7B%22ids%22:%5B%221sEhle2n1CE_6fTWH9v8_9e-L5-2EO3Bo%
 |name|string|null: false|
 |size|string|null: false|
 |price|string|null: false|
-|condition|string|null: false|
+|condition_id|references|null: false, foreign_key: true|
 |explanation|string|null: false|
-|shipping_cost|integer|null: false|
-|shipping_method|integer|null: false|
-|days|date|null: false|
-|status|integer|null: false|
+|shipping_cost_id|references|null: false, foreign_key: true|
+|shipping_method_id|references|null: false, foreign_key: true|
+|days_id|references|null: false, foreign_key: true|
+|status_id|references|null: false, foreign_key: true|
+|prefecture_id|references|null: false, foreign_key: true|
 |seller_id|references|null: false, foreign_key: true|
-|buyer_id|references|null: false, foreign_key: true|
 |categories_hierarchie_id|references|null: false, foreign_key: true|
 |brand_id|references|null: false, foreign_key: true|
 
 
 ### Association
 - belongs_to :seller class_name: 'User' :foreign key seller_id
-- belongs_to :buyer class_name: 'User' :foreign key buyer_id
-- belongs_to :prefecture
+- belongs_to_active_hash :prefecture
+- belongs_to_active_hash :condition
+- belongs_to_active_hash :days
+- belongs_to_active_hash :shipping_cost_id
+- belongs_to_active_hash :shipping_method_id
+- belongs_to_active_hash :days_id
+- belongs_to_active_hash :status_id
 - belongs_to :brand
 - belongs_to :categories_hierarchie
 - has_many :likes, dependent: destroy
