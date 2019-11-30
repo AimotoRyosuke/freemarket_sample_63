@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   post 'registrate/address',   to: 'sign_ups#user_address_create'
   get  'registrate/credit',    to: 'sign_ups#user_credit'
   post 'registrate/credit',    to: 'sign_ups#user_credit_create'
-  root to: 'items#index'
-  resources :items
+  resources :items do
+    resources :images
+  end
 end
