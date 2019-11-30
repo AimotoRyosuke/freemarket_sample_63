@@ -1,29 +1,4 @@
-@import "reset";
-@import "font-awesome";
-
-body {
-  font-family: 'Source Sans Pro', Helvetica , Arial, '游ゴシック体', 'YuGothic', 'メイリオ','Meiryo', sans-serif;
-  background: rgb(245, 245, 245);
-  font-size: 14px;
-}
-
-
-.signin-header {
-  height: 128px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  &__logo{
-    width: 185px;
-    height: 45px;
-  }
-  &__logo:hover {
-    opacity: .7;
-  }
-}
-
-.wrapper {
+.signin {
   background-color: #fff;
   height: 731px;
   width: 456px;
@@ -36,9 +11,6 @@ body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    p {
-
-    }
     a {
       margin-top: 8px;
       height: 42px;
@@ -126,6 +98,7 @@ body {
         color: white;
         text-align: center;
         line-height: 50px;
+        cursor: pointer;
       }
       a {
         text-decoration: none;
@@ -136,39 +109,5 @@ body {
         opacity: .7;
       }
     }
-
-  }
-}
-
-.footer {
-  height: 140px;
-  width: 456px;
-  padding: 40px;
-  margin: 0 auto;
-  display: flex;
-  align-items: flex-end;
-  flex-direction: column;
-  &__link {
-    margin: 0 auto;
-    align-self: flex-start;
-    a {
-      color: black;
-      padding: 0 8px;
-      font-size: 12px;
-      text-decoration: none;
-    }
-    a:hover {
-      opacity: .7;
-      text-decoration: underline;
-    }
-  }
-  &__logo {
-    display: block;
-    width: 85px;
-    margin: 40px auto 0;
-  }
-  p {
-    font-size: 13px;
-    margin: 0 auto;
   }
 }
