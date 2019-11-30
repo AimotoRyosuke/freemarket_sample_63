@@ -38,6 +38,7 @@ gem 'mini_magick'
 
 gem 'haml-rails'
 
+gem 'jquery-rails'
 gem 'font-awesome-sass', '~> 5.4.1'
 
 # Reduces boot times through caching; required in config/boot.rb
@@ -48,10 +49,10 @@ gem 'devise'
 gem 'carrierwave'
 gem 'fog-aws'
 
-gem 'jquery-rails'
-
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

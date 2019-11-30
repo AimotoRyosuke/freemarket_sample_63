@@ -8,6 +8,6 @@
     = link_to user_facebook_omniauth_authorize_path, class: "registration__facebook" do
       = icon 'fab','facebook-f'
       %p Facebookで登録する
-    = link_to "", class: "registration__google" do
+    = link_to user_google_oauth2_omniauth_authorize_path, class: "registration__google" do
       = image_tag "google.svg", size: "18x18", alt: "google-logo"
       %p Googleで登録する

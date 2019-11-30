@@ -2,7 +2,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :omniauthable
+         :recoverable, :rememberable, :validatable, :omniauthable,
+         :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
   has_one :address
   has_one :credit
 
@@ -25,16 +26,34 @@ class User < ApplicationRecord
     self.password = self.password.tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')
   end
 
-  def self.find_for_oauth(auth)
-    user = User.where(uid: auth.uid, provider: auth.provider).first
-    unless user
-      user = User.create(
-        uid:      auth.uid,
-        provider: auth.provider,
-        email:    auth.info.email,
-        password: Devise.friendly_token[0, 20]
-      )
+  def self.find_oauth(auth)
+    uid = auth.uid
+    provider = auth.provider
+    snscredential = SnsCredential.where(uid: uid, provider: provider).first
+    if snscredential.present?
+      user = User.where(id: snscredential.user_id).first
+    else
+      user = User.where(email: auth.info.email).first
+      if user.present?
+        SnsCredential.create(
+          uid: uid,
+          provider: provider,
+          user_id: user.id
+          )
+      else
+        user = User.create(
+          nickname: auth.info.name,
+          email:    auth.info.email,
+          password: Devise.friendly_token[0, 20],
+          telephone: "08000000000"
+          )
+        SnsCredential.create(
+          uid: uid,
+          provider: provider,
+          user_id: user.id
+          )
+      end
     end
-    user
+    return user
   end
 end
