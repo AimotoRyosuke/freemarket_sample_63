@@ -6,8 +6,10 @@ class CreditsController < ApplicationController
 
   def destroy
     credit = Credit.find(params[:id])
-    credit.destroy
-    redirect_to user_credits_path
+    if credit.destroy
+      redirect_to user_credits_path
+    else
+      render :index
   end
 
   def new
@@ -18,8 +20,11 @@ class CreditsController < ApplicationController
     @credit = Credit.new(credit_params)
     @credit.valid?
     if @credit.errors.messages.blank? && @credit.errors.details.blank?
-      @credit.save
-      redirect_to user_credits_path
+      if @credit.save
+        redirect_to user_credits_path
+      else
+        render :new
+      end
     else
       render :new
     end
