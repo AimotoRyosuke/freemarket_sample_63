@@ -97,7 +97,7 @@
       .item-show__item__price-box__tax
         (税込)
       .item-show__item__price-box__postage
-        = @item.shipping_cost.name
+        = price_shipping_cost(@item)
     - unless user_signed_in? && current_user.id == @item.user.id
       .item-show__item__button
         購入画面に進む
