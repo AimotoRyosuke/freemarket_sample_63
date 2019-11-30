@@ -20,13 +20,17 @@
           .header__container__bottom__left__brands__character
             ブランドから探す
       .header__container__bottom__right
-        .header__container__bottom__right__logout
-          = link_to '', class: "header__container__bottom__right__logout__registration", href: signup_path, type: '' do
-            新規会員登録
-          = link_to '', class: "header__container__bottom__right__logout__login", href: signin_path, type: '' do
-            ログイン
-        .header__container__bottom__right__logout
-          
-          
-        
+        - if user_signed_in?
+          .header__container__bottom__right__login
+            = link_to user_path(current_user) , class: 'header__container__bottom__right__login__my-page'do
+              -# = image_tag "user_icon_default", class: 'header__container__bottom__right__login__my-page__icon', alt: "", width: "32", height: "32"
+              .header__container__bottom__right__login__my-page__icon
+                = icon 'far','user'
+              %span.header__container__bottom__right__login__my-page__chara マイページ
+        - else
+          .header__container__bottom__right__logout
+            = link_to '', class: "header__container__bottom__right__logout__registration", href: signup_path, type: '' do
+              新規会員登録
+            = link_to '', class: "header__container__bottom__right__logout__login", href: signin_path, type: '' do
+              ログイン
 
