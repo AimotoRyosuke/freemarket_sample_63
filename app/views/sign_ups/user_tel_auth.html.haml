@@ -1,4 +1,27 @@
-.wrapper
+%header.sub-header
+  = link_to root_path, class: "baseinfo-header__logo" do
+    = image_tag "fmarket_logo_red.svg", size: "185x49", alt: "mercari"
+  %ol.nav
+    %li.nav__box
+      %p.nav__box__progress 会員情報
+      .nav__box__status#status
+        .nav__box__status__bar1#bar
+    %li.nav__box
+      %p.nav__box__progress#progress 電話番号認証
+      .nav__box__status#status
+        .nav__box__status__bar2
+    %li.nav__box
+      %p.nav__box__progress お届け先住所入力
+      .nav__box__status
+        .nav__box__status__bar3
+    %li.nav__box
+      %p.nav__box__progress 支払い方法
+      .nav__box__status
+        .nav__box__status__bar4
+    %li.nav__box
+      %p.nav__box__progress 完了
+      .nav__box__status
+.tel_auth
   %h2.top 電話番号認証
   = form_with model: @user, url: signup_tel_auth_path, local: true, class: 'form' do |f|
     .form__group
@@ -7,20 +30,26 @@
       - if @msg != ""
         .form__group__err
           .form__group__err__msg= @msg
-      %p SMSで届いた認証番号を入力してください
-    = f.submit '認証して完了', class: 'form__group'
+      %p.form__group__info SMSで届いた認証番号を入力してください
+    = f.submit '認証して完了', class: 'form__submit'
   = form_with model: @user, url: signup_tel_auth_path, local: true, class: 'form' do |f|
     .form__group
       .form__group__name 30秒たっても認証番号が届かない方へ
-      %p 電話で認証番号を聞くこともできます。
-    = f.submit '電話で認証番号を聞く（通話無料）', class: 'form__group__submit'
+      %p.form__group__info 電話で認証番号を聞くこともできます。
+    = link_to '電話で認証番号を聞く（通話無料）', signup_tel_auth_path, class: 'form__submit'
   .form
-    .form__group__name 
-      %p 認証番号を再送することもできます。もう一度
-      %p 電話番号を入力して下さい。
-    = link_to "電話番号を再度入力する", signup_tel_path
-    .form__group__about 
-      %p ※SMSが届かない場合は
-      = link_to "SMS受信設定", ""
-      %p を確認して、もう
-      %p 一度電話番号を入力してください。
+    .form__group
+      %p.form__group__notice 認証番号を再送することもできます。もう一度電話番号を入力して下さい。
+      = link_to "電話番号を再度入力する", signup_tel_path, class: "form__group__return"
+      .form__group__about
+        %p ※SMSが届かない場合は
+        = link_to "SMS受信設定", ""
+        %p を確認して、もう一度電話番号を入力してください。
+%footer.footer
+  .footer__link
+    = link_to "プライバシーポリシー", ""
+    = link_to "メルカリ利用規約"
+    = link_to "特定商取引に関する表記"
+  = link_to root_path, class: "footer__logo" do
+    = image_tag "logo_gray.svg", size: "85x65", alt: "mercari"
+  %p &copy2019 Mercari
