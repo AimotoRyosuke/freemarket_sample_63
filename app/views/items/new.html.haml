@@ -1,8 +1,5 @@
+= render partial: "shared/header"
 .sign
-  %header.sign__header
-    %h1
-      
-      =link_to image_tag "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyODEuMTkgODQuMDgiPjxkZWZzPjxzdHlsZT4uY2xzLTF7ZmlsbDojZmZmO3N0cm9rZTojYjUzZDIyO3N0cm9rZS1taXRlcmxpbWl0OjEwO30uY2xzLTJ7Zm9udC1zaXplOjQ4cHg7ZmlsbDojMjMxODE1O2ZvbnQtZmFtaWx5Oll1R28tQm9sZC04M3B2LVJLU0otSCwgWXVHb3RoaWM7fTwvc3R5bGU+PC9kZWZzPjx0aXRsZT7jgqLjgrvjg4Pjg4ggMTwvdGl0bGU+PGcgaWQ9IuODrOOCpOODpOODvF8yIiBkYXRhLW5hbWU9IuODrOOCpOODpOODvCAyIj48ZyBpZD0i44Os44Kk44Ok44O8XzEtMiIgZGF0YS1uYW1lPSLjg6zjgqTjg6Tjg7wgMSI+PHBvbHlnb24gY2xhc3M9ImNscy0xIiBwb2ludHM9IjM2LjQxIDgzLjUgMC41IDYyLjc3IDAuNSAyMS4zMSAzNi40MSAwLjU4IDcyLjMyIDIxLjMxIDcyLjMyIDYyLjc3IDM2LjQxIDgzLjUiLz48cG9seWxpbmUgY2xhc3M9ImNscy0xIiBwb2ludHM9IjAuNSAyMS4zMSAzNi40MSA0Mi4wNCA3Mi4zMiAyMS4zMSIvPjxwb2x5bGluZSBjbGFzcz0iY2xzLTEiIHBvaW50cz0iMzYuNDEgODMuNSAzNi40MSA0OS4zNiAzNi40MSA0Mi4wNCIvPjxsaW5lIGNsYXNzPSJjbHMtMSIgeDE9IjM2LjQxIiB5MT0iNTIuNDEiIHgyPSIwLjUiIHkyPSIzMS42NyIvPjxsaW5lIGNsYXNzPSJjbHMtMSIgeDE9IjcyLjMyIiB5MT0iMzMuMiIgeDI9IjM2LjQxIiB5Mj0iNTAuODgiLz48dGV4dCBjbGFzcz0iY2xzLTIiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDg2LjQxIDYyLjc3KSI+Rm1hcmtldDwvdGV4dD48L2c+PC9nPjwvc3ZnPg==", size: "185x49", alt: "mercari"
   %main.sign__main
     %section.sign-content__buy-item-content
       #exhibit-content
@@ -244,21 +241,3 @@
                     
                   %a.btn-normal.btn-gray 
                     %span.box-no もどる
-                 
-  %footer.sign-footer
-    %nav
-      %ul.l-auto-line
-        %li
-          =link_to " プライバシーポリシー"
-         
-        %li
-          =link_to "メルカリ利用契約" 
-        
-        %li
-          =link_to " 特定商取引に関する表記" 
-          
-      .sign-footer-logo
-        =link_to image_tag "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNDcuMDkgMTI5Ljk2Ij48ZGVmcz48c3R5bGU+LmNscy0xLC5jbHMtMntmaWxsOiMyMzE4MTU7c3Ryb2tlLW1pdGVybGltaXQ6MTA7b3BhY2l0eTowLjE5O30uY2xzLTF7c3Ryb2tlOiNmZmY7fS5jbHMtMntmb250LXNpemU6MzZweDtzdHJva2U6IzIzMTgxNTtmb250LWZhbWlseTpZdUdvLUJvbGQtODNwdi1SS1NKLUgsIFl1R290aGljO308L3N0eWxlPjwvZGVmcz48dGl0bGU+44Ki44K744OD44OIIDEzPC90aXRsZT48ZyBpZD0i44Os44Kk44Ok44O8XzIiIGRhdGEtbmFtZT0i44Os44Kk44Ok44O8IDIiPjxnIGlkPSLjg6zjgqTjg6Tjg7xfMS0yIiBkYXRhLW5hbWU9IuODrOOCpOODpOODvCAxIj48cG9seWdvbiBjbGFzcz0iY2xzLTEiIHBvaW50cz0iNzEuNTQgODMuNSAzNS42MyA2Mi43NyAzNS42MyAyMS4zMSA3MS41NCAwLjU4IDEwNy40NSAyMS4zMSAxMDcuNDUgNjIuNzcgNzEuNTQgODMuNSIvPjxwb2x5bGluZSBjbGFzcz0iY2xzLTEiIHBvaW50cz0iMzUuNjMgMjEuMzEgNzEuNTQgNDIuMDQgMTA3LjQ1IDIxLjMxIi8+PHBvbHlsaW5lIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSI3MS41NCA4My41IDcxLjU0IDQ5LjM2IDcxLjU0IDQyLjA0Ii8+PGxpbmUgY2xhc3M9ImNscy0xIiB4MT0iNzEuNTQiIHkxPSI1Mi40MSIgeDI9IjM1LjYzIiB5Mj0iMzEuNjciLz48bGluZSBjbGFzcz0iY2xzLTEiIHgxPSIxMDcuNDUiIHkxPSIzMy4yIiB4Mj0iNzEuNTQiIHkyPSI1MC44OCIvPjx0ZXh0IGNsYXNzPSJjbHMtMiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC41IDExNy4wNCkiPkZtYXJrZXQ8L3RleHQ+PC9nPjwvZz48L3N2Zz4=", size: "80x65", alt: "mercari"
-     
-        %p
-        %small © 2019 Mercari

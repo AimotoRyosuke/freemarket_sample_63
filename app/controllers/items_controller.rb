@@ -6,12 +6,14 @@ class ItemsController < ApplicationController
   end
 
   def new
+    render layout: "application_sub"
   end
 
   def show
   end
 
   def edit
+    render layout: "application_sub"
   end
 
   def update
