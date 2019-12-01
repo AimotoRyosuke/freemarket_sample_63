@@ -54,7 +54,7 @@ https://www.draw.io/?state=%7B%22ids%22:%5B%221sEhle2n1CE_6fTWH9v8_9e-L5-2EO3Bo%
 
 ### Association
 
-- has_one    :item
+- belongs_to :item
 - belongs_to :user
 
 ## address table
@@ -139,6 +139,7 @@ https://www.draw.io/?state=%7B%22ids%22:%5B%221sEhle2n1CE_6fTWH9v8_9e-L5-2EO3Bo%
 - belongs_to_active_hash :status_id
 - belongs_to :brand
 - belongs_to :categories_hierarchie
+- has_one  :purchase
 - has_many :likes, dependent: destroy
 - has_many :comments, dependent: destroy
 - has_many :images, dependent: destroy
