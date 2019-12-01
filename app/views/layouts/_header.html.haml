@@ -1,7 +1,7 @@
 %header.header
   .header__container
     .header__container__top
-      = link_to '', class: "header__container__top__icon" do
+      = link_to root_path, class: "header__container__top__icon" do
         = render "shared/fmarket_logo_red"
       .header__container__top__search
         %input{name: "keyword", type: "search", placeholder: "何かお探しですか？", class: "header__top__search__input"}
