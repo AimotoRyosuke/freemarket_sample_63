@@ -6,6 +6,16 @@ class ItemsController < ApplicationController
   end
 
   def new
+      @item = Item.new
+      render layout: false 
+  end
+  
+  def create
+    if Item.create(item_params)
+      redirect_to root_path
+    else
+      render :new
+    end
   end
 
   def show
@@ -33,7 +43,7 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :expalanation, :condition_id, :shipping_cost_id, :prefecture_id, :days_id, :price).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :explanation, :condition_id, :status_id, :shipping_method_id, :shipping_cost_id, :prefecture_id, :days_id, :price).merge(user_id: current_user.id)
   end
   def set_item
     @item = Item.find(params[:id])

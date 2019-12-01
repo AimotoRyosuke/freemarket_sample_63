@@ -5,6 +5,8 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_cost
   belongs_to_active_hash :shipping_method
   belongs_to_active_hash :condition
+  belongs_to_active_hash :status
+
   belongs_to :user
   has_many   :images, dependent: :destroy
   has_one    :purchase
