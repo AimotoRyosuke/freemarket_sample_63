@@ -9,6 +9,8 @@ class SignUpsController < ApplicationController
 
   def user_baseinfo
     @user = User.new
+    session.delete(:provider)
+    session.delete(:uid)
     render layout: "application_sub"
   end
 
@@ -18,7 +20,7 @@ class SignUpsController < ApplicationController
     session[:birth]                 = user_params[:birth]
     session[:email]                 = user_params[:email]
     session[:password]              = user_params[:password]
-    session[:password_confirmation] = user_params[:password_confirmation]
+    session[:password_confirmation] = user_params[:password]
     session[:first_name]            = user_params[:first_name]
     session[:last_name]             = user_params[:last_name]
     session[:first_name_kana]       = user_params[:first_name_kana]
@@ -55,18 +57,17 @@ class SignUpsController < ApplicationController
 
   def user_tel_validate
     session[:tel] = params[:user][:tel]
-
     @user = User.new(
-      nickname:           session[:nickname],
-      birth:              session[:birth],
-      email:              session[:email],
-      password: session[:password],
+      nickname:              session[:nickname],
+      birth:                 session[:birth],
+      email:                 session[:email],
+      password:              session[:password],
       password_confirmation: session[:password_confirmation],
-      first_name:         session[:first_name],
-      last_name:          session[:last_name],
-      first_name_kana:    session[:first_name_kana],
-      last_name_kana:     session[:last_name_kana],
-      tel:                session[:tel],
+      first_name:            session[:first_name],
+      last_name:             session[:last_name],
+      first_name_kana:       session[:first_name_kana],
+      last_name_kana:        session[:last_name_kana],
+      tel:                   session[:tel],
     )
 
     @user.valid?
@@ -88,7 +89,7 @@ class SignUpsController < ApplicationController
       nickname:           session[:nickname],
       birth:              session[:birth],
       email:              session[:email],
-      password: session[:password],
+      password:           session[:password],
       password_confirmation: session[:password_confirmation],
       first_name:         session[:first_name],
       last_name:          session[:last_name],
@@ -96,22 +97,38 @@ class SignUpsController < ApplicationController
       last_name_kana:     session[:last_name_kana],
       tel:                session[:tel],
       )
-
     if params[:user][:auth].match(/\A[0-9]+\z/)
+      binding.pry
       if params[:user][:auth] == "111111"
-        @user.save
-        sign_in User.find(@user.id)
-        session.delete(:nickname)
-        session.delete(:birth)
-        session.delete(:email)
-        session.delete(:password)
-        session.delete(:password_confirmation)
-        session.delete(:first_name)
-        session.delete(:last_name)
-        session.delete(:first_name_kana)
-        session.delete(:last_name_kana)
-        session.delete(:tel)
-        redirect_to registrate_address_path
+        if @user.save
+          @sns_auth = SnsAuth.new(
+            provider: session[:provider],
+            uid:      session[:uid],
+            user_id:  @user.id,
+          )
+
+          if @sns_auth.save
+            sign_in User.find(@user.id)
+            session.delete(:nickname)
+            session.delete(:birth)
+            session.delete(:email)
+            session.delete(:password)
+            session.delete(:password_confirmation)
+            session.delete(:first_name)
+            session.delete(:last_name)
+            session.delete(:first_name_kana)
+            session.delete(:last_name_kana)
+            session.delete(:tel)
+            session.delete(:uid)
+            session.delete(:provider)
+            redirect_to registrate_address_path
+            return
+          end
+          @user.delete
+          render :signup_select, layout: "application_sub"
+        else
+          render :user_tel_auth, layout: "application_sub"
+        end
       else
         @msg = "認証番号が一致しません"
         render :user_tel_auth, layout: "application_sub"

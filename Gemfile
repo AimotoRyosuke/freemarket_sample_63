@@ -39,6 +39,7 @@ gem 'mini_magick'
 gem 'haml-rails'
 
 gem 'jquery-rails'
+
 gem 'font-awesome-sass', '~> 5.4.1'
 
 # Reduces boot times through caching; required in config/boot.rb

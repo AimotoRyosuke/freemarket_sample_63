@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_30_085816) do
+ActiveRecord::Schema.define(version: 2019_11_30_143739) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name", null: false
@@ -53,14 +53,32 @@ ActiveRecord::Schema.define(version: 2019_11_30_085816) do
     t.string "name", null: false
     t.string "size"
     t.integer "price", null: false
-    t.string "condition", null: false
     t.text "explanation", null: false
-    t.integer "shipping_cost", null: false
-    t.integer "shipping_method", null: false
-    t.integer "days", null: false
-    t.integer "status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "condition_id", null: false
+    t.bigint "shipping_cost_id", null: false
+    t.bigint "shipping_method_id", null: false
+    t.bigint "days_id", null: false
+    t.bigint "status_id", null: false
+    t.bigint "prefecture_id", null: false
+    t.bigint "user_id", null: false
+    t.index ["condition_id"], name: "index_items_on_condition_id"
+    t.index ["days_id"], name: "index_items_on_days_id"
+    t.index ["prefecture_id"], name: "index_items_on_prefecture_id"
+    t.index ["shipping_cost_id"], name: "index_items_on_shipping_cost_id"
+    t.index ["shipping_method_id"], name: "index_items_on_shipping_method_id"
+    t.index ["status_id"], name: "index_items_on_status_id"
+    t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "sns_auths", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "provider", null: false
+    t.string "uid", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_auths_on_user_id"
   end
 
   create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -99,5 +117,6 @@ ActiveRecord::Schema.define(version: 2019_11_30_085816) do
   add_foreign_key "addresses", "users"
   add_foreign_key "credits", "users"
   add_foreign_key "images", "items"
+  add_foreign_key "items", "users"
   add_foreign_key "sns_credentials", "users"
 end

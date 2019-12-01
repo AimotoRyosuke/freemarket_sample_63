@@ -4,10 +4,10 @@
     %p アカウントをお持ちでない方はこちら
     = link_to "新規会員登録", signup_path
   .signin
-    = link_to "", class: "signin__facebook" do
+    = link_to user_facebook_omniauth_authorize_path, class: "signin__facebook" do
       = icon 'fab','facebook-f'
       %p Facebookでログイン
-    = link_to "", class: "signin__google" do
+    = link_to user_google_oauth2_omniauth_authorize_path, class: "signin__google" do
       = image_tag "google.svg", size: "18x18", alt: "google-logo"
       %p Googleでログイン
     = form_with model: @user, url: user_session_path, local: true, class:'signin__form' do |f|
