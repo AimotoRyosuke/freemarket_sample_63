@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_one  :address
   has_one  :credit
   has_many :items
+  has_many :purchases
   has_many :sns_auths, dependent: :destroy
 
   before_validation :change_string

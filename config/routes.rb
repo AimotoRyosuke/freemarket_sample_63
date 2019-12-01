@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   post 'registrate/credit',     to: 'sign_ups#user_credit_create'
   get  'registrate/complete',   to: 'sign_ups#user_complete'
   get  'mypage/identification', to: 'users#idetification'
+  resources :items do
+    resources :images
+    resources :purchases
+  end
   resources :users do
     resources :credits
     resources :address
