@@ -6,8 +6,8 @@ class ItemsController < ApplicationController
   end
 
   def new
-      @item = Item.new
-      render layout: false 
+    @item = Item.new
+    render layout: "application_sub"
   end
   
   def create
@@ -22,6 +22,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    render layout: "application_sub"
   end
 
   def update
