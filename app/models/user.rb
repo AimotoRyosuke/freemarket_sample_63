@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_one  :address
   has_one  :credit
   has_many :items
+  has_many :purchases
 
   before_validation :change_string
   validates :nickname, :password, :first_name, :last_name, :first_name_kana, :last_name_kana, :birth, presence: {message: "%{attribute}を入力してください"}
