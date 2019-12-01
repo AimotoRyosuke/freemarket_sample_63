@@ -12,7 +12,8 @@ class ItemsController < ApplicationController
   
   def create
     if Item.create(item_params)
-      redirect_to root_path
+      item = Item.create(item_params)
+      redirect_to item_path(item)
     else
       render :new
     end
