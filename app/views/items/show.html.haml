@@ -99,9 +99,7 @@
       .item-show__item__price-box__postage
         = price_shipping_cost(@item)
     - unless user_signed_in? && current_user.id == @item.user.id
-      .item-show__item__button
-        購入画面に進む
-
+      = link_to '購入画面に進む', new_item_purchase_path(@item), class: 'item-show__item__button'
     .item-show__item__introduction
       = simple_format(@item.explanation)
     - unless user_signed_in? && current_user.id == @item.user.id

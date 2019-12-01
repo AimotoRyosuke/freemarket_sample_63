@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :condition
   belongs_to :user
   has_many   :images, dependent: :destroy
+  has_one    :purchase
 
   # belongs_to :brand
   # belongs_to :categories_hierarchie
