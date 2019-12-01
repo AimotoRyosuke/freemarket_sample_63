@@ -54,7 +54,7 @@
                         商品の説明
                         
                         %span.form__necessary 必須
-                      = f.text_area :explanation, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5", class: "textarea-normal"
+                        = f.text_area :explanation, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5", class: "textarea-normal"
                   .exhibit-content__onebox
                     %h3.exhibit-sub-head 商品の詳細
                     .exhibit-form-box
@@ -77,7 +77,7 @@
                         %div
                           .select-enclose
                             %i.icon-rod-bottom
-                            = f.select :test,[["新品、未使用",1],["未使用に近い",2],["目立った傷や汚れなし",3],["やや傷や汚れあり",4],["傷や汚れあり",5],["全体的に状態が悪い",6]], {prompt: "---"}, {class:"select-normal"}
+                            = f.collection_select :condition_id, Condition.all, :id, :name, {prompt: '---'}, {class: 'select-normal'}
                   .exhibit-content__twobox
                     %h3.exhibit-sub-head 配送について
                   
@@ -91,8 +91,7 @@
                           %span.form__necessary 必須
                         .select-enclose
                           %i.icon-rod-bottom
-                          
-                          = f.select :test, [["送料込み(出品者負担)",1], ["着払い(購入者負担)",2]], {prompt: "---"}, {class:"select-normal"}
+                          = f.collection_select :shipping_cost_id, ShippingCost.all, :id, :name, {prompt: '---'}, {class: 'select-normal'}
                       .form--groups
                         %label
                         
@@ -100,7 +99,7 @@
                           
                           %span.form__necessary 必須
                         .select-enclose
-                          = f.collection_select(:prefecture_id, @prefecture, :id, :name ,{prompt: "---"}, {class:"select-normal"})
+                          = f.collection_select(:prefecture_id, Prefecture.all, :id, :name ,{prompt: "---"}, {class:"select-normal"})
                       .form--groups
                         %label
                         
@@ -109,7 +108,7 @@
                           %span.form__necessary 必須
                         .select-enclose
                           %i.icon-rod-bottom
-                          = f.select :test,[["1~2日で発送",1],["2~3日で発送",2],["4~7日で発送",3]], {prompt: "---"}, {class:"select-normal"}
+                          = f.collection_select :days_id, Days.all, :id, :name, {prompt: '---'}, {class: 'select-normal'}
                   .exhibit-content__threebox
                     %h3.exhibit-sub-head 販売価格(300〜9,999,999)
               
@@ -163,9 +162,10 @@
                         
                         に同意したことになります。
                         
-                      %button.btn-normal.btn-red{:type => "submit"}
+                      -# %button.btn-normal.btn-red{:type => "submit"}
+                      = f.submit class: 'btn-normal btn-red',value: '出品する'
                         
-                        %span.box-yes 出品する
+                      -# %span.box-yes 出品する
                         
                       %a.btn-normal.btn-gray 
                         %span.box-no もどる
@@ -187,4 +187,3 @@
         
             %p
             %small © 2019 Mercari
-            

@@ -1,13 +1,37 @@
-.wrapper
+%header.sub-header
+  = link_to root_path, class: "baseinfo-header__logo" do
+    = image_tag "fmarket_logo_red.svg", size: "185x49", alt: "mercari"
+  %ol.nav
+    %li.nav__box
+      %p.nav__box__progress 会員情報
+      .nav__box__status#status
+        .nav__box__status__bar1#bar
+    %li.nav__box
+      %p.nav__box__progress#progress 電話番号認証
+      .nav__box__status#status
+        .nav__box__status__bar2
+    %li.nav__box
+      %p.nav__box__progress お届け先住所入力
+      .nav__box__status
+        .nav__box__status__bar3
+    %li.nav__box
+      %p.nav__box__progress 支払い方法
+      .nav__box__status
+        .nav__box__status__bar4
+    %li.nav__box
+      %p.nav__box__progress 完了
+      .nav__box__status
+.tel
   %h2.top 電話番号の確認
   = form_with model: @user, url: signup_tel_path, local: true, class: 'form' do |f|
     .form__group
-      .form__group__name 携帯電話の電話番号
+      .form__group__name 携帯電話の番号
       = f.text_field :tel, class: 'form__group__input', placeholder: '携帯電話の番号を入力'
       - if @user.errors.any? 
         .form__group__err
           - @user.errors.messages[:tel].each do |message|
             .form__group__err__msg= message
-      %p 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
+      %p.form__group__info 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
       = f.submit 'SMSを送信する', class: 'form__group__submit'
-      .form__group__about 本人情報の登録について
+      %p.form__group__info ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+      .form__group__about 電話番号の確認が必要な理由
