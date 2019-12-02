@@ -30,8 +30,5 @@
       %h3.new__items__upper__title 商品一覧
       =link_to "/jp/catedory/1/" ,class: "new__items__upper__btn" do
         もっと見る ＞
-      -# = fa_icon "angle-right"
     %ul.new__items__list
-
-      - @items.each do |item|
-        = render partial: "item", locals:{item: item}
+      = render partial: "item", collection: @items
