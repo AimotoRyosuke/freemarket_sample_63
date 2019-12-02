@@ -1,0 +1,23 @@
+.bread-crumbs {
+  height: 48px;
+  width: 1020px;
+  padding: 0 calc(50% - 510px);
+  background-color: #fff;
+  border-top: 1px solid #eee;
+  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
+  position: relative;
+  &__icon {
+    margin: 0 6px;
+    color: #888;
+    font-size: 17px;
+    line-height: 49px;
+  }
+  &__page {
+    text-decoration: none;
+    line-height: 49px;
+    font-size: 14px;
+  }
+  #in-page {
+    font-weight: bold;
+  }
+}
