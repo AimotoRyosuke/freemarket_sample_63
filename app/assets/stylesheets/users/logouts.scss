@@ -11,6 +11,8 @@
       padding: 64px;
       box-sizing: border-box;
       &__button {
+        display: block;
+        text-decoration: none;
         cursor: pointer;
         max-width: 320px;
         margin: 0 auto;

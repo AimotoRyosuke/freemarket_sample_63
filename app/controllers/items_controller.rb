@@ -3,16 +3,18 @@ class ItemsController < ApplicationController
   before_action :item_params, only: :update
 
   def index
+    @items = Item.all
   end
 
   def new
-      @item = Item.new
-      render layout: false 
+    @item = Item.new
+    render layout: "application_sub"
   end
   
   def create
-    if Item.create(item_params)
-      redirect_to root_path
+    item = Item.new(item_params)
+    if item.save
+      redirect_to item_path(item)
     else
       render :new
     end
@@ -22,6 +24,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
+    render layout: "application_sub"
   end
 
   def update
