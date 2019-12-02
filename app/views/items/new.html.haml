@@ -167,8 +167,9 @@
                         
                       -# %span.box-yes 出品する
                         
-                      %a.btn-normal.btn-gray 
-                        %span.box-no もどる
+                      .btn-normal.btn-gray 
+                        = link_to "もどる", root_path, {class:"box-no"}
+                        -# %span.box-no もどる
                     
       %footer.sign-footer
         %nav
