@@ -1,0 +1,31 @@
+%nav.bread-crumbs 
+  %span.bread-crumbs__page メルカリ
+  = icon "fas", "angle-right", class: "bread-crumbs__icon"
+  %span.bread-crumbs__page マイページ
+  = icon "fas", "angle-right", class: "bread-crumbs__icon"
+  %span.bread-crumbs__page#in-page SNS認証
+
+.SNS
+  = link_to "", class: "menu-bar" do
+    %p.menu-bar__title SNS認証
+    = icon "fas", "angle-right", class: "menu-bar__icon"
+  = render "shared/user-side"
+  .main
+    %h2.title SNS認証
+    .registration
+      -if @facebook.present?
+        .registration__facebook
+          = icon 'fab','facebook-f'
+          %p Facebookで認証済みです。
+      - else
+        = link_to user_facebook_omniauth_authorize_path, class: "registration__facebook" do
+          = icon 'fab','facebook-f'
+          %p Facebookで登録する
+      -if @google.present?
+        .registration__google
+          = image_tag "google.svg", size: "18x18", alt: "google-logo"
+          %p Googleで認証済みです。
+      -else
+        = link_to user_google_oauth2_omniauth_authorize_path, class: "registration__google" do
+          = image_tag "google.svg", size: "18x18", alt: "google-logo"
+          %p Googleで登録する

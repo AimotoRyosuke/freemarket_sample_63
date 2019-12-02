@@ -97,17 +97,17 @@ class SignUpsController < ApplicationController
       last_name_kana:     session[:last_name_kana],
       tel:                session[:tel],
       )
+
     if params[:user][:auth].match(/\A[0-9]+\z/)
-      binding.pry
       if params[:user][:auth] == "111111"
         if @user.save
-          @sns_auth = SnsAuth.new(
-            provider: session[:provider],
-            uid:      session[:uid],
-            user_id:  @user.id,
-          )
-
-          if @sns_auth.save
+          if session[:uid]
+            @sns_auth = SnsAuth.new(
+              provider: session[:provider],
+              uid:      session[:uid],
+              user_id:  @user.id,
+            )
+            @sns_auth.save
             sign_in User.find(@user.id)
             session.delete(:nickname)
             session.delete(:birth)
@@ -124,8 +124,7 @@ class SignUpsController < ApplicationController
             redirect_to registrate_address_path
             return
           end
-          @user.delete
-          render :signup_select, layout: "application_sub"
+          redirect_to registrate_address_path
         else
           render :user_tel_auth, layout: "application_sub"
         end
@@ -133,7 +132,7 @@ class SignUpsController < ApplicationController
         @msg = "認証番号が一致しません"
         render :user_tel_auth, layout: "application_sub"
       end
-    else  
+    else
       @msg = "認証番号を入力してください"
       render :user_tel_auth, layout: "application_sub"
     end

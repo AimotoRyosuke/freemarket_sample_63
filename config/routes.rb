@@ -16,7 +16,8 @@ Rails.application.routes.draw do
   post 'registrate/credit',     to: 'sign_ups#user_credit_create'
   get  'registrate/complete',   to: 'sign_ups#user_complete'
   get  'mypage/identification', to: 'users#idetification'
-  get  'mypage/logouts', to: 'users#logouts'
+  get  'mypage/logouts',        to: 'users#logouts'
+  get  'mypage/SNS',            to: 'users#SNS'
   resources :items do
     resources :images
     resources :purchases
