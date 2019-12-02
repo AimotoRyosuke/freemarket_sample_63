@@ -72,6 +72,15 @@ ActiveRecord::Schema.define(version: 2019_12_01_082648) do
     t.index ["user_id"], name: "index_items_on_user_id"
   end
 
+  create_table "purchases", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "item_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_purchases_on_item_id"
+    t.index ["user_id"], name: "index_purchases_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "nickname", null: false
     t.string "email", default: "", null: false
@@ -100,4 +109,6 @@ ActiveRecord::Schema.define(version: 2019_12_01_082648) do
   add_foreign_key "credits", "users"
   add_foreign_key "images", "items"
   add_foreign_key "items", "users"
+  add_foreign_key "purchases", "items"
+  add_foreign_key "purchases", "users"
 end

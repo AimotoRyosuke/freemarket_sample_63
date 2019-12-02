@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get  'mypage/identification', to: 'users#idetification'
   resources :items do
     resources :images
+    resources :purchases
   end
   resources :users do
     resources :credits
