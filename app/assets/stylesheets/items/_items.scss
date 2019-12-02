@@ -147,7 +147,7 @@
                                 .select-normal{
                                     width: 400px;
                                     height: 48px;
-
+                                    background-color: white;
                                 }
                                 
                             }    
@@ -201,6 +201,7 @@
                                     width: 400px;
                                     height: 48px;
                                     margin: 4px 0 0;
+                                    background-color: white;
 
                                 }
                                 
@@ -299,6 +300,12 @@
                                 .l-right-line {
                                     position: absolute;
                                     right: 0px;
+                                    &__bold{
+                                        position: absolute;
+                                        right: 0px;
+                                        font-size: 34px;
+                                        bottom: 5px;
+                                    }
                                 }
                             }
                             .box-line.bold{
@@ -325,6 +332,7 @@
                         .box-yes{
                             font-size: 14px;
                             color:white;
+                            
                         }
                     }
 
@@ -332,15 +340,17 @@
                     .btn-normal.btn-gray{
                         position: relative;
                         background-color: grey;
-                        color: white;
+                        
                         display: flex;
                         width: 45%;
                         height: 50px;
                         margin: 24px auto 0;
-                        .box-no{
-                            margin: auto;
+                        .box-no {
+                            color: white;
+                            text-decoration: none; 
                         }
                     }
+                    
                 }   
                 
 

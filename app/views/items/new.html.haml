@@ -122,7 +122,7 @@
                       .l-right-line -
                     %li.box-line.bold
                       .l-left-line 販売利益
-                      .l-right-line -
+                      .l-right-line__bold -
 
               .exhibit-content.exhibit-btn-box
                 %div
@@ -150,6 +150,6 @@
 
                   = f.submit class: 'btn-normal btn-red',value: '出品する'
 
-                  %a.btn-normal.btn-gray 
-                    %span.box-no もどる
- 
+                  .btn-normal.btn-gray
+                    = link_to "もどる", root_path, class:"box-no"
+
