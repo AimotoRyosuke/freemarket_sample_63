@@ -5,5 +5,7 @@ class UsersController < ApplicationController
   def idetification
   end
 
+  def logouts
+  end
 
 end

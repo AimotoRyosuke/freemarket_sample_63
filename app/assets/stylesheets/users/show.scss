@@ -18,7 +18,7 @@
         height: 200px;
         padding: 20px;
         box-sizing: border-box;
-        background: url(https://www.mercari.com/jp/assets/img/mypage/user-bg.jpg?72951459);
+        background: image-url("user_background.jpeg");
         text-align: center;
         &__icon {
           img {
@@ -82,7 +82,7 @@
           }
         }
         &__contents {
-          background: url(logo_gray.svg);
+          background: image-url("logo_gray.svg");
           padding: 160px 0 60px;
           background-repeat: no-repeat;
           background-position: center 40px;
@@ -121,7 +121,7 @@
           }
         }
         &__contents {
-          background: url(logo_gray.svg);
+          background: image-url("logo_gray.svg");
           padding: 160px 0 60px;
           background-repeat: no-repeat;
           background-position: center 40px;

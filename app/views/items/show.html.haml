@@ -11,15 +11,15 @@
     .item-show__item__main
       .item-show__item__main__image
         .item-show__item__main__image__display
-          = image_tag "stand_1"
+          = image_tag asset_path("stand_1.jpg")
           -# = image_tag @item.images.image.url
         .item-show__item__main__image__list
-          = image_tag "stand_1", {class: "active"}
-          = image_tag "stand_2"
-          = image_tag "stand_3"
-          = image_tag "stand_4"
-          = image_tag "stand_5"
-          = image_tag "stand_6"
+          = image_tag asset_path("stand_1.jpg"), {class: "active"}
+          = image_tag asset_path("stand_2.jpg")
+          = image_tag asset_path("stand_3.jpg")
+          = image_tag asset_path("stand_4.jpg")
+          = image_tag asset_path("stand_5.jpg")
+          = image_tag asset_path("stand_6.jpg")
       %table.item-show__item__main__detail
         %tr.item-show__item__main__detail__exhibitor
           %th.title
