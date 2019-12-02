@@ -300,6 +300,12 @@
                                 .l-right-line {
                                     position: absolute;
                                     right: 0px;
+                                    &__bold{
+                                        position: absolute;
+                                        right: 0px;
+                                        font-size: 34px;
+                                        bottom: 5px;
+                                    }
                                 }
                             }
                             .box-line.bold{
