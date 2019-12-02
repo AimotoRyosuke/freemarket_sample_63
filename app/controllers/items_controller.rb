@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   before_action :item_params, only: :update
 
   def index
+    @items = Item.order("id DESC").limit(10)
   end
 
   def new
