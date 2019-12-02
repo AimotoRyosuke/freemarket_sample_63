@@ -9,7 +9,7 @@
         position: relative;
 
         h1{
-           padding: 40px;        
+           padding: 40px;
         }
 
     }   
@@ -65,7 +65,7 @@
                         width: 80%;
                         border: 1px dashed #88b6fa; /*太さ・線種・色*/
                         color: black; /* 文字色 */
-                        background-color: #FFF; /* 背景色 */
+                        background-color:rgb(236, 231, 231); /* 背景色 */
                         border-radius: 1px; /*角の丸み*/
                         .exhibit-upload-items-content{
                             .exhibit-upload-items.have-item-0{}
@@ -196,10 +196,11 @@
                                 font-weight: bold;
                             }
                             .select-enclose{
-                                .icon-rod-bottom{}
+                        
                                 .select-normal{
                                     width: 400px;
                                     height: 48px;
+                                    margin: 4px 0 0;
 
                                 }
                                 

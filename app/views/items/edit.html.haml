@@ -1,0 +1,170 @@
+= render partial: "shared/header"
+.sign
+  %main.sign__main
+    %section.sign-content__buy-item-content
+      #exhibit-content
+        %div{"data-reactroot" => ""}
+          .exhibit-content__inner
+            %h2.l-sign-head 商品の情報を入力
+            = form_with(model: @item, local: true, class: 'exhibit-form') do |f|
+              .exhibit-upload__box
+                %h3.exhibit-upload__head
+                  出品画像
+                  %span.form__necessary 必須
+                %p 最大10枚までアップロードできます
+                .exhibit-dropbox-content.clearfix.state-image-number-10
+                  = f.fields_for :images do |img|
+                    = img.file_field :image, multiple: "multiple", type: "file"
+                  .exhibit-upload-items-container
+                    .exhibit-upload-items.have-item-0
+                      %ul
+                  .exhibit-upload-drop-box.have-item-0
+                    %pre.see-pc
+                      :preserve
+                        ドラッグアンドドロップ
+                        またはクリックしてファイルをアップロード                      
+                    %i.icon-photo
+                
+              .exhibit-content
+                .form--groups
+                  %label
+                    商品名
+                    %span.form__necessary 必須
+                  %div
+                    = f.text_field :name, placeholder: "商品名（必須 40文字まで)", class: 'input-normal'
+                  
+                .form--groups
+                  %label
+                  
+                    商品の説明
+                    
+                    %span.form__necessary 必須
+                    = f.text_area :explanation, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "5", class: 'textarea-normal'
+              .exhibit-content__onebox
+                %h3.exhibit-sub-head 商品の詳細
+                .exhibit-form-box
+                  .form--groups
+                    %label
+                
+                      カテゴリー
+                      
+                      %span.form__necessary 必須
+                    %div
+                      .select-enclose
+                        %i.icon-rod-bottom
+                        %select.select-normal
+                          %option{:value => ""} ---
+                          %option{:value => "1"} レディース
+                          %option{:value => "2"} メンズ
+                          %option{:value => "3"} ベビー・キッズ
+                          %option{:value => "4"} インテリア・住まい・小物
+                          %option{:value => "5"} 本・音楽・ゲーム
+                          %option{:value => "1328"} おもちゃ・ホビー・グッズ
+                          %option{:value => "6"} コスメ・香水・美容
+                          %option{:value => "7"} 家電・スマホ・カメラ
+                          %option{:value => "8"} スポーツ・レジャー
+                          %option{:value => "9"} ハンドメイド
+                          %option{:value => "1027"} チケット
+                          %option{:value => "1318"} 自動車・オートバイ
+                          %option{:value => "10"} その他
+                  .form--groups
+                    %label
+                    
+                      商品の状態
+                    
+                      %span.form__necessary 必須
+                    %div
+                      .select-enclose
+                        %i.icon-rod-bottom
+                        = f.collection_select :condition_id, Condition.all, :id, :name, {prompt: ''}, {class: 'select-normal'}
+              .exhibit-content__twobox
+                %h3.exhibit-sub-head 配送について
+              
+                =link_to "?", target: "_blank", class: "form-quest" 
+                .exhibit-form-box
+                  .form--groups
+                    %label
+                    
+                      配送料の負担
+                    
+                      %span.form__necessary 必須
+                    .select-enclose
+                      %i.icon-rod-bottom
+                      = f.collection_select :shipping_cost_id, ShippingCost.all, :id, :name, {prompt: ''}, {class: 'select-normal'}
+                  .form--groups
+                    %label
+                    
+                      発送元の地域
+                      
+                      %span.form__necessary 必須
+                    .select-enclose
+                      %i.icon-rod-bottom
+                      = f.collection_select :prefecture_id, Prefecture.all, :id, :name, {prompt: ''}, {class: 'select-normal'}
+                  .form--groups
+                    %label
+                    
+                      発送までの日数
+                    
+                      %span.form__necessary 必須
+                    .select-enclose
+                      %i.icon-rod-bottom
+                      = f.collection_select :days_id, Days.all, :id, :name, {prompt: ''}, {class: 'select-normal'}
+                  
+              .exhibit-content__threebox
+                %h3.exhibit-sub-head 販売価格(300〜9,999,999)
+          
+                =link_to "?", target: "_blank", class: "form-quest" 
+                .exhibit-form-box
+                  %ul.exhibit-price
+                    %li.form--groups
+                      .box-lines-one
+                        %label.l-left-line
+                        
+                          価格
+                          
+                          %span.form__necessary 必須
+                        .l-right.exhibit-price-input
+                        
+                          ¥
+                          
+                          %div
+                            = f.text_field :price, placeholder: "例）300", class: 'input-normal'                      
+                    %li.box-line
+                      .l-left-line
+                        
+                        販売手数料 (10%)
+                      
+                      .l-right-line -
+                    %li.box-line.bold
+                      .l-left-line 販売利益
+                      .l-right-line -
+            
+              .exhibit-content.exhibit-btn-box
+                %div
+                  %p
+                    =link_to "禁止されている出品" 
+                  
+                    =link_to "行為"
+
+                    を必ずご確認ください。
+                    
+                  %p
+                    
+                    またブランド品でシリアルナンバー等がある場合はご記載ください。
+                    =link_to "偽ブランドの販売"
+                    
+                    は犯罪であり処罰される可能性があります。
+                
+                  %p
+                    
+                    また、出品をもちまして
+
+                    =link_to "加盟店規約"
+                    
+                    に同意したことになります。
+                    
+                  = f.submit class: 'btn-normal btn-red',value: '変更する'
+                    
+                    
+                  = link_to item_path(@item), class: 'btn-normal btn-gray' do
+                    %span.box-no キャンセル

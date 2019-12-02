@@ -1,8 +1,7 @@
-
 .advertisement {
   height: 390px;
   width: 100%;
-  background-color: red;
+  background-color: skyblue;
   cursor: pointer;
   touch-action: pan-y pinch-zoom;
   display: block;
@@ -76,11 +75,11 @@
         font-weight: 600;
         padding: 5px 16px 5px 5px;
         text-decoration: none;
-        
       }
     }
     
     &__list {
+      // text-align: center;
       height: 544px;
       width: 1040px;
       display: flex;
@@ -108,6 +107,7 @@
         }
 
         &__upper {
+          // background-col・or: green;
           height: 188px;
           width: 188px;
           position: relative;
@@ -122,8 +122,6 @@
             border-top-right-radius: 14px;
             border-bottom-right-radius: 14px;
             font-size: 17px;
-            align-items: center;
-            letter-spacing: .02em;
 
           }
 

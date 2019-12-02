@@ -4,11 +4,12 @@ class SignUpsController < ApplicationController
   before_action :credit_params, only: :user_credit_create
 
   def signup_select
-  
+    render layout: "application_sub"
   end
 
   def user_baseinfo
     @user = User.new
+    render layout: "application_sub"
   end
 
   def user_baseinfo_validate
@@ -43,12 +44,13 @@ class SignUpsController < ApplicationController
        
       redirect_to signup_tel_path
     else
-      render :user_baseinfo
+      render :user_baseinfo,layout: "application_sub"
     end
   end
 
   def user_tel
     @user = User.new
+    render layout: "application_sub"
   end
 
   def user_tel_validate
@@ -72,12 +74,13 @@ class SignUpsController < ApplicationController
     if @user.errors.details == {} && @user.errors.messages == {}
       redirect_to signup_tel_auth_path
     else
-      render :user_tel
+      render :user_tel, layout: "application_sub"
     end
   end
 
   def user_tel_auth
     @user = User.new
+    render layout: "application_sub"
   end
 
   def user_create
@@ -111,16 +114,17 @@ class SignUpsController < ApplicationController
         redirect_to registrate_address_path
       else
         @msg = "認証番号が一致しません"
-        render :user_tel_auth
+        render :user_tel_auth, layout: "application_sub"
       end
     else  
       @msg = "認証番号を入力してください"
-      render :user_tel_auth
+      render :user_tel_auth, layout: "application_sub"
     end
   end
 
   def user_address
     @address = Address.new
+    render layout: "application_sub"
   end
 
   def user_address_create
@@ -143,13 +147,14 @@ class SignUpsController < ApplicationController
       @address.save
       redirect_to registrate_credit_path
     else
-      render :user_address
+      render :user_address, layout: "application_sub"
     end
 
   end
 
   def user_credit
     @credit = Credit.new
+    render layout: "application_sub"
   end
   
   def user_credit_create
@@ -163,11 +168,14 @@ class SignUpsController < ApplicationController
     @credit.valid?
     if @credit.errors.messages.blank? && @credit.errors.details.blank?
       @credit.save
-       
-      redirect_to root_path
+      redirect_to registrate_complete_path
     else
-      render :user_credit
+      render :user_credit, layout: "application_sub"
     end
+  end
+
+  def user_complete
+    render layout: "application_sub"
   end
 
   private

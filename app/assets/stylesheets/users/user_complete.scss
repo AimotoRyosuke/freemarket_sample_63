@@ -1,0 +1,33 @@
+.complete {
+  width: 700px;
+  margin: 0 auto 40px;
+  background-color: #fff;
+  .top {
+    font-size: 22px;
+    height: 97px;
+    width: 100%;
+    text-align: center;
+    line-height: 97px;
+    font-weight: bold;
+  }
+  .form {
+    width: 343px;
+    padding: 40px 178.5px 64px;
+    border-top: 1px solid #eee;
+    &__comment {
+      text-align: center;
+    }
+    &__submit {
+      display: block;
+      height: 50px;
+      width: 343px;
+      background-color: #ea352d;
+      color: #fff;
+      margin-top: 32px;
+      cursor: pointer;
+      text-align: center;
+      line-height: 50px;
+      text-decoration: none;
+    }
+  }
+}

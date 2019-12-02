@@ -1,15 +1,13 @@
-.wrapper
-  %h2.top 新規会員登録
+= render partial: "shared/header"
+.signup-select
+  %h2.title 新規会員登録
   .registration
-    .registration__email
-      = link_to signup_registration_path do
-        = icon 'fas', 'envelope'
-        %p メールアドレスで登録する
-    .registration__facebook
-      -# = link_to signup_facebook_path do
-      = icon 'fab', 'facebook'
+    = link_to signup_registration_path, class: "registration__email" do
+      = icon 'far', 'envelope'
+      %p メールアドレスで登録する
+    = link_to "", class: "registration__facebook" do
+      = icon 'fab','facebook-f'
       %p Facebookで登録する
-    .registration__google
-      -# = link_to signup_google_path do
-      = icon 'fab', 'google'
+    = link_to "", class: "registration__google" do
+      = image_tag "google.svg", size: "18x18", alt: "google-logo"
       %p Googleで登録する

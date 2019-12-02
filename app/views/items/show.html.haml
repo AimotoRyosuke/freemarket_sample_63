@@ -1,24 +1,25 @@
-%div{class: "#{"item-show" if false}" "#{"item-show my-shipping" if true}"}
+%div{class: "#{"item-show" unless user_signed_in? && current_user.id == @item.user.id }" "#{"item-show own-shipping" if user_signed_in? && current_user.id == @item.user.id}"}
   %section.item-show__item
     %h1.item-show__item__name
       = @item.name
-    - if false
+    - unless user_signed_in? && current_user.id == @item.user.id
       %p.item-show__item__wording
         = @item.name
         は、2205回の取引実績を持つ玲奈さんから出品されました。その他/家電・スマホ・カメラの商品で、埼玉県から
-        = item_days(@item)
+        = @item.days.name
         で発送されます。
     .item-show__item__main
       .item-show__item__main__image
         .item-show__item__main__image__display
-          = image_tag "stand_1"
+          = image_tag asset_path("stand_1.jpg")
+          -# = image_tag @item.images.image.url
         .item-show__item__main__image__list
-          = image_tag "stand_1", {class: "active"}
-          = image_tag "stand_2"
-          = image_tag "stand_3"
-          = image_tag "stand_4"
-          = image_tag "stand_5"
-          = image_tag "stand_6"
+          = image_tag asset_path("stand_1.jpg"), {class: "active"}
+          = image_tag asset_path("stand_2.jpg")
+          = image_tag asset_path("stand_3.jpg")
+          = image_tag asset_path("stand_4.jpg")
+          = image_tag asset_path("stand_5.jpg")
+          = image_tag asset_path("stand_6.jpg")
       %table.item-show__item__main__detail
         %tr.item-show__item__main__detail__exhibitor
           %th.title
@@ -26,7 +27,7 @@
           %th 
             .item-show__item__main__detail__exhibitor__name
               = link_to '', class: "blue" do
-                玲奈
+                = @item.user.nickname
             .item-show__item__main__detail__exhibitor__reviews
               .item-show__item__main__detail__exhibitor__reviews__good.review
                 .item-show__item__main__detail__exhibitor__reviews__good__icon.icon
@@ -67,28 +68,28 @@
           %th.title
             商品の状態
           %th.item-show__item__main__detail__condition.contents
-            = item_status(@item)
+            = @item.condition.name
         %tr
           %th.title
             配送料の負担
           %th.item-show__item__main__detail__shipping-charge.contents
-            = detail_shipping_cost(@item)
+            = @item.shipping_cost.name
         %tr
           %th.title
             配送の方法
           %th.item-show__item__main__detail__shipping__method
-            = item_shipping_method(@item)
+            = @item.shipping_method.name
         %tr
           %th.title
             配送元地域
           %th.item-show__item__main__detail__prefecture.contents
             = link_to '', class: "blue" do
-              埼玉県
+              = @item.prefecture.name
         %tr
           %th.title
             発送日の目安
           %th.item-show__item__main__detail__shipping-date.contents
-            = item_days(@item)
+            = @item.days.name
     .item-show__item__price-box
       .item-show__item__price-box__price
         ¥
@@ -96,14 +97,12 @@
       .item-show__item__price-box__tax
         (税込)
       .item-show__item__price-box__postage
-        = price_box_shippingcost(@item)
-    - if false
-      .item-show__item__button
-        購入画面に進む
-
+        = price_shipping_cost(@item)
+    - unless user_signed_in? && current_user.id == @item.user.id
+      = link_to '購入画面に進む', new_item_purchase_path(@item), class: 'item-show__item__button'
     .item-show__item__introduction
       = simple_format(@item.explanation)
-    - if true
+    - unless user_signed_in? && current_user.id == @item.user.id
       .item-show__item__btn-container
         .item-show__item__btn-container__left
           %button.item-show__item__btn-container__left__iine{type: "button",}
@@ -123,9 +122,9 @@
             = icon 'fas', 'lock', class: 'lock'
           .item-show__item__btn-container__right__title
             あんしん・あんぜんへの取り組み
-  - if true
+  - if user_signed_in? && current_user.id == @item.user.id
     .item-show__change
-      = link_to "商品の編集", root_path, class: "item-show__change__edit"
+      = link_to "商品の編集", edit_item_path(@item), class: "item-show__change__edit"
       %p.item-show__change__or
         or
       %form.item-show__change__stop
@@ -139,7 +138,7 @@
         %textarea{type: "text"}
       %button.item-show__comment__container__submit
         %span コメントする
-  - if false
+  - unless user_signed_in? && current_user.id == @item.user.id
     .item-show__prev-next
       .item-show__prev-next__prev.blue
         = icon 'fas', 'angle-left', class: 'angle-left'
