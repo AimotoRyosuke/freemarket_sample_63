@@ -8,28 +8,35 @@
         .purchase-new__item__details__head__image
           = image_tag asset_path("stand_1.jpg")
         .purchase-new__item__details__head__name
-          ジャランスリウァヤ　タッセルローファー　レアサイズ　27cm
+          = @item.name
       .purchase-new__item__details__price
         .purchase-new__item__details__price__amount
-          ¥17,100
+          ¥
+          = @item.price
           %span.purchase-new__item__details__price__amount__tax
-            送料込み
+            = price_shipping_cost(@item)
       .purchase-new__item__details__point
         ポイントはありません
       .purchase-new__item__details__amount-payment
         .purchase-new__item__details__amount-payment__head
           支払い金額
         .purchase-new__item__details__amount-payment__amount
-          ¥17,100
+          ¥
+          = @item.price
       = link_to "購入する", root_path, class: "purchase-new__item__details__purchase"
   %section.purchase-new__shipping
     .purchase-new__shipping__contents
       %h3.purchase-new__shipping__contents__head
         配送先
       %address.purchase-new__shipping__contents__address
-        〒981-3116
+        〒
+        = current_user.address.zip_code
         %br
-        宮城県 仙台市泉区 高玉町5-7 シャーメゾン高玉
+        = current_user.address.prefecture.name
+        = current_user.address.city
+        = current_user.address.address
+        - if current_user.address.building.present?
+          = current_user.address.building
         %br
         幾世橋 良太
       = link_to "変更する", root_path, class: "purchase-new__shipping__contents__edit blue"
@@ -43,4 +50,3 @@
         04 / 20
       .purchase-new__pay-method__contents__brand
       = link_to "変更する", root_path, class: "purchase-new__pay-method__contents__edit blue"
-= render "shared/footer"
