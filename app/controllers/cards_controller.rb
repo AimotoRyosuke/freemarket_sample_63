@@ -6,7 +6,7 @@ class CardsController < ApplicationController
   def new
     @card = Card.new
     @card.valid?
-    card = Card.find_by(user_id: current_user.id)
+    card = current_user.card
     redirect_to action: "index" if card.present?
   end
   
