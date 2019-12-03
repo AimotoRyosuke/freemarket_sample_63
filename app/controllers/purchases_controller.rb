@@ -1,6 +1,5 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!
-  before_action :move_to_login
   before_action :set_card, only: [:new, :create]
   before_action :set_item
 
@@ -49,10 +48,6 @@ class PurchasesController < ApplicationController
 
   def purchase_params
     params.permit().merge(user_id: current_user.id,item_id: params[:item_id])
-  end
-
-  def move_to_login
-    redirect_to signin_path unless user_signed_in?
   end
   
 end
