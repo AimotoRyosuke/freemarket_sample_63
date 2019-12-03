@@ -25,10 +25,6 @@
           = @item.price
       = form_with model:[@item, @purchase],  url: { action: "create" }, method: :post, local: true do |f|
         = f.submit class: 'purchase-new__item__details__purchase',value: '購入する'
-        -# = f.submit '購入する', class: 'purchase-new__item__details__purchase'
-      -# %button.purchase-new__item__details__purchase 購入する
-      -# %button{type: "submit", formmethod: 'post', formaction: item_purchases_path(@item), class: "purchase-new__item__details__purchase"}購入する
-      -# = link_to "購入する", item_purchases_path, method: :post, class: "purchase-new__item__details__purchase"
   %section.purchase-new__shipping
     .purchase-new__shipping__contents
       %h3.purchase-new__shipping__contents__head

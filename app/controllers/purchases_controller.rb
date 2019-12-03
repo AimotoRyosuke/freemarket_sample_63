@@ -22,7 +22,6 @@ class PurchasesController < ApplicationController
       if purchase = Purchase.create(purchase_params)
         item.status_id = 2
         item.save
-        binding.pry
         Payjp.api_key = ENV['PAYJP_SECRET_KEY']
         Payjp::Charge.create(
           amount: item.price,

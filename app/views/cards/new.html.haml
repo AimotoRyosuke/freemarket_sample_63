@@ -5,7 +5,6 @@
   = render "shared/user-side"
   .main
     %h3.top 支払い方法
-    -# = form_with model: @credit, url: user_credits_path, local: true, class: 'form' do |f|
     = form_with model: @card, url: user_cards_path, class: 'form', html: { name: "inputForm" } do |f|
       .form__group
         .form__group__name カード番号
@@ -26,7 +25,6 @@
         .form__group__name 有効期限
         .form__group__require 必須
         .form__group__limit
-          -# != sprintf(f.date_select(:date,with_css_classes:'XXXXX', order:[:month,:year,:day], use_month_numbers:true, discard_day:true, start_year:Time.now.year-2000, end_year:Time.now.year-2000+10, date_separator:'%s'),'月') + '年'
           .cards-expire__wrap
             = f.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{} , class: 'input-expire', id: 'exp_month'
             %span.expire-text 月
