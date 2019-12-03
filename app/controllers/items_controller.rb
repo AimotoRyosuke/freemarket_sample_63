@@ -1,9 +1,10 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item,    only: [:show, :destroy, :edit, :update]
   before_action :item_params, only: :update
 
   def index
-    @items = Item.all
+    @items = Item.order("id DESC").limit(10)
   end
 
   def new

@@ -24,6 +24,7 @@
 .baseinfo
   %h2.top 会員情報入力
   = form_with model: @user, url: signup_registration_path, local: true, class: 'form' do |f|
+
     .form__group
       .form__group__name ニックネーム
       .form__group__require 必須
@@ -34,23 +35,31 @@
     .form__group
       .form__group__name メールアドレス
       .form__group__require 必須
-      = f.text_field :email, class: 'form__group__input', placeholder: 'PC・携帯どちらでも可'
+      - if session[:uid].blank?
+        = f.text_field :email, class: 'form__group__input', placeholder: 'PC・携帯どちらでも可'
+      - else
+        = f.text_field :email, class: 'form__group__input', placeholder: 'PC・携帯どちらでも可', readonly: true
+
       .form__group__err
         - @user.errors.messages[:email].each do |message|
           .form__group__err__msg= message
-    .form__group
-      .form__group__name パスワード
-      .form__group__require 必須
-      = f.password_field :password, class: 'form__group__input', placeholder: '7文字以上', autocomplete: 'new-password'
-      .form__group__err
-        - @user.errors.messages[:password].each do |message|
-          .form__group__err__msg= message
-      %p.form__group__info ※ 英字と数字の両方を含めて設定してください
-      .form__group__check
-        %input.form__group__check__checkbox#checkbox(type="checkbox")
-        %i.form__group__check__icon
-        = label_tag :checkbox, "パスワードを表示する"
-      %span.form__group__show-password abcd
+    -if session[:uid].blank?
+      .form__group
+        .form__group__name パスワード
+        .form__group__require 必須
+        = f.password_field :password, class: 'form__group__input', placeholder: '7文字以上', autocomplete: 'new-password'
+        .form__group__err
+          - @user.errors.messages[:password].each do |message|
+            .form__group__err__msg= message
+        %p.form__group__info ※ 英字と数字の両方を含めて設定してください
+        .form__group__check
+          %input.form__group__check__checkbox#checkbox(type="checkbox")
+          %i.form__group__check__icon
+          = label_tag :checkbox, "パスワードを表示する"
+        %span.form__group__show-password abcd
+    - else
+      = f.password_field :password, value: "#{@user.password}", type: "hidden"
+
     .form__group
       %h3 本人確認
       %p 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
