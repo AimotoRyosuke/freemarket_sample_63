@@ -1,4 +1,5 @@
 class SignUpsController < ApplicationController
+  before_action :authenticate_user!, except: [:signup_select, :user_baseinfo, :user_baseinfo_validate, :user_tel, :user_tel_auth, :user_tel_validate, :user_params]
   before_action :user_params, only: :user_baseinfo_validate
   before_action :address_params, only: :user_address_create 
   before_action :credit_params, only: :user_credit_create
