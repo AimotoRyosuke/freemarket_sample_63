@@ -9,8 +9,8 @@ class UsersController < ApplicationController
   end
 
   def SNS
-    @google = SnsAuth.where('user_id = ? and provider = ?', current_user.id, 'google_oauth2').first
-    @facebook = SnsAuth.where('user_id = ? and provider = ?', current_user.id, 'facebook').first
+    @google = SnsAuth.find_by('user_id = ? and provider = ?', current_user.id, 'google_oauth2')
+    @facebook = SnsAuth.find_by('user_id = ? and provider = ?', current_user.id, 'facebook')
   end
 
 end
