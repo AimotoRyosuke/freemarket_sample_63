@@ -1,7 +1,16 @@
 class ApplicationController < ActionController::Base
 
   before_action :basic_auth, if: :production?
-  
+
+  protected
+  def authenticate_user!
+    if user_signed_in?
+      super
+    else
+      redirect_to signup_path, :notice => 'if you want to add a notice'
+    end
+  end
+
   private
 
   def production?
