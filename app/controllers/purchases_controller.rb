@@ -1,10 +1,10 @@
 class PurchasesController < ApplicationController
   before_action :move_to_login
+  before_action :set_card, only: [:new, :create]
+  before_action :set_item
 
   def new
     @purchase = Purchase.new
-    @item = Item.find(params[:item_id])
-    @card = Card.find_by(user_id: current_user.id)
     Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     if @card.blank?
     else
@@ -15,17 +15,16 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    item = Item.find(params[:item_id])
-    card = Card.find_by(user_id: current_user.id)
-    if card.blank?
+    @item = Item.find(params[:item_id])
+    if @card.blank?
     else
       if purchase = Purchase.create(purchase_params)
-        item.status_id = 2
-        item.save
+        @item.status_id = 2
+        @item.save
         Payjp.api_key = ENV['PAYJP_SECRET_KEY']
         Payjp::Charge.create(
-          amount: item.price,
-          customer: card.customer_id,
+          amount: @item.price,
+          customer: @card.customer_id,
           currency: 'jpy',
           )
         redirect_to action: 'done'
@@ -36,10 +35,17 @@ class PurchasesController < ApplicationController
   end
 
   def done
-    @item = Item.find(params[:item_id])
   end
 
   private
+
+  def set_card
+    @card = current_user.card
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
 
   def purchase_params
     params.permit().merge(user_id: current_user.id,item_id: params[:item_id])
