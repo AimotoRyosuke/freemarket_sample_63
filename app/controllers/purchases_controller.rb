@@ -15,7 +15,6 @@ class PurchasesController < ApplicationController
   end
 
   def create
-    @item = Item.find(params[:item_id])
     if @card.blank?
     else
       if purchase = Purchase.create(purchase_params)
