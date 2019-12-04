@@ -1,7 +1,21 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+i = 1
+length = Category.all.length
+
+while i <= length
+  a = Category.find(i)
+  if a.parent_id == nil
+    CategoryHierarchy.create(ancestor_id: a.id, descendant_id: a.id, generations: 0)
+  else
+    b = Category.find(a.parent_id)
+    if b.parent_id == nil 
+      CategoryHierarchy.create(ancestor_id: a.id, descendant_id: a.id, generations: 0)
+      CategoryHierarchy.create(ancestor_id: b.id, descendant_id: a.id, generations: 1)
+    else
+      c = Category.find(b.parent_id) 
+      CategoryHierarchy.create(ancestor_id: a.id, descendant_id: a.id, generations: 0)
+      CategoryHierarchy.create(ancestor_id: b.id, descendant_id: a.id, generations: 1)
+      CategoryHierarchy.create(ancestor_id: c.id, descendant_id: a.id, generations: 2)
+    end
+  end
+  i += 1
+end

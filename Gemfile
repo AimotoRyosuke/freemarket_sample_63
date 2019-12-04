@@ -13,6 +13,8 @@ gem 'active_hash'
 
 gem 'rails-i18n'
 
+gem 'closure_tree'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
@@ -38,7 +40,7 @@ gem 'mini_magick'
 
 gem 'haml-rails'
 
-# gem 'font-awesome-rails'
+gem 'font-awesome-sass', '~> 5.4.1'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -49,6 +51,8 @@ gem 'carrierwave'
 gem 'fog-aws'
 
 gem 'jquery-rails'
+
+gem 'payjp'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -90,7 +94,3 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'haml-rails'
-gem 'font-awesome-sass', '~> 5.4.1'
-gem 'jquery-rails'
-gem 'payjp'
