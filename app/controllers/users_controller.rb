@@ -8,4 +8,10 @@ class UsersController < ApplicationController
   def logouts
   end
 
+  def edit
+  end
+
+  def update
+
+  end
 end
