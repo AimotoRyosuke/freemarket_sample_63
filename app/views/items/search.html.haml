@@ -1,0 +1,20 @@
+.search
+  .search__side
+  .search__items
+    .search__items__result
+      - if @keyword.present?
+        %p.search__items__result__keyword= @keyword
+        %p.search__items__result__default の検索結果
+      - else
+        %p.search__items__result__keyword 新着商品
+    .search__items__number
+      %p= ((@items.current_page - 1)*100+1).to_s+"-"+((@items.current_page - 1)*100+@items.length).to_s+"件表示"
+    %ul.search__items__list
+      = render partial: "item", collection: @items
+
+    = paginate(@items)
+
+%nav.bread-crumbs-bottom
+  %span.bread-crumbs__pager メルカリ
+  = icon "fas", "angle-right", class: "bread-crumbs__icon"
+  %span.bread-crumbs__pager#in-page "検索キーワード"
