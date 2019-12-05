@@ -6,7 +6,6 @@ class ItemsController < ApplicationController
   def index
     @items = Item.order("id DESC").limit(10)
   end
-
   def new
     @item = Item.new
     render layout: "application_sub"
@@ -43,12 +42,22 @@ class ItemsController < ApplicationController
       render :show
     end
   end
+
+  def category_search
+    @items = Item.all.page(params[:page]).per(2).order("created_at DESC")
+  end
+
+  def search
+    @items = Item.search(params[:keyword]).page(params[:page]).per(2).order("created_at DESC")
+    @keyword = params[:keyword]
+  end
   
   private
 
   def item_params
     params.require(:item).permit(:name, :explanation, :condition_id, :status_id, :shipping_method_id, :shipping_cost_id, :prefecture_id, :days_id, :price).merge(user_id: current_user.id)
   end
+
   def set_item
     @item = Item.find(params[:id])
   end
