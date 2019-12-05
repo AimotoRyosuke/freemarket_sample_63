@@ -48,6 +48,8 @@
         background-color: #f8f8f8;
         &__display {
           position: relative;
+          display: flex;
+          overflow: hidden;
           &__badge {
             position: absolute;
             top:0;
@@ -72,20 +74,22 @@
           img {
             width: 300px;
             height: 300px;
-            z-index: -3;
           }
 
         }
         &__list {
           display: flex;
           flex-wrap: wrap;
+          height: 120px;
+          width:100%;
+          background-color: #fafafa;
           img {
             width: 60px;
             height: 60px;
             opacity: 0.6;
           }
           .active {
-            opacity: 1.0;
+            // opacity: 1.0;
           }
         }
       }

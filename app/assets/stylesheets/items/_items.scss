@@ -329,6 +329,7 @@
                         height: 50px;
                         width: 620px;
                         margin: 40px 0 0 ;
+                        cursor:pointer;
                         .box-yes{
                             font-size: 14px;
                             color:white;
@@ -342,6 +343,8 @@
                         background-color: grey;
                         
                         display: flex;
+                        justify-content: center;
+                        align-items: center;
                         width: 45%;
                         height: 50px;
                         margin: 24px auto 0;
