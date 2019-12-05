@@ -17,8 +17,10 @@
             .item-show__item__main__image__display__badge
             .item-show__item__main__image__display__badge__sold
               SOLD
-          = image_tag asset_path("stand_1.jpg")
-          -# = image_tag @item.images.image.url
+          %ul.slider
+            - @item.images.each do |image|
+              %li
+                = image_tag image.image.url, {class: "active"}
         .item-show__item__main__image__list
           = image_tag asset_path("stand_1.jpg"), {class: "active"}
           = image_tag asset_path("stand_2.jpg")
