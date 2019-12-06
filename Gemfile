@@ -17,6 +17,8 @@ gem 'closure_tree'
 
 gem 'kaminari'
 
+gem 'breadcrumbs_on_rails'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets

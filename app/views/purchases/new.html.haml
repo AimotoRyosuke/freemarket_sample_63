@@ -56,3 +56,5 @@
         %br /
       .purchase-new__pay-method__contents__brand
       = link_to "変更する", root_path, class: "purchase-new__pay-method__contents__edit blue"
+%nav.bread-crumbs-bottom 
+  = render_breadcrumbs tag: :span, separator: ' > '

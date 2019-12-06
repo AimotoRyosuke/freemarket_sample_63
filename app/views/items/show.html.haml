@@ -167,3 +167,5 @@
         %li
           = link_to '', class: "item-show__media-box__medias__pinterest", href: "http://pinterest.com/pin/create/button/?url=hoge", rel: "nofollow", target: "_blank" do
             = icon 'fab', 'pinterest', class: 'pinterest'
+%nav.bread-crumbs-bottom 
+  = render_breadcrumbs tag: :span, separator: ' > '

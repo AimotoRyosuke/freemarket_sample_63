@@ -21,6 +21,8 @@ class ItemsController < ApplicationController
   end
 
   def show
+    item = Item.find(params[:id])
+    add_breadcrumb item.name
   end
 
   def edit
@@ -45,11 +47,17 @@ class ItemsController < ApplicationController
 
   def category_search
     @items = Item.all.page(params[:page]).per(2).order("created_at DESC")
+    add_breadcrumb "カテゴリー一覧", root_path
+    add_breadcrumb "カテゴリー大"
+    add_breadcrumb "カテゴリー中"
+    add_breadcrumb "カテゴリー小"
   end
 
   def search
-    @items = Item.search(params[:keyword]).page(params[:page]).per(2).order("created_at DESC")
+    @items = Item.search(params[:keyword]).page(params[:page]).limit(100).per(100).order("created_at DESC")
+    @no_items = Item.all.order("created_at DESC").limit(100)
     @keyword = params[:keyword]
+    add_breadcrumb @keyword if @keyword != ""
   end
   
   private

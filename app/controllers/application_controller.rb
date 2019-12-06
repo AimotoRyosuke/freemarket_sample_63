@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
   before_action :basic_auth, if: :production?
+  add_breadcrumb "メルカリ", :root_path
 
   protected
   

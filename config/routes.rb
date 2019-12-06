@@ -34,5 +34,9 @@ Rails.application.routes.draw do
     resources :credits
     resources :cards
     resources :address
+    member do
+      get  'identification', to: 'users#idetification'
+      get  'logouts',        to: 'users#logouts'
+    end
   end
 end
