@@ -17,14 +17,27 @@ Rails.application.routes.draw do
   post 'registrate/credit',     to: 'sign_ups#user_credit_create'
   get  'registrate/complete',   to: 'sign_ups#user_complete'
   get  'mypage/identification', to: 'users#idetification'
-  get  'mypage/logouts', to: 'users#logouts'
-  get  'mypage/address',       to: 'users#address'
+  get  'mypage/address',        to: 'users#address'
+  get  'mypage/logouts',        to: 'users#logouts'
   resources :items do
+    collection do
+      get 'search',            to: 'items#search'
+      get 'category/search',    to: 'items#category_search'
+    end
     resources :images
-    resources :purchases
+    resources :purchases do
+      collection do
+        get  'done',   to: 'purchases#done'
+      end
+    end
   end
   resources :users do
     resources :credits
+    resources :cards
     resources :address
+    member do
+      get  'identification', to: 'users#idetification'
+      get  'logouts',        to: 'users#logouts'
+    end
   end
 end

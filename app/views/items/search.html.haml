@@ -1,0 +1,26 @@
+.search
+  .search__side
+  .search__items
+    .search__items__result
+      - if @keyword.present?
+        %p.search__items__result__keyword= @keyword
+        %p.search__items__result__default の検索結果
+      - else
+        %p.search__items__result__keyword 新着商品
+      - if @items.blank?
+        %p.search__items__result__no-item 該当する商品が見つかりません。検索条件を変えて、再度お試しください。
+    .search__items__number
+      -if @items.present? && @items.length != Item.count
+        %p= ((@items.current_page - 1)*100+1).to_s+"-"+((@items.current_page - 1)*100+@items.length).to_s+"件表示"
+      -if @items.blank?
+        %h3 新着商品
+
+    %ul.search__items__list
+      -if @items.present?
+        = render partial: "item", collection: @items
+      -else
+        = render partial: "item", collection: @no_items
+    = paginate(@items)
+
+%nav.bread-crumbs-bottom 
+  = render_breadcrumbs tag: :span, separator: ' > '

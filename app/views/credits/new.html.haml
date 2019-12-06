@@ -16,7 +16,7 @@
       .form__group
         .form__group__name カード番号
         .form__group__require 必須
-        = f.text_field :number, class: 'form__group__input', placeholder: '半角数字のみ'
+        = f.text_field :number, class: 'form__group__input', placeholder: '半角数字のみ', maxlength: "16"
         .form__group__err
           - @credit.errors.messages[:number].each do |message|
             .form__group__err__msg= message

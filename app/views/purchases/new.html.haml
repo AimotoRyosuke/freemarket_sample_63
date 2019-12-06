@@ -6,41 +6,56 @@
     .purchase-new__item__details
       .purchase-new__item__details__head
         .purchase-new__item__details__head__image
-          = image_tag asset_path("stand_1.jpg")
+          = image_tag @item.images[0].image.url, class: ''
         .purchase-new__item__details__head__name
-          ジャランスリウァヤ　タッセルローファー　レアサイズ　27cm
+          = @item.name
       .purchase-new__item__details__price
         .purchase-new__item__details__price__amount
-          ¥17,100
+          ¥
+          = @item.price
           %span.purchase-new__item__details__price__amount__tax
-            送料込み
+            = price_shipping_cost(@item)
       .purchase-new__item__details__point
         ポイントはありません
       .purchase-new__item__details__amount-payment
         .purchase-new__item__details__amount-payment__head
           支払い金額
         .purchase-new__item__details__amount-payment__amount
-          ¥17,100
-      = link_to "購入する", root_path, class: "purchase-new__item__details__purchase"
+          ¥
+          = @item.price
+      = form_with model:[@item, @purchase],  url: { action: "create" }, method: :post, local: true do |f|
+        = f.submit class: 'purchase-new__item__details__purchase',value: '購入する'
   %section.purchase-new__shipping
     .purchase-new__shipping__contents
       %h3.purchase-new__shipping__contents__head
         配送先
       %address.purchase-new__shipping__contents__address
-        〒981-3116
+        〒
+        = current_user.address.zip_code
         %br
-        宮城県 仙台市泉区 高玉町5-7 シャーメゾン高玉
+        = current_user.address.prefecture.name
+        = current_user.address.city
+        = current_user.address.address
+        - if current_user.address.building.present?
+          = current_user.address.building
         %br
-        幾世橋 良太
+        = current_user.address.first_name
+        = current_user.address.last_name
       = link_to "変更する", root_path, class: "purchase-new__shipping__contents__edit blue"
   %section.purchase-new__pay-method
     .purchase-new__pay-method__contents
       .purchase-new__pay-method__contents__head
         支払い方法
-      .purchase-new__pay-method__contents__number
-        ************8727
-      .purchase-new__pay-method__contents__date
-        04 / 20
+      - if @card.present?
+        .purchase-new__pay-method__contents__number
+          = "**** **** **** " + @default_card_information.last4
+        .purchase-new__pay-method__contents__date
+          - exp_month = @default_card_information.exp_month.to_s
+          - exp_year = @default_card_information.exp_year.to_s.slice(2,3)
+          = exp_month + " / " + exp_year
+      - else
+        %br /
       .purchase-new__pay-method__contents__brand
       = link_to "変更する", root_path, class: "purchase-new__pay-method__contents__edit blue"
-= render "shared/footer"
+%nav.bread-crumbs-bottom 
+  = render_breadcrumbs tag: :span, separator: ' > '

@@ -1,4 +1,5 @@
 class SignUpsController < ApplicationController
+  before_action :authenticate_user!, except: [:signup_select, :user_baseinfo, :user_baseinfo_validate, :user_params, :user_tel, :user_tel_auth, :user_tel_validate, :user_create]
   before_action :user_params, only: :user_baseinfo_validate
   before_action :address_params, only: :user_address_create 
   before_action :credit_params, only: :user_credit_create
@@ -101,6 +102,7 @@ class SignUpsController < ApplicationController
       if params[:user][:auth] == "111111"
         @user.save
         sign_in User.find(@user.id)
+        binding.pry
         session.delete(:nickname)
         session.delete(:birth)
         session.delete(:email)

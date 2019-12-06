@@ -1,7 +1,18 @@
 class ApplicationController < ActionController::Base
 
   before_action :basic_auth, if: :production?
+  add_breadcrumb "メルカリ", :root_path
+
+  protected
   
+  def authenticate_user!
+    if user_signed_in?
+      super
+    else
+      redirect_to signup_path
+    end
+  end
+
   private
 
   def production?
