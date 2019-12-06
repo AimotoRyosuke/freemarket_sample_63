@@ -6,10 +6,10 @@ class Item < ApplicationRecord
   belongs_to_active_hash :shipping_method
   belongs_to_active_hash :condition
   belongs_to_active_hash :status
-
-  belongs_to :user
-  has_many   :images, dependent: :destroy
-  has_one    :purchase
+  has_many               :images, dependent: :destroy
+  has_one                :purchase
+  belongs_to             :user
+  accepts_nested_attributes_for :images
 
   # belongs_to :brand
   # belongs_to :categories_hierarchie
