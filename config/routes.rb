@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get  'registrate/complete',   to: 'sign_ups#user_complete'
   get  'mypage/identification', to: 'users#idetification'
   get  'mypage/logouts', to: 'users#logouts'
+  get  'mypage/address',       to: 'users#address'
   resources :items do
     resources :images
     resources :purchases
