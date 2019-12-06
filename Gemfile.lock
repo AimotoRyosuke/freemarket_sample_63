@@ -55,6 +55,7 @@ GEM
     bindex (0.8.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
+    breadcrumbs_on_rails (3.0.1)
     builder (3.2.3)
     byebug (11.0.1)
     capistrano (3.11.2)
@@ -369,6 +370,7 @@ PLATFORMS
 DEPENDENCIES
   active_hash
   bootsnap (>= 1.1.0)
+  breadcrumbs_on_rails
   byebug
   capistrano
   capistrano-bundler

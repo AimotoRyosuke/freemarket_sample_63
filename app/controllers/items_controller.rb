@@ -1,7 +1,6 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item,    only: [:show, :destroy, :edit, :update]
-  before_action :item_params, only: :update
 
   def index
     @items = Item.order("id DESC").limit(10)
@@ -9,27 +8,32 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @item.images.build
     render layout: "application_sub"
   end
   
   def create
-    item = Item.new(item_params)
-    if item.save
-      redirect_to item_path(item)
+    @item = Item.new(item_params)
+    
+    if @item.save
+      redirect_to item_path(@item)
     else
       render :new
     end
   end
 
   def show
+    item = Item.find(params[:id])
+    add_breadcrumb item.name
   end
 
   def edit
+    @images = @item.images
     render layout: "application_sub"
   end
 
   def update
-    if @item.update(item_params)
+    if @item.update(update_item_params)
       redirect_to item_path(@item)
     else
       render :edit
@@ -46,11 +50,17 @@ class ItemsController < ApplicationController
 
   def category_search
     @items = Item.all.page(params[:page]).per(2).order("created_at DESC")
+    add_breadcrumb "カテゴリー一覧", root_path
+    add_breadcrumb "カテゴリー大"
+    add_breadcrumb "カテゴリー中"
+    add_breadcrumb "カテゴリー小"
   end
 
   def search
-    @items = Item.search(params[:keyword]).page(params[:page]).per(2).order("created_at DESC")
+    @items = Item.search(params[:keyword]).page(params[:page]).limit(100).per(100).order("created_at DESC")
+    @no_items = Item.all.order("created_at DESC").limit(100)
     @keyword = params[:keyword]
+    add_breadcrumb @keyword if @keyword != ""
   end
 
   def mid_category
@@ -70,7 +80,35 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:name, :explanation, :condition_id, :status_id, :shipping_method_id, :shipping_cost_id, :prefecture_id, :days_id, :price, :category_id).merge(user_id: current_user.id)
+
+    params.require(:item).permit(
+      :name,
+      :explanation,
+      :condition_id,
+      :status_id,
+      :shipping_method_id,
+      :shipping_cost_id,
+      :prefecture_id,
+      :days_id,
+      :price,
+      :category_search,
+      images_attributes:[:image]
+      ).merge(user_id: current_user.id)
+  end
+
+  def update_item_params
+    params.require(:item).permit(
+      :name,
+      :explanation,
+      :condition_id,
+      :status_id,
+      :shipping_method_id,
+      :shipping_cost_id,
+      :prefecture_id,
+      :days_id,
+      :price,
+      images_attributes:[:image, :_destroy, :id]
+      ).merge(user_id: current_user.id)
   end
 
   def set_item

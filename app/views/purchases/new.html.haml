@@ -6,7 +6,7 @@
     .purchase-new__item__details
       .purchase-new__item__details__head
         .purchase-new__item__details__head__image
-          = image_tag asset_path("stand_1.jpg")
+          = image_tag @item.images[0].image.url, class: ''
         .purchase-new__item__details__head__name
           = @item.name
       .purchase-new__item__details__price
@@ -39,7 +39,8 @@
         - if current_user.address.building.present?
           = current_user.address.building
         %br
-        幾世橋 良太
+        = current_user.address.first_name
+        = current_user.address.last_name
       = link_to "変更する", root_path, class: "purchase-new__shipping__contents__edit blue"
   %section.purchase-new__pay-method
     .purchase-new__pay-method__contents
@@ -56,3 +57,5 @@
         %br /
       .purchase-new__pay-method__contents__brand
       = link_to "変更する", root_path, class: "purchase-new__pay-method__contents__edit blue"
+%nav.bread-crumbs-bottom 
+  = render_breadcrumbs tag: :span, separator: ' > '

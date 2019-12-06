@@ -1,6 +1,6 @@
 .search {
   width: 1020px;
-  margin: 40px auto 0;
+  margin: 40px auto 40px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -16,23 +16,96 @@
       width: 100%;
       display: flex;
       align-items: center;
+      flex-wrap: wrap;
       &__keyword {
         font-size: 22px;
-        font-weight: 600;
+        font-weight: 400;
       }
       &__default {
         font-size: 18px;
         font-weight: 400;
+      }
+      &__no-item {
+        margin: 16px 0 24px 0;
       }
     }
     &__number {
       margin: 16px 0;
       font: 12px sans-serif;
       color: #888;
+      h3 {
+        font-size: 22px;
+        font-weight: bold;
+        color: #333;
+      }
     }
     &__list {
       display: flex;
+      flex-wrap: wrap;
+      li {
+        height: 218px;
+        width: 160px;
+        margin: 0 20px 20px 0;
+        padding: 0;
+        
+        a {
+          text-decoration: none;
+        }
+
+        div:first-child {
+          height: 160px;
+          width: 160px;
+          position: relative;
+
+          span {
+            color: #fff;
+            height: 25px;
+            padding: 0 12px;
+            position: absolute;
+            top: 126px;
+            background-color: rgba(0,0,0,.3);
+            border-top-right-radius: 14px;
+            border-bottom-right-radius: 14px;
+            font-size: 17px;
+            line-height: 25px;
+          }
+
+          img {
+            height: 160px;
+            width: 160px;
+          }
+        }
+        div:last-child {
+          color: black;
+          background-color: #fff;
+          height: 42px;
+          width: 136px;
+          padding: 8px 12px;
+          font-size: 13px;
+          color: transparent;
+          p {
+            height: 38px;
+            width: 136px;
+            overflow: hidden;
+            color: black;
+            position: relative;
+          }
+          p:after {
+            background: linear-gradient(90deg,hsla(0,0%,100%,0),#fff 72%);
+            bottom: 0;
+            content: "";
+            height: 50%;
+            position: absolute;
+            right: 0;
+            width: 50%;
+          }
+        }
+      }
+      li:nth-child(4n) {
+        margin:0 0 20px 0;
+      }
     }
+      
     &__pager {
       margin-top: 40px;
       display: flex;

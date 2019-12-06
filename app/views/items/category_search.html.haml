@@ -1,9 +1,5 @@
 %nav.bread-crumbs 
-  %span.bread-crumbs__page メルカリ
-  = icon "fas", "angle-right", class: "bread-crumbs__icon"
-  %span.bread-crumbs__page カテゴリー一覧
-  = icon "fas", "angle-right", class: "bread-crumbs__icon"
-  %span.bread-crumbs__page#in-page カテゴリー名
+  = render_breadcrumbs tag: :span, separator: ' > '
 
 .cat-search
   .cat-search__items

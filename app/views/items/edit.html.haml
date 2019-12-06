@@ -13,8 +13,11 @@
                   %span.form__necessary 必須
                 %p 最大10枚までアップロードできます
                 .exhibit-dropbox-content.clearfix.state-image-number-10
+                  - @images.each do |img|
+                    = img.image
                   = f.fields_for :images do |img|
-                    = img.file_field :image, multiple: "multiple", type: "file"
+                    = img.file_field :image, name: "item[images_attributes][0][image]", type: "file"
+
                   .exhibit-upload-items-container
                     .exhibit-upload-items.have-item-0
                       %ul
