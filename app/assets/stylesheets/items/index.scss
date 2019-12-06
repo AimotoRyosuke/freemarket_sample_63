@@ -66,6 +66,7 @@
         font-size: 24px;
         line-height: 1.4em;
         flex: 1 1 0%;
+        font-weight: 600;
       }
       &__btn {
         display:inline-block;
@@ -85,18 +86,7 @@
       width: 1040px;
       display: flex;
       flex-wrap: wrap;
-      list-style: none;
-      vertical-align: baseline;
       padding: 0px;
-      border-width: 0px;
-      border-style: initial;
-      border-color: initial;
-      border-image: initial;
-      font: inherit;
-      margin-block-start: 1em;
-      margin-block-end: 1em;
-      margin-inline-start: 0px;
-      margin-inline-end: 0px;
 
       &__item {
         height: 252px;
@@ -136,12 +126,12 @@
           height: 38px;
           width: 164px;
           padding: 13px 12px;
-          white-space: normal;
-          word-break: break-word;
           font-size: 13px;
-          overflow: hidden;
           color: transparent;
           p {
+            height: 38px;
+            width: 164px;
+            overflow: hidden;
             color: black;
             position: relative;
           }

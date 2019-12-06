@@ -18,4 +18,13 @@ class Item < ApplicationRecord
   # has_many   :todos, dependent: :destroy
   # has_many   :notices, dependent: :destroy
   # has_many   :messages
+
+  def self.search(search)
+    if search
+      Item.where('((name LIKE(?)) OR (explanation LIKE(?))) AND (status_id IN(?))', "%#{search}%", "%#{search}%", 1..3)
+    else
+      Item.all
+    end
+  end
+
 end
