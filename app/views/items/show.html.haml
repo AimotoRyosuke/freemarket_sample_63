@@ -23,8 +23,10 @@
             .item-show__item__main__image__display__badge
             .item-show__item__main__image__display__badge__sold
               SOLD
-          - @item.images.each do |image|
-            = image_tag image.image.url, {class: "active"}
+          %ul.slider
+            - @item.images.each do |image|
+              %li
+                = image_tag image.image.url, {class: "active"}
         .item-show__item__main__image__list
           - @item.images.each do |image|
             = image_tag image.image.url, {class: "active"}

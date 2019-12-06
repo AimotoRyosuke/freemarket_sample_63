@@ -5,7 +5,6 @@ class ItemsController < ApplicationController
   def index
     @items = Item.order("id DESC").limit(10)
   end
-
   def new
     @item = Item.new
     @item.images.build
@@ -44,6 +43,15 @@ class ItemsController < ApplicationController
     else
       render :show
     end
+  end
+
+  def category_search
+    @items = Item.all.page(params[:page]).per(2).order("created_at DESC")
+  end
+
+  def search
+    @items = Item.search(params[:keyword]).page(params[:page]).per(2).order("created_at DESC")
+    @keyword = params[:keyword]
   end
   
   private

@@ -19,11 +19,13 @@ Rails.application.routes.draw do
   get  'mypage/identification', to: 'users#idetification'
   get  'mypage/logouts',        to: 'users#logouts'
   resources :items do
+    collection do
+      get 'search',            to: 'items#search'
+      get 'category/search',    to: 'items#category_search'
+    end
     resources :images
     resources :purchases do
       collection do
-        get  'new',    to: 'purchases#new'
-        post 'create', to: 'purchases#create'
         get  'done',   to: 'purchases#done'
       end
     end

@@ -71,9 +71,13 @@
               font-size: 28px;
             }
           }
-          img {
-            width: 300px;
-            height: 300px;
+          .slider{
+            // display: flex;
+            // overflow: hidden;
+            img {
+              width: 300px;
+              height: 300px;
+            }
           }
 
         }
