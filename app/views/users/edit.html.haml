@@ -1,0 +1,11 @@
+.user-profile
+  = render "shared/user-side"
+  .user-profile__contents
+    %h2.user-profile__contents__title プロフィール
+    .user-profile__contents__upper
+      .user-profile__contents__upper__image
+        = icon 'far','user'
+      %input{type: "textarea", class: "user-profile__contents__upper__name", placeholder: "例）AYA☆セール中", value: @user.nickname}
+    .user-profile__contents__lower
+      %textarea{placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪"}
+      %input{type: "submit", value: "変更する", class: "user-profile__contents__lower__botton"}
