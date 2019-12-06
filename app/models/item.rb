@@ -27,4 +27,16 @@ class Item < ApplicationRecord
     end
   end
 
+  def large_category_list
+    return Category.roots
+  end
+
+  def mid_category_list(large_category)
+    return Category.find_all_by_generation(1).with_ancestor(large_category.id).to_a
+  end
+
+  def small_category_list(mid_category)
+    category = Category.leaves.with_ancestor(mid_category.id)
+  end
+
 end

@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.order("id DESC").limit(10)
   end
+
   def new
     @item = Item.new
     render layout: "application_sub"
@@ -51,11 +52,25 @@ class ItemsController < ApplicationController
     @items = Item.search(params[:keyword]).page(params[:page]).per(2).order("created_at DESC")
     @keyword = params[:keyword]
   end
+
+  def mid_category
+    @mid_category = Category.find_all_by_generation(1).with_ancestor(params[:large_category]).order(id: :asc).to_a
+    respond_to do |format|
+      format.json {@mid_category}
+    end
+  end
+
+  def small_category
+    @small_category = Category.find_all_by_generation(2).with_ancestor(params[:mid_category]).order(id: :asc).to_a
+    respond_to do |format|
+      format.json {@small_category}
+    end
+  end
   
   private
 
   def item_params
-    params.require(:item).permit(:name, :explanation, :condition_id, :status_id, :shipping_method_id, :shipping_cost_id, :prefecture_id, :days_id, :price).merge(user_id: current_user.id)
+    params.require(:item).permit(:name, :explanation, :condition_id, :status_id, :shipping_method_id, :shipping_cost_id, :prefecture_id, :days_id, :price, :category_id).merge(user_id: current_user.id)
   end
 
   def set_item

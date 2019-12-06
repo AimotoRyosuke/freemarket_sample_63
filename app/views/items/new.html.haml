@@ -25,7 +25,6 @@
                         ドラッグアンドドロップ
                         またはクリックしてファイルをアップロード                      
                     %i.icon-photo
-
               .exhibit-content
                 .form--groups
                   %label
@@ -50,10 +49,10 @@
                       カテゴリー
 
                       %span.form__necessary 必須
-                    %div
-                      .select-enclose
+                    %div.add-box
+                      .select-enclose.large-category
                         %i.icon-rod-bottom
-                        = f.select :test,[["レディース",1],["メンズ",2],["ベビー・キッズ",3],["インテリア・住まい・小物",4],["本・音楽・ゲーム",5],["おもちゃ・ホビー・グッズ",1328],["コスメ・香水・美容",6],["家電・スマホ・カメラ",7],["スポーツ・レジャー",8],["ハンドメイド",9],[" チケット",1027],["自動車・オートバイ",1318],["その他",10]], {prompt: "---"}, {class:"select-normal"}
+                        = f.collection_select :large_id, Category.roots.order(id: :asc), :id, :name, {prompt: "---"}, {class:"select-normal"}
                   .form--groups
                     %label
 
