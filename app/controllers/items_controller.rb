@@ -91,7 +91,7 @@ class ItemsController < ApplicationController
       :prefecture_id,
       :days_id,
       :price,
-      :category_search,
+      :category_id,
       images_attributes:[:image]
       ).merge(user_id: current_user.id)
   end
