@@ -19,6 +19,8 @@ gem 'kaminari'
 
 gem 'breadcrumbs_on_rails'
 
+gem 'jp_prefecture'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.12'
 # Use SCSS for stylesheets
