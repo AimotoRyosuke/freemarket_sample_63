@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.order("id DESC").limit(10)
   end
+
   def new
     @item = Item.new
     @item.images.build
@@ -61,10 +62,25 @@ class ItemsController < ApplicationController
     @keyword = params[:keyword]
     add_breadcrumb @keyword if @keyword != ""
   end
+
+  def mid_category
+    @mid_category = Category.find_all_by_generation(1).with_ancestor(params[:large_category]).order(id: :asc).to_a
+    respond_to do |format|
+      format.json {@mid_category}
+    end
+  end
+
+  def small_category
+    @small_category = Category.find_all_by_generation(2).with_ancestor(params[:mid_category]).order(id: :asc).to_a
+    respond_to do |format|
+      format.json {@small_category}
+    end
+  end
   
   private
 
   def item_params
+
     params.require(:item).permit(
       :name,
       :explanation,
@@ -75,6 +91,7 @@ class ItemsController < ApplicationController
       :prefecture_id,
       :days_id,
       :price,
+      :category_id,
       images_attributes:[:image]
       ).merge(user_id: current_user.id)
   end

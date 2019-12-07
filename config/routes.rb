@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get  'mypage/identification', to: 'users#idetification'
   get  'mypage/address',        to: 'users#address'
   get  'mypage/logouts',        to: 'users#logouts'
+  get  'items/mid_category',        to: 'items#mid_category'
+  get  'items/small_category',        to: 'items#small_category'
   resources :items do
     collection do
       get 'search',            to: 'items#search'

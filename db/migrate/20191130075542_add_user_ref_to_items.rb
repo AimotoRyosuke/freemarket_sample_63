@@ -13,7 +13,6 @@ class AddUserRefToItems < ActiveRecord::Migration[5.2]
     add_reference :items, :status,          null: false
     add_reference :items, :prefecture,      null: false
     add_reference :items, :user,            null: false, foreign_key: true
-    # t.references    :categories_hierarchie, null: false, foreign_key: true
     # t.references    :brand,     null: false, foreign_key: true
   end
 end
