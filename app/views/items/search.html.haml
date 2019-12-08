@@ -22,8 +22,13 @@
           .search__side__contents__category__top__icon
           .search__side__contents__category__top__chara
             カテゴリーを追加する
-        %select.search__side__contents__category__select
-        
+          %div.add-box
+            .select-enclose.large-category
+              %i.icon-rod-bottom
+              = f.collection_select :item_large_id, Category.roots.order(id: :asc), :id, :name, {prompt: "---"}, {class:"select-normal"}
+
+        -# = f.collection_select :large_id, Category.roots.order(id: :asc), :id, :name, {prompt: "---"}, {class:"select-normal"}
+        -# %select.search__side__contents__category__select
       .search__side__contents__brand
         .search__side__contents__brand__top
           .search__side__contents__brand__top__icon
