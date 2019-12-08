@@ -1,7 +1,9 @@
 document.addEventListener(
   "DOMContentLoaded", e => {
     if (document.getElementById("form__submit") != null) {
-      Payjp.setPublicKey("pk_test_81d4b1cc2522517a741bb2a5");
+      // Payjp.setPublicKey("pk_test_81d4b1cc2522517a741bb2a5");
+      Payjp.setPublicKey("pk_test_7f13cfff185abb06f3fa6921");
+
       let btn = document.getElementById("form__submit");
       btn.addEventListener("click", e => {
         e.preventDefault();

@@ -1,7 +1,5 @@
 class Address < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  include JpPrefecture
-  jp_prefecture :prefecture_code
   belongs_to_active_hash :prefecture
   before_validation :change_string
   has_many :users
@@ -15,15 +13,6 @@ class Address < ApplicationRecord
   def change_string
     self.first_name_kana    = self.first_name_kana.tr('ぁ-ん','ァ-ン')
     self.last_name_kana     = self.last_name_kana.tr('ぁ-ん','ァ-ン')
-  end
-
-
-  def prefecture_name
-    JpPrefecture::Prefecture.find(code: prefecture_code).try(:name)
-  end
-
-  def prefecture_name=(prefecture_name)
-    self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
 
 end
