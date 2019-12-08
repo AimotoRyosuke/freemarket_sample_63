@@ -2,7 +2,7 @@
   %section.item-show__item
     %h1.item-show__item__name
       = @item.name
-    - unless user_signed_in? && current_user.id == @item.user.id
+    - unless current_user.id == @item.user.id
       - if @item.status_id == 2
       - else
         %p.item-show__item__wording
@@ -11,7 +11,8 @@
           = trade_count(@item)
           回の取引実績を持つ
           = @item.user.nickname
-          さんから出品されました。その他/家電・スマホ・カメラの商品で、
+          さんから出品されました。
+          = @category.name + "/" + @category.parent.name + "の商品で、"
           = @item.prefecture.name
           から
           = @item.days.name
@@ -60,15 +61,15 @@
           %th.item-show__item__main__detail__category.contents
             .item-show__item__main__detail__category__top
               = link_to '', class: "blue" do
-                家電・スマホ・カメラ
+                = @category.root.name
             .item-show__item__main__detail__category__middle
               = link_to '', class: "blue" do
                 = icon 'fas', 'angle-right', class: 'angle-right'
-                PC/タブレット
+                = @category.parent.name
             .item-show__item__main__detail__category__bottom
               = link_to '', class: "blue" do
                 = icon 'fas', 'angle-right', class: 'angle-right'
-                その他
+                = @category.name
         %tr
           %th.title
             ブランド

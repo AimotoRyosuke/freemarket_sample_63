@@ -1,7 +1,13 @@
 class CardsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :other_user!
   before_action :set_card, only: [:destroy, :index]
 
+
   require "payjp"
+  before_action :set_card, only: [:destroy, :index]
+  add_breadcrumb "マイページ", :"user_path"
+  add_breadcrumb "支払い方法"
 
   def new
     @card = Card.new
@@ -55,6 +61,12 @@ class CardsController < ApplicationController
   private
   def set_card
     @card = current_user.card
+  end
+
+  def other_user!
+    if params[:id] != current_user.id.to_s
+      redirect_to root_path
+    end
   end
 
 end

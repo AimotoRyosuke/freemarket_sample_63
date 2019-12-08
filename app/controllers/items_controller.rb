@@ -24,12 +24,18 @@ class ItemsController < ApplicationController
 
   def show
     item = Item.find(params[:id])
+    @category = Category.find(item.category_id)
     add_breadcrumb item.name
   end
 
   def edit
-    @images = @item.images
-    render layout: "application_sub"
+    if @item.user.id == current_user.id
+      @images = @item.images
+      @category = Category.find(@item.category_id)
+      render layout: "application_sub"
+    else
+      redirect_to root_path
+    end
   end
 
   def update
