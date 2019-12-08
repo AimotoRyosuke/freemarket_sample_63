@@ -102,7 +102,6 @@ class SignUpsController < ApplicationController
       if params[:user][:auth] == "111111"
         @user.save
         sign_in User.find(@user.id)
-        binding.pry
         session.delete(:nickname)
         session.delete(:birth)
         session.delete(:email)
