@@ -19,8 +19,16 @@ class Item < ApplicationRecord
   # has_many   :notices, dependent: :destroy
   # has_many   :messages
 
-  def self.search(search)
-      Item.where('((name LIKE(?)) OR (explanation LIKE(?))) AND (status_id IN(?))', "%#{search}%", "%#{search}%", 1..3)
+
+  def self.search(keyword, condition, shipping_cost, status, minprice, maxprice)
+    scope :word, -> { where('((name LIKE(?)) OR (explanation LIKE(?)))', "%#{keyword}%", "%#{keyword}%") if keyword.present?}
+    scope :condi, -> { where('(condition_id IN(?))',condition) unless condition == ['']}
+    scope :cost, -> { where('(shipping_cost_id IN(?))',shipping_cost) unless shipping_cost == ['']}
+    scope :state, -> { where('(status_id IN(?))',status) unless status == ['']}
+    scope :minpr, -> { where("price >= ?", minprice) if minprice.present?}
+    scope :maxpr, -> { where("price <= ?", maxprice) if maxprice.present?}
+    scope :detailsearch, -> { word.condi.cost.state.minpr.maxpr }
+    Item.detailsearch
   end
 
 end

@@ -11,6 +11,7 @@ module ItemsHelper
     sell_count = Item.where(user_id: @item.user.id,status_id: 2).count
     purchase_count = Purchase.where(user_id: @item.user.id).count
     trade_count = sell_count + purchase_count
+  end
     
   def large_category_list
     large_category = Category.roots

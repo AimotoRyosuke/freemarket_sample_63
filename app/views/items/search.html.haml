@@ -1,5 +1,77 @@
 .search
-  .search__side
+  = form_with model: @item, url: search_items_path, method: :get, local: true, class: "search__side" do |f|
+    %select.search__side__sort
+      %option{value: ""} 並び替え
+      %option{value: "1"} 価格の安い順
+      %option{value: "2"} 価格の高い順
+      %option{value: "3"} 出品の古い順
+      %option{value: "4"} 出品の新しい順
+      %option{value: "5"} いいね!の多い順
+    .search__side__contents
+      .search__side__contents__top
+        詳細検索
+      .search__side__contents__keyword
+        .search__side__contents__keyword__top
+          .search__side__contents__keyword__top__icon
+          .search__side__contents__keyword__top__chara
+            キーワードを追加する
+        .search__side__contents__keyword__input
+          = f.search_field :keyword, name: "keyword", placeholder: "例）値下げ", class: "header__top__search__input"
+      .search__side__contents__category
+        .search__side__contents__category__top
+          .search__side__contents__category__top__icon
+          .search__side__contents__category__top__chara
+            カテゴリーを追加する
+        %select.search__side__contents__category__select
+        
+      .search__side__contents__brand
+        .search__side__contents__brand__top
+          .search__side__contents__brand__top__icon
+          .search__side__contents__brand__top__chara
+            ブランド名から検索する
+        .search__side__contents__brand__input
+          %input{type: "text", placeholder: "例）シャネル"}
+      .search__side__contents__size
+        .search__side__contents__size__top
+          .search__side__contents__size__top__icon
+          .search__side__contents__size__top__chara
+            サイズを指定する
+        %select.search__side__contents__size__select
+      .search__side__contents__price
+        .search__side__contents__price__top
+          .search__side__contents__price__top__icon
+          .search__side__contents__price__top__chara
+            価格
+        -# = f.select :price, [['300 ~ 1000', 300-1000], ['1000 ~ 5000', 1000-5000], ['5000 ~ 10000', 5000-10000], ['10000 ~ 30000', 10000-30000], ['30000 ~ 50000', 30000-5000], ['50000 ~', 50000-]], {include_blank: '選択してください'},  class:"search__side__contents__price__select"
+        = f.select :price, ['300 ~ 1000', '1000 ~ 5000', '5000 ~ 10000', '10000 ~ 30000', '30000 ~ 50000', '50000 ~'], {include_blank: '選択してください'},  class:"search__side__contents__price__select"
+        = f.search_field :minprice, name: "minprice", placeholder: "¥ Min"
+        = f.search_field :maxprice, name: "maxprice", placeholder: "¥ Max"
+        .search__side__contents__price__input
+      .search__side__contents__condition
+        .search__side__contents__condition__top
+          .search__side__contents__condition__top__icon
+          .search__side__contents__condition__top__chara
+            商品の状態
+        = f.collection_check_boxes(:condition_id, Condition.all, :id, :name)
+      .search__side__contents__shipping_cost
+        .search__side__contents__shipping_cost__top
+          .search__side__contents__shipping_cost__top__icon
+          .search__side__contents__shipping_cost__top__chara
+            配送料の負担
+        = f.collection_check_boxes(:shipping_cost_id, ShippingCost.all, :id, :name)
+      .search__side__contents__status
+        .search__side__contents__status__top
+          .search__side__contents__status__top__icon
+          .search__side__contents__status__top__chara
+            販売状況
+        = f.collection_check_boxes(:status_id, Status.all, :id, :name)
+      .search__side__contents__btn
+        .search__side__contents__btn__clear
+          クリア
+        .search__side__contents__btn__submit
+          = f.button "完了", type: :submit
+        
+
   .search__items
     .search__items__result
       - if @keyword.present?

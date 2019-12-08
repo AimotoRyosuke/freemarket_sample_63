@@ -56,11 +56,13 @@ class ItemsController < ApplicationController
   end
 
   def search
-    @items = Item.search(params[:keyword]).page(params[:page]).limit(100).per(100).order("created_at DESC")
+    @items = Item.search(params[:keyword],params[:condition_id],params[:shipping_cost_id], params[:status_id], params[:minprice], params[:maxprice]).page(params[:page]).limit(100).per(100).order("created_at DESC")
     @no_items = Item.all.order("created_at DESC").limit(100)
     @keyword = params[:keyword]
     add_breadcrumb @keyword if @keyword != ""
   end
+
+
   
   private
 
