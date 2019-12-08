@@ -14,4 +14,5 @@ class Address < ApplicationRecord
     self.first_name_kana    = self.first_name_kana.tr('ぁ-ん','ァ-ン')
     self.last_name_kana     = self.last_name_kana.tr('ぁ-ん','ァ-ン')
   end
+
 end

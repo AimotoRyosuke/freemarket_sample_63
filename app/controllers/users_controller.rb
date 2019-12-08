@@ -13,4 +13,19 @@ class UsersController < ApplicationController
     add_breadcrumb "ログイン"
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    if @user = User.find(params[:id])
+      redirect_to "index"
+    else
+      render "edit"
+    end
+    params.permit(:nickname, :profile)
+  end
+
+  def address
+  end
 end

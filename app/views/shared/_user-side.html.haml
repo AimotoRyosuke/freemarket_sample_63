@@ -103,19 +103,19 @@
     %h3 設定
     %ul
       %li
-        = link_to root_path do
+        = link_to edit_user_path(current_user) do
           %div 
             プロフィール
           %div.bar-right
             >
       %li
-        = link_to root_path do
+        = link_to mypage_address_path do
           %div 
             発送元・お届け先住所変更
           %div.bar-right
             >
       %li
-        = link_to user_cards_path(current_user.id) do
+        = link_to user_cards_path do
           %div 
             支払い方法
           %div.bar-right
