@@ -1,7 +1,7 @@
 class CardsController < ApplicationController
   before_action :set_card, only: [:destroy, :index]
 
-  require "Payjp"
+  require "payjp"
 
   def new
     @card = Card.new
@@ -15,7 +15,6 @@ class CardsController < ApplicationController
     if params['payjp-token'].blank?
       redirect_to action: "new"
     else
-      binding.pry
       customer = Payjp::Customer.create(
       description: 'メルカリテスト',
       email: current_user.email,
