@@ -37,7 +37,7 @@ $(function(){
   function appendMidSelect() {
     var select_tag = `<div class="select-enclose mid-category">
     <i class="icon-rod-bottom"></i>
-    <select class="select-normal" name="item[mid_id]" id="item_mid_id"><option value="">---</option></select>
+    <select class="select-normal search__side__contents__category__input" name="item[mid_id]" id="item_mid_id"><option value="">---</option></select>
     </div>`
     $('.add-box').append(select_tag);
   }
@@ -45,7 +45,7 @@ $(function(){
   function appendSmallSelect() {
     var select_tag = `<div class="select-enclose small-category">
     <i class="icon-rod-bottom"></i>
-    <select class="select-normal" name="item[category_id]" id="item_small_id"><option value="">---</option></select>
+    <select class="select-normal search__side__contents__category__input" name="item[category_id]" id="item_small_id"><option value="">---</option></select>
     </div>`
     $('.add-box').append(select_tag);
   }
