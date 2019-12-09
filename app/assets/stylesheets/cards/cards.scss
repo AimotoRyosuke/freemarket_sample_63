@@ -1,31 +1,10 @@
-.bread-crumbs {
-  height: 48px;
-  width: 1020px;
-  padding: 0 calc(50% - 510px);
-  background-color: #fff;
-  border-top: 1px solid #eee;
-  box-shadow: 0 3px 3px 0 rgba(0,0,0,0.16);
-  &__icon {
-    margin: 0 6px;
-    color: #888;
-    font-size: 17px;
-    line-height: 49px;
-  }
-  &__page {
-    text-decoration: none;
-    line-height: 49px;
-    font-size: 14px;
-  }
-  #in-page {
-    font-weight: bold;
-  }
-}
-
-.credit  {
+.card  {
   display: flex;
   align-items: flex-start;
-  margin-top: 40px;
-  padding: 0 calc(50% - 510px) 40px;
+  justify-content: center;
+  width: 1020px;
+  margin: 40px auto 0;
+  padding: 0 0 40px;
   position: relative;
   .menu-bar {
     position: absolute;
@@ -34,6 +13,7 @@
     padding: 16px;
     background-color: #eee;
     bottom: 236px;
+    left: 0;
     text-decoration: none;
     color: #333;
     display: flex;

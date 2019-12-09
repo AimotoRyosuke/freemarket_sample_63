@@ -14,7 +14,6 @@ $(function(){
     $('input_normal').val(data);
     }
     else if(data == '') {
-    // console.log(999);
     $('.l-right-line_bold').html('');
     $('.l-right-line').html('');
     
@@ -56,7 +55,6 @@ $(function(){
   }
 
   function appendSmallOption(small) {
-    console.log(small)
     var smallOption = `<option value="${small.id}">${small.name}</option>`
     $('#item_small_id').append(smallOption)
   }
@@ -71,8 +69,8 @@ $(function(){
       dataType: 'json'
     })
     .done(function(midCategory){
-      console.log(midCategory)
       $('.mid-category').remove();
+      $('.small-category').remove();
       appendMidSelect()
       midCategory.forEach(function(mid){
         appendMidOption(mid);
@@ -85,7 +83,6 @@ $(function(){
 
   $(document).on('change', '.mid-category', function(){
     let value = $('#item_mid_id').val();
-    console.log(value);
     $.ajax({
       type: 'GET',
       url: '/items/small_category',
@@ -93,8 +90,8 @@ $(function(){
       dataType: 'json'
     })
     .done(function(smallCategory){
-      console.log(smallCategory)
       $('.small-category').remove();
+      
       appendSmallSelect()
       smallCategory.forEach(function(small){
         appendSmallOption(small);
