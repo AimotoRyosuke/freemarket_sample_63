@@ -5,7 +5,7 @@ class PurchasesController < ApplicationController
 
   def new
     @purchase = Purchase.new
-    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+    Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
     if @card.blank?
     else
       customer = Payjp::Customer.retrieve(@card.customer_id)
@@ -22,7 +22,7 @@ class PurchasesController < ApplicationController
       if purchase = Purchase.create(purchase_params)
         @item.status_id = 2
         @item.save
-        Payjp.api_key = ENV['PAYJP_SECRET_KEY']
+        Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
         Payjp::Charge.create(
           amount: @item.price,
           customer: @card.customer_id,
