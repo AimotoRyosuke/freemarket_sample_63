@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :other_user!
   add_breadcrumb "マイページ", :user_path
   
   def show
@@ -26,6 +27,10 @@ class UsersController < ApplicationController
     params.permit(:nickname, :profile)
   end
 
-  def address
+  def other_user!
+    if params[:id] != current_user.id.to_s
+      redirect_to root_path
+    end
   end
+
 end

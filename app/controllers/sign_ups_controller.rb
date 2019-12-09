@@ -1,8 +1,8 @@
 class SignUpsController < ApplicationController
+  require "payjp"
   before_action :authenticate_user!, except: [:signup_select, :user_baseinfo, :user_baseinfo_validate, :user_params, :user_tel, :user_tel_auth, :user_tel_validate, :user_create]
   before_action :user_params, only: :user_baseinfo_validate
-  before_action :address_params, only: :user_address_create 
-  before_action :credit_params, only: :user_credit_create
+  before_action :address_params, only: :user_address_create
 
   def signup_select
     render layout: "application_sub"
@@ -129,49 +129,39 @@ class SignUpsController < ApplicationController
   end
 
   def user_address_create
-    @address = Address.new(
-      first_name:      address_params[:first_name],
-      last_name:       address_params[:last_name],
-      first_name_kana: address_params[:first_name_kana],
-      last_name_kana:  address_params[:last_name_kana],
-      zip_code:        address_params[:zip_code],
-      prefecture_id:   address_params[:prefecture_id],
-      city:            address_params[:city],
-      address:         address_params[:address],
-      building:        address_params[:building],
-      tel:             address_params[:tel],
-      user_id:         address_params[:user_id]
-    )
+    @address = Address.new(address_params)
     @address.valid?
-    tel_confirmation
     if @address.errors.messages == {} && @address.errors.details == {}
       @address.save
-      redirect_to registrate_credit_path
+      redirect_to registrate_card_path
     else
       render :user_address, layout: "application_sub"
     end
 
   end
 
-  def user_credit
-    @credit = Credit.new
+  def user_card
+    @card = Credit.new
     render layout: "application_sub"
   end
   
-  def user_credit_create
-    @credit = Credit.new(
-      number:   credit_params[:number],
-      year:     credit_params[:year],
-      month:    credit_params[:month],
-      security: credit_params[:security],
-      user_id:  credit_params[:user_id]
-    )
-    @credit.valid?
-    if @credit.errors.messages.blank? && @credit.errors.details.blank?
-      @credit.save
-      redirect_to registrate_complete_path
+  def user_card_create
+    Payjp.api_key = Rails.application.credentials.payjp[:secret_key]
+    if params['payjp-token'].blank?
+      redirect_to action: "new"
     else
-      render :user_credit, layout: "application_sub"
+      customer = Payjp::Customer.create(
+      description: 'メルカリテスト',
+      email: current_user.email,
+      card: params['payjp-token'],
+      metadata: {user_id: current_user.id}
+      )
+      @card = Card.new(user_id: current_user.id, customer_id: customer.id, card_id: customer.default_card)
+      if @card.save
+        redirect_to action: "user_complete"
+      else
+        render :user_card, layout: "application_sub"
+      end
     end
   end
 
@@ -207,20 +197,16 @@ class SignUpsController < ApplicationController
   end
 
   def address_params
+    params[:address][:tel] = params[:address][:tel].to_i
+    if params[:address][:tel] == 0
+      params[:address][:tel] = ""
+    end
     params.require(:address).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :tel, :zip_code, :prefecture_id, :city, :address, :building, :tel).merge(user_id: current_user.id)
   end
 
-  def tel_confirmation
-    if @address.errors.messages.has_key?(:tel) && @address.errors.details.has_key?(:tel)
-      @address.delete[:tel]
-      @address.errors.messages.delete(:tel)
-      @address.errors.details.delete(:tel)
-    end
-  end
-
-  def credit_params
-    params[:credit][:year] = Date.strptime(params[:credit]['date(1i)'], "%Y")
-    params[:credit][:month] = Date.strptime(params[:credit]['date(2i)'], "%m")
-    params.require(:credit).permit(:number, :year, :month, :security).merge(user_id: current_user.id)
+  def card_params
+    params[:card][:year] = Date.strptime(params[:card]['date(1i)'], "%Y")
+    params[:card][:month] = Date.strptime(params[:card]['date(2i)'], "%m")
+    params.require(:card).permit(:number, :year, :month, :security).merge(user_id: current_user.id)
   end
 end

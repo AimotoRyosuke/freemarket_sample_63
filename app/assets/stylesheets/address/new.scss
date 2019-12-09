@@ -1,0 +1,125 @@
+.address {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 1020px;
+  margin: 40px auto 0;
+  padding: 0 0 40px;
+  position: relative;
+  .menu-bar {
+    position: absolute;
+    height: 16px;
+    width: 248px;
+    padding: 16px;
+    background-color: #eee;
+    bottom: 307px;
+    left: 0;
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+    &__title {
+      font-weight: 600px;
+    }
+    &__icon {
+      font-size: 22px;
+      line-height: 16px;
+    }
+  }
+  .menu-bar:hover {
+    padding-right: 10px;
+    width: 255px;
+    transition: all ease-out .2s;
+  }
+  .main{
+    width: 700px;
+    background-color: #fff;
+    font-size: 14px;
+    padding-bottom: 40px;
+    .top {
+      font-size: 22px;
+      height: 50px;
+      width: 100%;
+      text-align: center;
+      line-height: 50px;
+      font-weight: bold;
+      border-bottom: 1px solid #eee;
+    }
+    .form {
+      width: 572px;
+      padding: 40px 0;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      &__group {
+        width: 343px;
+        margin-bottom: 32px;
+        &__name {
+          font-weight: 600;
+          display: inline-block;
+        }
+        &__require {
+          height: 15px;
+          width: 24px;
+          padding: 2px 4px;
+          margin-left: 8px;
+          text-align: center;
+          line-height:16px;
+          background-color: #ea352d;
+          font-size: 12px;
+          color: #fff;
+          border-radius: 2px;
+          display: inline-block;
+          vertical-align: top;
+          &--any {
+            height: 15px;
+            width: 24px;
+            padding: 2px 4px;
+            margin-left: 8px;
+            text-align: center;
+            line-height:16px;
+            background-color: #ccc;
+            font-size: 12px;
+            color: #fff;
+            border-radius: 2px;
+            display: inline-block;
+            vertical-align: top;
+          }
+        }
+        &__input {
+          display: block;
+          margin-top: 8px;
+          height: 28px;
+          width: 309px;
+          padding: 10px 16px 8px;
+          border: 1px solid #ccc;
+          font-size: 16px;
+          border-radius: 4px;
+        }
+        &__prefecture {
+          display: block;
+          margin-top: 8px;
+          width: 341px;
+          height: 48px;
+          background-color: #fff;
+          font-size: 16px;
+        }
+        &__err {
+          color: #ea352d;
+          margin-top: 8px;
+        }
+      }
+      &__submit {
+        height: 50px;
+        width: 343px;
+        background-color: #ea352d;
+        color: #fff;
+        margin-top: 32px;
+
+        cursor: pointer;
+      }
+    }
+  }
+}

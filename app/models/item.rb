@@ -8,6 +8,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :status
   has_many               :images, dependent: :destroy
   has_one                :purchase
+  has_one                :category
   belongs_to             :user
   accepts_nested_attributes_for :images
 
@@ -43,7 +44,7 @@ class Item < ApplicationRecord
   end
 
   def small_category_list(mid_category)
-    category = Category.leaves.with_ancestor(mid_category.id)
+    category = Category.leaves.with_ancestor(mid_category.id).to_a
   end
 
 end
