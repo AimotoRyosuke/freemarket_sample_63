@@ -11,7 +11,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     info = User.find_oauth(request.env["omniauth.auth"])
     user = info[:user]
     snsauth = info[:snsauth]
-    binding.pry
     if snsauth.blank? && user.blank? #新規登録
       @user = User.new(
         nickname: request.env["omniauth.auth"].info.name,

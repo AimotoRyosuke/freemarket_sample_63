@@ -17,7 +17,6 @@ Rails.application.routes.draw do
   get  'registrate/complete',   to: 'sign_ups#user_complete'
   get  'mypage/identification', to: 'users#idetification'
   get  'mypage/logouts',        to: 'users#logouts'
-  get  'mypage/SNS',            to: 'users#SNS'
   get  'items/mid_category',        to: 'items#mid_category'
   get  'items/small_category',        to: 'items#small_category'
   resources :items do
@@ -37,6 +36,7 @@ Rails.application.routes.draw do
     member do
       resources :cards
       resources :address
+      get  'mypage/SNS',            to: 'users#SNS'
       get  'identification', to: 'users#idetification'
       get  'logouts',        to: 'users#logouts'
     end
