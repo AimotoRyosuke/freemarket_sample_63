@@ -14,7 +14,6 @@ class ItemsController < ApplicationController
   
   def create
     @item = Item.new(item_params)
-    
     if @item.save
       redirect_to item_path(@item)
     else
@@ -55,11 +54,21 @@ class ItemsController < ApplicationController
   end
 
   def category_search
-    @items = Item.all.page(params[:page]).per(2).order("created_at DESC")
-    add_breadcrumb "カテゴリー一覧", root_path
-    add_breadcrumb "カテゴリー大"
-    add_breadcrumb "カテゴリー中"
-    add_breadcrumb "カテゴリー小"
+    binding.pry
+    if params[:category].present?
+      add_breadcrumb "カテゴリー一覧", category_items_path
+      @items = Item.cat_search(params[:category]).page(params[:page]).per(100).order("created_at DESC")
+      @category = Category.find(params[:category])
+      if @category.root?
+        add_breadcrumb @category.root.name
+      else
+        add_breadcrumb @category.root.name if @category.parent.parent
+        add_breadcrumb @category.parent.name if @category.parent
+        add_breadcrumb @category.name
+      end
+    else
+      redirect_to category_items_path
+    end
   end
 
   def search
@@ -82,11 +91,15 @@ class ItemsController < ApplicationController
       format.json {@small_category}
     end
   end
+
+  def category_index
+    @category = Category.all
+    add_breadcrumb "カテゴリー一覧"
+  end
   
   private
 
   def item_params
-
     params.require(:item).permit(
       :name,
       :explanation,
@@ -99,7 +112,7 @@ class ItemsController < ApplicationController
       :price,
       :category_id,
       images_attributes:[:image]
-      ).merge(user_id: current_user.id)
+    ).merge(user_id: current_user.id)
   end
 
   def update_item_params
@@ -114,7 +127,7 @@ class ItemsController < ApplicationController
       :days_id,
       :price,
       images_attributes:[:image, :_destroy, :id]
-      ).merge(user_id: current_user.id)
+    ).merge(user_id: current_user.id)
   end
 
   def set_item

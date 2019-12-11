@@ -4,17 +4,26 @@
 .cat-search
   .cat-search__items
     .cat-search__items__child
-      = link_to "子カテゴリー１", root_path
-      = link_to "子カテゴリー２", root_path
-      = link_to "子カテゴリー３", root_path
-      = link_to "子カテゴリー４", root_path
-      = link_to "子カテゴリー５", root_path
-    .cat-search__items__title カテゴリー名の商品一覧(nページ目)
+      - @category.children.limit(9).each do |child|
+        = link_to child.name, category_search_items_path+"?category=" + child.id.to_s if @items.length != Item.all.length
+    - if @items.length == Item.all.length
+      .cat-search__items__title=@category.name + "の商品はございませんでした。新着一覧"
+    - elsif @items.current_page == 1
+      .cat-search__items__title=@category.name + "の商品一覧"
+    - else
+      .cat-search__items__title=@category.name + "の商品一覧(" + @items.current_page.to_s + "ページ目)"
     %ul.cat-search__items__list
       = render partial: "item", collection: @items
     = paginate(@items)
-  .cat-search__explanation
-    .cat-search__explanation__title "カテゴリー名"(ルートカテゴリー)
-    .cat-search__explanation__text "カテゴリー名"の処分、買取ならメルカリへ。"カテゴリー名"の商品は"category.itme.number"点以上あります。人気のあるカテゴリーは"孫カテゴリー1"と"孫カテゴリー2"です（親・子のみ）。人気の商品は「category.item1」や「category.item2」があります。"category.name"のリサイクルや売ることを検討中の方にお勧めです。
-
-
+  -if @items.length != Item.all.length
+    .cat-search__explanation
+      -if @category.root?
+        .cat-search__explanation__title=@category.name
+      -else
+        .cat-search__explanation__title=@category.name+"（"+@category.root.name+"）"
+      .cat-search__explanation__text
+        %p.cat-search__explanation__text__portal=@category.name + "の処分、買取ならメルカリへ。" + @category.name + "の商品は"  + @items.length.to_s + "点以上あります。"
+        -unless @category.leaf?
+          %p.cat-search__explanation__text__portal="人気のあるカテゴリーは" + @category.leaves[0].name+ "と"+ @category.leaves[1].name + "です。"
+        -if @items.length >= 2
+          %p.cat-search__explanation__tex="人気の商品は「" + @items[0].name + "」や「" + @items[1].name + "」があります。" + @category.name + "のリサイクルや売ることを検討中の方にお勧めです。"
