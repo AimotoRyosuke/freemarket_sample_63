@@ -19,8 +19,19 @@ class Item < ApplicationRecord
   # has_many   :notices, dependent: :destroy
   # has_many   :messages
 
-  def self.search(search)
-      Item.where('((name LIKE(?)) OR (explanation LIKE(?))) AND (status_id IN(?))', "%#{search}%", "%#{search}%", 1..3)
+
+  def self.search(keyword, condition, shipping_cost, status, minprice, maxprice, largecategory, middlecategory, category) 
+    scope :word, -> { where('((name LIKE(?)) OR (explanation LIKE(?)))', "%#{keyword}%", "%#{keyword}%") if keyword.present?}
+    scope :condi, -> { where('(condition_id IN(?))',condition) unless condition == ['']}
+    scope :cost, -> { where('(shipping_cost_id IN(?))',shipping_cost) unless shipping_cost == ['']}
+    scope :state, -> { where('(status_id IN(?))',status) unless status == ['']}
+    scope :minpr, -> { where("price >= ?", minprice) if minprice.present?}
+    scope :maxpr, -> { where("price <= ?", maxprice) if maxprice.present?}
+    scope :large, -> { where("(category_id IN(?))", Category.leaves.with_ancestor(largecategory).ids) if largecategory.present?}
+    scope :middle, -> { where("(category_id IN(?))", Category.leaves.with_ancestor(middlecategory).ids) if middlecategory.present?}
+    scope :cate, -> { where('(category_id IN(?))',category) if category.present?}
+    scope :detailsearch, -> { word.condi.cost.state.minpr.maxpr.large.middle.cate }
+    return Item.detailsearch
   end
 
   def large_category_list

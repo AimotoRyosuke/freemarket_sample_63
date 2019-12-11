@@ -1,5 +1,98 @@
 .search
-  .search__side
+  = form_with model: @item, url: search_items_path, method: :get, local: true, class: "search__side" do |f|
+    %select.search__side__sort
+      %option{value: ""} 並び替え
+      %option{value: "1"} 価格の安い順
+      %option{value: "2"} 価格の高い順
+      %option{value: "3"} 出品の古い順
+      %option{value: "4"} 出品の新しい順
+      %option{value: "5"} いいね!の多い順
+    .search__side__contents
+      .search__side__contents__top
+        詳細検索
+      .search__side__contents__keyword
+        .search__side__contents__keyword__top
+          .search__side__contents__keyword__top__icon
+            = icon "fas", "plus"
+          .search__side__contents__keyword__top__chara
+            キーワードを追加する
+        = f.search_field :keyword, name: "keyword", placeholder: "例）値下げ", class: "search__side__contents__keyword__input"
+      .search__side__contents__category
+        .search__side__contents__category__top
+          .search__side__contents__category__top__icon
+            = icon "fas", "list"
+          .search__side__contents__category__top__chara
+            カテゴリーを追加する
+        %div.add-box
+          .select-enclose.large-category
+            %i.icon-rod-bottom
+            = f.collection_select :item_large_id, Category.roots.order(id: :asc), :id, :name, {prompt: "---"}, {class:"select-normal search__side__contents__category__input"}
+      .search__side__contents__brand
+        .search__side__contents__brand__top
+          .search__side__contents__brand__top__icon
+            = icon 'fas', 'tag'
+          .search__side__contents__brand__top__chara
+            ブランド名から検索する
+        %input{type: "text", placeholder: "例）シャネル", class: "search__side__contents__brand__input"}
+      .search__side__contents__size
+        .search__side__contents__size__top
+          .search__side__contents__size__top__icon
+            = icon 'fas', 'expand'
+          .search__side__contents__size__top__chara
+            サイズを指定する
+        %select.search__side__contents__size__select
+      .search__side__contents__price
+        .search__side__contents__price__top
+          .search__side__contents__price__top__icon
+            = icon 'fas', 'coins'
+          .search__side__contents__price__top__chara
+            価格
+        -# = f.select :price, ['300 ~ 1000', '1000 ~ 5000', '5000 ~ 10000', '10000 ~ 30000', '30000 ~ 50000', '50000 ~'], {include_blank: '選択してください'},  class:"search__side__contents__price__select"
+        %select.search__side__contents__price__select
+          %option{value: ""} 選択してください
+          %option{value: "1"} 300 ~ 1000
+          %option{value: "2"} 1000 ~ 500
+          %option{value: "3"} 5000 ~ 10000
+          %option{value: "4"} 10000 ~ 30000
+          %option{value: "5"} 30000 ~ 50000
+          %option{value: "6"} 50000 ~
+        .search__side__contents__price__min-max
+          = f.search_field :minprice, name: "minprice", placeholder: "¥ Min", class: "search__side__contents__price__min-max__min"
+          %span ~
+          = f.search_field :maxprice, name: "maxprice", placeholder: "¥ Max", class: "search__side__contents__price__min-max__max"
+        .search__side__contents__price__input
+      .search__side__contents__condition
+        .search__side__contents__condition__top
+          .search__side__contents__condition__top__icon
+            = icon 'fas', 'star'
+          .search__side__contents__condition__top__chara
+            商品の状態
+        .search__side__contents__condition__check
+          = f.collection_check_boxes(:condition_id, Condition.all, :id, :name) do |b|
+            = b.label { b.check_box + b.text }
+      .search__side__contents__shipping-cost
+        .search__side__contents__shipping-cost__top
+          .search__side__contents__shipping-cost__top__icon
+            = icon 'fas', 'truck-moving'
+          .search__side__contents__shipping-cost__top__chara
+            配送料の負担
+        .search__side__contents__shipping-cost__check
+          = f.collection_check_boxes(:shipping_cost_id, ShippingCost.all, :id, :name) do |b|
+            = b.label { b.check_box + b.text }
+      .search__side__contents__status
+        .search__side__contents__status__top
+          .search__side__contents__status__top__icon
+            = icon 'fas', 'shopping-cart'
+          .search__side__contents__status__top__chara
+            販売状況
+        .search__side__contents__status__check
+          = f.collection_check_boxes(:status_id, Status.all, :id, :name) do |b|
+            = b.label { b.check_box + b.text }
+      .search__side__contents__btn
+        = f.button "クリア", type: :reset ,class: "search__side__contents__btn__clear"
+        = f.button "完了", type: :submit ,class: "search__side__contents__btn__submit"
+        
+
   .search__items
     .search__items__result
       - if @keyword.present?
