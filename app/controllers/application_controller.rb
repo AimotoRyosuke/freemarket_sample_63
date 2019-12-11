@@ -13,12 +13,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def other_user!
-    if current_user.id != params[:user_id]
-      redirect_to root_path
-    end
-  end
-
   private
 
   def production?

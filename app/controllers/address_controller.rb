@@ -37,8 +37,7 @@ class AddressController < ApplicationController
   private
 
   def address_params
-    params[:address][:tel] = params[:address][:tel].to_i
-    if params[:address][:tel] == 0
+    unless  params[:address][:tel].match(/\A\d{10}$|^\d{11}\z/)
       params[:address][:tel] = ""
     end
     params.require(:address).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :tel, :zip_code, :prefecture_id, :city, :address, :building, :tel).merge(user_id: current_user.id)

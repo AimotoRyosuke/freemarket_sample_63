@@ -13,7 +13,6 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :images
 
   # belongs_to :brand
-  # belongs_to :categories_hierarchie
   # has_many   :likes
   # has_many   :comments
   # has_many   :todos, dependent: :destroy
@@ -46,5 +45,19 @@ class Item < ApplicationRecord
   def small_category_list(mid_category)
     category = Category.leaves.with_ancestor(mid_category.id).to_a
   end
+
+  def self.cat_search(category)
+    leaves = Category.find(category).leaves.order(:id)
+    items = []
+    leaves.each do |leaf|
+      item = Item.where(category_id: leaf.id)
+      items << item if item.present?
+    end
+    if items[0] == nil
+      return Item.all
+    end
+    return items[0].order("id DESC")
+  end
+
 
 end
