@@ -26,7 +26,7 @@
   = form_with model: @user, url: signup_tel_path, local: true, class: 'form' do |f|
     .form__group
       .form__group__name 携帯電話の番号
-      = f.text_field :tel, class: 'form__group__input', placeholder: '携帯電話の番号を入力'
+      = f.text_field :tel, class: 'form__group__input', placeholder: '携帯電話の番号を入力', maxlength: "11"
       - if @user.errors.any? 
         .form__group__err
           - @user.errors.messages[:tel].each do |message|
