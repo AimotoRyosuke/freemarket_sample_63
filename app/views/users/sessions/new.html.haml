@@ -10,7 +10,7 @@
     = link_to "", class: "signin__google" do
       = image_tag "google.svg", size: "18x18", alt: "google-logo"
       %p Googleでログイン
-    = form_with model: @user, url: user_session_path, local: true, class:'signin__form' do |f|
+    = form_with model: @user, url: user_session_path, method: :post, local: true, class:'signin__form' do |f|
       = f.email_field :email, placeholder: "メールアドレス", class: 'signin__form__input'
       = f.password_field :password, placeholder: "パスワード", class: 'signin__form__input' 
       .form__group__recaptch.g-recaptcha{"data-callback": "clearcall", "data-sitekey": "6Le89cMUAAAAAAeb99rrFc47etRW6YfXytC1NXQs"}
