@@ -2,7 +2,7 @@
   %nav.user-side__nav
     %ul
       %li
-        = link_to root_path do
+        = link_to user_path(current_user) do
           %div 
             マイページ
           %div.bar-right
@@ -103,19 +103,19 @@
     %h3 設定
     %ul
       %li
-        = link_to root_path do
+        = link_to edit_user_path(current_user) do
           %div 
             プロフィール
           %div.bar-right
             >
       %li
-        = link_to root_path do
+        = link_to new_address_path do
           %div 
             発送元・お届け先住所変更
           %div.bar-right
             >
       %li
-        = link_to user_credits_path(current_user.id) do
+        = link_to new_card_path do
           %div 
             支払い方法
           %div.bar-right
@@ -127,7 +127,7 @@
           %div.bar-right
             >
       %li
-        = link_to mypage_identification_path do
+        = link_to identification_user_path(current_user) do
           %div 
             本人情報
           %div.bar-right
@@ -145,7 +145,7 @@
           %div.bar-right
             >
       %li
-        = link_to mypage_logouts_path do
+        = link_to logouts_user_path(current_user) do
           %div 
             ログアウト
           %div.bar-right

@@ -1,6 +1,4 @@
 .sign {
-    background-color: rgb(239, 239, 247);
-   
      &__header{ 
         margin: auto;
         width: 907px;
@@ -65,25 +63,14 @@
                         width: 80%;
                         border: 1px dashed #88b6fa; /*太さ・線種・色*/
                         color: black; /* 文字色 */
-                        background-color:rgb(236, 231, 231); /* 背景色 */
                         border-radius: 1px; /*角の丸み*/
-                        .exhibit-upload-items-content{
-                            .exhibit-upload-items.have-item-0{}
-                        }
-                        .exhibit-upload-drop-box.have-item-0{
-                            .exhibit-upload-drop-file{
-                            }
-                            .see-pc{
-                            }
-                            .icon-photo{}
-                        }
                     }
                 }
                 .exhibit-content{
                     font-size: 14px;
                     padding: 40px;
                     border-top: 1px solid #eee;
-                    .form--groups
+                    .form--groups {
                         .form__necessary{  
                             background-color: red;
                             margin: 0 0 0 8px;
@@ -116,33 +103,31 @@
                             font-size: 16px;
                             line-height: 1.5;
                         }
+                    }
                 }
                 .exhibit-content__onebox{
-                    height: 180px;
                     padding: 40px;
                     border-top: 1px solid #eee;
+                    height: 300px;
                     .exhibit-sub-head{
                         color: #888;
                         font-size: 14px;
-                        position: absolute;
                     }
                     .exhibit-form-box{
-                        float: right;
+                        height: auto;
                         width: 400px;
-                        height: 211px;
-                        position: relative;
-                        bottom: 40px;
                         font-size: 12px;
+                        margin-left: auto;
                         .form--groups{
                             margin: 40px 0 0;
                             .form__necessary {
                                 background-color: red;
-                                margin: 0 0 0 8px;
                                 padding: 2px 4px;
                                 color: #fff;
                                 font-weight: bold;
                             }
                             .select-enclose{
+                                margin-top: 8px;
                                 .icon-rod-bottom{}
                                 .select-normal{
                                     width: 400px;
@@ -329,6 +314,7 @@
                         height: 50px;
                         width: 620px;
                         margin: 40px 0 0 ;
+                        cursor:pointer;
                         .box-yes{
                             font-size: 14px;
                             color:white;
@@ -342,6 +328,8 @@
                         background-color: grey;
                         
                         display: flex;
+                        justify-content: center;
+                        align-items: center;
                         width: 45%;
                         height: 50px;
                         margin: 24px auto 0;

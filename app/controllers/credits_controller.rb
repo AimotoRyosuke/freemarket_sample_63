@@ -1,6 +1,6 @@
 class CreditsController < ApplicationController
   before_action :authenticate_user!
-
+  
   def index
     @credit = Credit.find_by(user_id: params[:user_id])
   end

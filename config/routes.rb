@@ -12,18 +12,32 @@ Rails.application.routes.draw do
   post 'signup/tel/auth',       to: 'sign_ups#user_create'
   get  'registrate/address',    to: 'sign_ups#user_address'
   post 'registrate/address',    to: 'sign_ups#user_address_create'
-  get  'registrate/credit',     to: 'sign_ups#user_credit'
-  post 'registrate/credit',     to: 'sign_ups#user_credit_create'
+  get  'registrate/card',     to: 'sign_ups#user_card'
+  post 'registrate/card',     to: 'sign_ups#user_card_create'
   get  'registrate/complete',   to: 'sign_ups#user_complete'
   get  'mypage/identification', to: 'users#idetification'
   get  'mypage/logouts',        to: 'users#logouts'
   get  'mypage/SNS',            to: 'users#SNS'
+  get  'items/mid_category',        to: 'items#mid_category'
+  get  'items/small_category',        to: 'items#small_category'
   resources :items do
+    collection do
+      get 'search',            to: 'items#search'
+      get 'category/search',    to: 'items#category_search'
+    end
     resources :images
-    resources :purchases
+    resources :purchases do
+      collection do
+        get  'done',   to: 'purchases#done'
+      end
+    end
   end
   resources :users do
-    resources :credits
-    resources :address
+    member do
+      resources :cards
+      resources :address
+      get  'identification', to: 'users#idetification'
+      get  'logouts',        to: 'users#logouts'
+    end
   end
 end

@@ -1,10 +1,12 @@
 .advertisement {
   height: 390px;
   width: 100%;
-  background-color: skyblue;
   cursor: pointer;
   touch-action: pan-y pinch-zoom;
-  display: block;
+  img {
+    height: 390px;
+    width: 100%;
+  }
 }
 
 .popularity {
@@ -56,7 +58,6 @@
     
     &__upper {
       display: flex;
-      
       &__title {
         height: 33px;
         width: 609px;
@@ -64,6 +65,7 @@
         font-size: 24px;
         line-height: 1.4em;
         flex: 1 1 0%;
+        font-weight: 600;
       }
       &__btn {
         display:inline-block;
@@ -83,18 +85,7 @@
       width: 1040px;
       display: flex;
       flex-wrap: wrap;
-      list-style: none;
-      vertical-align: baseline;
       padding: 0px;
-      border-width: 0px;
-      border-style: initial;
-      border-color: initial;
-      border-image: initial;
-      font: inherit;
-      margin-block-start: 1em;
-      margin-block-end: 1em;
-      margin-inline-start: 0px;
-      margin-inline-end: 0px;
 
       &__item {
         height: 252px;
@@ -109,7 +100,6 @@
           height: 188px;
           width: 188px;
           position: relative;
-
           &__price {
             color: #fff;
             height: 28px;
@@ -122,7 +112,29 @@
             font-size: 17px;
             line-height: 28px;
           }
-
+          &__badge {
+            z-index: 1;
+            position: absolute;
+            top:0;
+            left:0;
+            border-top: 50px solid #ea352d;
+            border-left: 50px solid #ea352d;
+            border-bottom: 50px solid transparent;
+            border-right: 50px solid transparent;
+            width:0;
+            height: 0;
+            border-width: 80px 80px 0 0;
+            &__sold {
+              z-index: 2;
+              position:absolute;
+              top: 18px;
+              color: #FFF;
+              transform: rotate(-45deg);
+              letter-spacing: 2px;
+              font-weight: 600;
+              font-size: 20px;
+            }
+          }
           &__btm {
             height: 188px;
             width: 188px;
@@ -134,12 +146,12 @@
           height: 38px;
           width: 164px;
           padding: 13px 12px;
-          white-space: normal;
-          word-break: break-word;
           font-size: 13px;
-          overflow: hidden;
           color: transparent;
           p {
+            height: 38px;
+            width: 164px;
+            overflow: hidden;
             color: black;
             position: relative;
           }

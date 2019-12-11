@@ -1,0 +1,9 @@
+%nav.bread-crumbs 
+  = render_breadcrumbs tag: :span, separator: ' > '
+.card
+  = link_to "", class: "menu-bar" do
+    %p.menu-bar__title 支払い方法
+    = icon "fas", "angle-right", class: "menu-bar__icon"
+  = render "shared/user-side"
+  = form_with model: @card, url: cards_path, class: 'main', html: { name: "inputForm" } do |f|
+    = render partial: 'shared/card', locals: { "@card": @card, f: f}
