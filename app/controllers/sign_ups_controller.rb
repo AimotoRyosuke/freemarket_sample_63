@@ -106,7 +106,7 @@ class SignUpsController < ApplicationController
       last_name_kana:        session[:last_name_kana],
       tel:                   session[:tel],
       )
-
+      
     if params[:user][:auth].match(/\A[0-9]+\z/)
       if params[:user][:auth] == "111111"
         if @user.save
@@ -132,8 +132,21 @@ class SignUpsController < ApplicationController
             session.delete(:provider)
             redirect_to registrate_address_path
             return
+          else
+            sign_in User.find(@user.id)
+            session.delete(:nickname)
+            session.delete(:birth)
+            session.delete(:email)
+            session.delete(:password)
+            session.delete(:password_confirmation)
+            session.delete(:first_name)
+            session.delete(:last_name)
+            session.delete(:first_name_kana)
+            session.delete(:last_name_kana)
+            session.delete(:tel)
+            redirect_to registrate_address_path
+            return
           end
-          redirect_to registrate_address_path
         else
           render :user_tel_auth, layout: "application_sub"
         end
