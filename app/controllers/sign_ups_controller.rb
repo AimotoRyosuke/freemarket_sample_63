@@ -89,7 +89,7 @@ class SignUpsController < ApplicationController
       nickname:           session[:nickname],
       birth:              session[:birth],
       email:              session[:email],
-      password: session[:password],
+      password:           session[:password],
       password_confirmation: session[:password_confirmation],
       first_name:         session[:first_name],
       last_name:          session[:last_name],
