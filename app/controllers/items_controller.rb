@@ -54,7 +54,6 @@ class ItemsController < ApplicationController
   end
 
   def category_search
-    binding.pry
     if params[:category].present?
       add_breadcrumb "カテゴリー一覧", category_items_path
       @items = Item.cat_search(params[:category]).page(params[:page]).per(100).order("created_at DESC")
