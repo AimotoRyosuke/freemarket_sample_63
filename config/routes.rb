@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   root                          to: 'items#index'
-  get  'signin',                to: 'sign_in#signin'
   get  'signup',                to: 'sign_ups#signup_select'
   get  'signup/registration',   to: 'sign_ups#user_baseinfo'
   post 'signup/registration',   to: 'sign_ups#user_baseinfo_validate'
@@ -39,6 +38,7 @@ Rails.application.routes.draw do
       get  'mypage/SNS',            to: 'users#SNS'
       get  'identification', to: 'users#idetification'
       get  'logouts',        to: 'users#logouts'
+      get  'mypage/SNS',        to: 'users#SNS'
     end
   end
 end

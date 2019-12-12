@@ -23,9 +23,9 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
       if user.present? && snsauth.blank? && user_signed_in? #会員登録済、ログイン済 ※認証追加のため 
         if SnsAuth.create( provider: request.env["omniauth.auth"].provider, uid: request.env["omniauth.auth"].uid, user_id: user.id)
-          redirect_to mypage_SNS_path # ※認証追加機能実装まで仮のパス
+          redirect_to mypage_SNS_user_path(current_user) 
         else
-          render template: "users/SNS" # ※認証追加機能実装までの仮のパス
+          render template: "users/SNS"
         end
       elsif user.present? && snsauth.blank?
         render template: "sign_in/signin",layout: "application_sub" # *既に登録されているメールアドレスのためエラー→パスワードとメールアドレスでログインするよう促す。

@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def logouts
-    add_breadcrumb "ログイン"
+    add_breadcrumb "ログアウト"
   end
 
   def edit
@@ -19,12 +19,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user = User.find(params[:id])
-      redirect_to "index"
+    @user = User.find(current_user.id)
+    if @user.update(user_params)
+      redirect_to user_path
     else
-      render "edit"
+      render :edit
     end
-    params.permit(:nickname, :profile)
   end
 
   def other_user!
@@ -37,5 +37,18 @@ class UsersController < ApplicationController
     @google = SnsAuth.find_by('user_id = ? and provider = ?', current_user.id, 'google_oauth2')
     @facebook = SnsAuth.find_by('user_id = ? and provider = ?', current_user.id, 'facebook')
   end
+  
+  protected
+  
+  def update_resource(resource, params)
+   resource.update_without_password(params)
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:nickname, :profile)
+  end
+
 
 end
