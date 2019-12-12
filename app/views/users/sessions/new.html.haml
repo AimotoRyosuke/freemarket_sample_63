@@ -1,0 +1,18 @@
+= render partial: "shared/header"
+.signin
+  .registration
+    %p アカウントをお持ちでない方はこちら
+    = link_to "新規会員登録", signup_path
+  .signin
+    = link_to user_facebook_omniauth_authorize_path, class: "signin__facebook" do
+      = icon 'fab','facebook-f'
+      %p Facebookでログイン
+    = link_to user_google_oauth2_omniauth_authorize_path, class: "signin__google" do
+      = image_tag "google.svg", size: "18x18", alt: "google-logo"
+      %p Googleでログイン
+    = form_with model: @user, url: user_session_path, method: :post, local: true, class:'signin__form' do |f|
+      = f.email_field :email, placeholder: "メールアドレス", class: 'signin__form__input'
+      = f.password_field :password, placeholder: "パスワード", class: 'signin__form__input' 
+      .form__group__recaptch.g-recaptcha{"data-callback": "clearcall", "data-sitekey": "6Le89cMUAAAAAAeb99rrFc47etRW6YfXytC1NXQs"}
+      = f.submit "ログイン", class: "signin__form__submit"
+      = link_to "パスワードをお忘れの方", ""
