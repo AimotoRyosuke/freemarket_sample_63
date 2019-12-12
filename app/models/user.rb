@@ -1,8 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, 
          :recoverable, :rememberable, :validatable
+        #  :omniauthable, omniauth_providers: [:google_oauth2, :facebook]
   has_one  :address
   has_one :card
   has_one  :credit
@@ -23,8 +24,7 @@ class User < ApplicationRecord
   validates :tel, format: { with: /\A\d{10}$|^\d{11}\z/, message: "電話番号の書式を確認してください"}
 
   def change_string
-    self.first_name_kana    = self.first_name_kana.tr('ぁ-ん','ァ-ン')
-    self.last_name_kana     = self.last_name_kana.tr('ぁ-ん','ァ-ン')
-    self.password = self.password.tr('０-９ａ-ｚＡ-Ｚ','0-9a-zA-Z')
+    self.first_name_kana    = first_name_kana.tr('ぁ-ん','ァ-ン')
+    self.last_name_kana     = last_name_kana.tr('ぁ-ん','ァ-ン')
   end
 end

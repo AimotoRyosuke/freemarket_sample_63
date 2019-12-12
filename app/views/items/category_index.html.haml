@@ -1,0 +1,21 @@
+%nav.bread-crumbs 
+  = render_breadcrumbs tag: :span, separator: ' > '
+
+.cat-index
+  .cat-index__large
+    %h3.cat-index__large__title カテゴリー一覧
+    .cat-index__large__box
+      - @category.roots.order(:id).each do |large|
+        =link_to large.name, anchor: large.id.to_s
+  - @category.roots.order(:id).each do |large|
+    .cat-index__contents
+      %h3.cat-index__contents__title{id: large.id}=large.name
+      = link_to "すべて", category_search_items_path+"?category=" + large.id.to_s, name: large.id, class: "cat-index__contents__all"
+      - @category.find_all_by_generation(1).with_ancestor(large.id).order(:id).each do |mid|
+        .cat-index__contents__mid
+          %p.cat-index__contents__mid__name=mid.name
+          .cat-index__contents__mid__small
+            = link_to "すべて", category_search_items_path+"?category=" + mid.id.to_s, class: "cat-index__contents__mid__small__all"
+            - @category.leaves.with_ancestor(mid.id).order(:id).each do |small|
+              = link_to small.name, category_search_items_path+ "?category=" + small.id.to_s, class: "cat-index__contents__mid__small__name"
+

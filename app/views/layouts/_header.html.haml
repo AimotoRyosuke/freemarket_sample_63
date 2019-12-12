@@ -10,7 +10,7 @@
 
     .header__container__bottom
       .header__container__bottom__left
-        = link_to '', class: "header__container__bottom__left__category" do
+        = link_to category_items_path, class: "header__container__bottom__left__category" do
           .header__container__bottom__left__category__icon
             = icon 'fas','list-ul', class: 'icon'
           .header__container__bottom__left__category__character
@@ -32,6 +32,6 @@
           .header__container__bottom__right__logout
             = link_to '', class: "header__container__bottom__right__logout__registration", href: signup_path, type: '' do
               新規会員登録
-            = link_to '', class: "header__container__bottom__right__logout__login", href: signin_path, type: '' do
+            = link_to '', class: "header__container__bottom__right__logout__login", href:  new_user_session_path, type: '' do
               ログイン
 

@@ -29,19 +29,22 @@
     .purchase-new__shipping__contents
       %h3.purchase-new__shipping__contents__head
         配送先
-      %address.purchase-new__shipping__contents__address
-        〒
-        = current_user.address.zip_code
-        %br
-        = current_user.address.prefecture.name
-        = current_user.address.city
-        = current_user.address.address
-        - if current_user.address.building.present?
-          = current_user.address.building
-        %br
-        = current_user.address.first_name
-        = current_user.address.last_name
-      = link_to "変更する", root_path, class: "purchase-new__shipping__contents__edit blue"
+      - if current_user.address.present?
+        %address.purchase-new__shipping__contents__address
+          〒
+          = current_user.address.zip_code
+          %br
+          = current_user.address.prefecture.name
+          = current_user.address.city
+          = current_user.address.address
+          - if current_user.address.building.present?
+            = current_user.address.building
+          %br
+          = current_user.address.first_name
+          = current_user.address.last_name
+      - else
+        %br /
+      = link_to "変更する", new_address_path(current_user.id), class: "purchase-new__shipping__contents__edit blue"
   %section.purchase-new__pay-method
     .purchase-new__pay-method__contents
       .purchase-new__pay-method__contents__head
@@ -56,6 +59,6 @@
       - else
         %br /
       .purchase-new__pay-method__contents__brand
-      = link_to "変更する", root_path, class: "purchase-new__pay-method__contents__edit blue"
+      = link_to "変更する", new_card_path(current_user.id), class: "purchase-new__pay-method__contents__edit blue"
 %nav.bread-crumbs-bottom 
   = render_breadcrumbs tag: :span, separator: ' > '

@@ -58,7 +58,6 @@
     
     &__upper {
       display: flex;
-      
       &__title {
         height: 33px;
         width: 609px;
@@ -91,7 +90,8 @@
       &__item {
         height: 252px;
         width: 188px;
-        padding: 10px;
+        padding: 10px 0;
+        margin-right:20px;
         
         a {
           text-decoration: none;
@@ -101,7 +101,6 @@
           height: 188px;
           width: 188px;
           position: relative;
-
           &__price {
             color: #fff;
             height: 28px;
@@ -114,7 +113,29 @@
             font-size: 17px;
             line-height: 28px;
           }
-
+          &__badge {
+            z-index: 1;
+            position: absolute;
+            top:0;
+            left:0;
+            border-top: 50px solid #ea352d;
+            border-left: 50px solid #ea352d;
+            border-bottom: 50px solid transparent;
+            border-right: 50px solid transparent;
+            width:0;
+            height: 0;
+            border-width: 80px 80px 0 0;
+            &__sold {
+              z-index: 2;
+              position:absolute;
+              top: 18px;
+              color: #FFF;
+              transform: rotate(-45deg);
+              letter-spacing: 2px;
+              font-weight: 600;
+              font-size: 20px;
+            }
+          }
           &__btm {
             height: 188px;
             width: 188px;
@@ -145,6 +166,9 @@
             width: 50%;
           }
         }
+      }
+      &__item:nth-child(5n) {
+      margin-right: 0px;
       }
     }
   }
