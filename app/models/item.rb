@@ -46,6 +46,7 @@ class Item < ApplicationRecord
     category = Category.leaves.with_ancestor(mid_category.id).to_a
   end
 
+
   def self.cat_search(category)
     leaves = Category.find(category).leaves.order(:id)
     items = []
