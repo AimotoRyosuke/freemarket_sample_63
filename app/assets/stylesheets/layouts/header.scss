@@ -64,6 +64,82 @@
       justify-content: space-between;
       margin-top: 8px;
       height: 44px;
+      position: relative;
+      
+      
+      &__box1{
+          background-color:white;
+          width:auto;
+          position: absolute;
+          top:44px;
+          display: none;
+          .box-one{
+            width:224px;
+            height: 44px;
+            line-height: 28px;
+            
+            &:hover{
+              background-color: red;
+            }
+            p{
+              font-size: 14px;
+              padding:8px 16px;
+              color:#000000;
+              border-right-style: solid; //1本線を表示
+              
+              border-width: 1px; //線幅
+              border-color: rgb(228, 224, 224); //線色
+             
+            }
+          }
+      
+        &__child{
+          width:auto;
+          position: absolute;
+          top:0;
+          left:224px;
+          bottom:0;
+          background: #fff;
+          display: none;
+          .box-two{
+            width:224px;
+            height: 30px;
+            
+            &:hover{
+              background-color:rgb(236, 234, 234);
+            }
+            p{
+              line-height: 14px;
+            }
+             
+          }
+        
+  
+          
+          &__grand-child{
+          width:auto;
+          position: absolute;
+          top:0;
+          left:224px;
+          bottom:0;
+          background: #fff;
+          display: none;
+          .box-three{
+            width:320px;
+            height: 30px;
+          
+            &:hover{
+              background-color:rgb(236, 234, 234);
+            }
+            p{
+              line-height: 14px;
+            }
+            }
+          }
+        }
+      }
+      
+        
       &__left {
         a {
           text-decoration: none;
@@ -76,6 +152,9 @@
           padding-right: 10px;
           cursor: pointer;
           line-height: 36px;
+        
+          
+        
           &__icon {
             color: rgb(234, 53, 45);
             margin-right: 4px;

@@ -11,19 +11,16 @@ $(function(){
     $('.l-right-line').prepend('¥');
     $('.l-right-line__bold').html(profit);
     $('.l-right-line__bold').prepend('¥');
-    $('input_normal').val(data);
-    }
-    else if(data == '') {
-    $('.l-right-line_bold').html('');
-    $('.l-right-line').html('');
+    // $('#item_price').fadeOut(profit);
+    // $('input_normal').val(data);
     
-    }
-  
-    else if ((data >= 300) && (data >= 9999999)) {
+    } else if(data == '') {
     $('.l-right-line').html('');
     $('.l-right-line__bold').html('');
-    
-    }
+    } else {
+    $('.l-right-line').html('');
+    $('.l-right-line__bold').html('');
+    };
   });
   $('.slider').slick({
     autoplay:true,
