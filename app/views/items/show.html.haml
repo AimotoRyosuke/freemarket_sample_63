@@ -60,14 +60,14 @@
             カテゴリー
           %th.item-show__item__main__detail__category.contents
             .item-show__item__main__detail__category__top
-              = link_to '', class: "blue" do
+              = link_to category_search_items_path+"?category=" + @category.root.id.to_s, class: "blue" do
                 = @category.root.name
             .item-show__item__main__detail__category__middle
-              = link_to '', class: "blue" do
+              = link_to category_search_items_path+"?category=" + @category.parent.id.to_s, class: "blue" do
                 = icon 'fas', 'angle-right', class: 'angle-right'
                 = @category.parent.name
             .item-show__item__main__detail__category__bottom
-              = link_to '', class: "blue" do
+              = link_to category_search_items_path+"?category=" + @category.id.to_s, class: "blue" do
                 = icon 'fas', 'angle-right', class: 'angle-right'
                 = @category.name
         %tr

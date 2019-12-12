@@ -50,24 +50,28 @@ class SignUpsController < ApplicationController
   end
 
   def user_tel
-    @user = User.new
-    render layout: "application_sub"
+    if session[:nickname]
+      @user = User.new
+      render layout: "application_sub"
+    else
+      redirect_to signup_registration_path
+    end
   end
 
   def user_tel_validate
     session[:tel] = params[:user][:tel]
 
     @user = User.new(
-      nickname:           session[:nickname],
-      birth:              session[:birth],
-      email:              session[:email],
-      password: session[:password],
+      nickname:              session[:nickname],
+      birth:                 session[:birth],
+      email:                 session[:email],
+      password:              session[:password],
       password_confirmation: session[:password_confirmation],
-      first_name:         session[:first_name],
-      last_name:          session[:last_name],
-      first_name_kana:    session[:first_name_kana],
-      last_name_kana:     session[:last_name_kana],
-      tel:                session[:tel],
+      first_name:            session[:first_name],
+      last_name:             session[:last_name],
+      first_name_kana:       session[:first_name_kana],
+      last_name_kana:        session[:last_name_kana],
+      tel:                   session[:tel],
     )
 
     @user.valid?
@@ -80,22 +84,26 @@ class SignUpsController < ApplicationController
   end
 
   def user_tel_auth
-    @user = User.new
-    render layout: "application_sub"
+    if session[:tel]
+      @user = User.new 
+      render layout: "application_sub"
+    else
+      redirect_to signup_tel_path
+    end
   end
 
   def user_create
     @user = User.new(
-      nickname:           session[:nickname],
-      birth:              session[:birth],
-      email:              session[:email],
-      password:           session[:password],
+      nickname:              session[:nickname],
+      birth:                 session[:birth],
+      email:                 session[:email],
+      password:              session[:password],
       password_confirmation: session[:password_confirmation],
-      first_name:         session[:first_name],
-      last_name:          session[:last_name],
-      first_name_kana:    session[:first_name_kana],
-      last_name_kana:     session[:last_name_kana],
-      tel:                session[:tel],
+      first_name:            session[:first_name],
+      last_name:             session[:last_name],
+      first_name_kana:       session[:first_name_kana],
+      last_name_kana:        session[:last_name_kana],
+      tel:                   session[:tel],
       )
 
     if params[:user][:auth].match(/\A[0-9]+\z/)
@@ -197,8 +205,7 @@ class SignUpsController < ApplicationController
   end
 
   def address_params
-    params[:address][:tel] = params[:address][:tel].to_i
-    if params[:address][:tel] == 0
+    unless  params[:address][:tel].match(/\A\d{10}$|^\d{11}\z/)
       params[:address][:tel] = ""
     end
     params.require(:address).permit(:first_name, :last_name, :first_name_kana, :last_name_kana, :tel, :zip_code, :prefecture_id, :city, :address, :building, :tel).merge(user_id: current_user.id)
