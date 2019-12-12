@@ -149,7 +149,7 @@ class SignUpsController < ApplicationController
   end
 
   def user_card
-    @card = Credit.new
+    @card = Card.new
     render layout: "application_sub"
   end
   
