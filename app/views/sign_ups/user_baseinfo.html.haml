@@ -89,8 +89,6 @@
           .form__group__err__msg= message
       %i.icon-arroow-botton
       %p.form__group__info ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
-    .form__group
-      .g-recaptcha{"data-callback": "validateRecaptcha", "data-sitekey": "{6Le89cMUAAAAAAeb99rrFc47etRW6YfXytC1NXQs}"}
     .form__ok
       %p 「次へ進む」のボタンを押すことにより、
       = link_to '利用規約', ''
@@ -99,6 +97,3 @@
     = f.submit '次へ進む', class: 'form__submit'
     .form__group
       = link_to '本人の登録について', '', class: 'form__group__about'
-      
-  -# 6Le89cMUAAAAAAeb99rrFc47etRW6YfXytC1NXQs
-  -# 6Le89cMUAAAAAAPLC_0c8tv4j7f0vPMKswQokp6p

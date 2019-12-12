@@ -19,18 +19,24 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user = User.find(params[:id])
-      redirect_to "index"
+    @user = User.find(current_user.id)
+    if @user.update(user_params)
+      redirect_to user_path
     else
-      render "edit"
+      render :edit
     end
-    params.permit(:nickname, :profile)
   end
+
+  private
 
   def other_user!
     if params[:id] != current_user.id.to_s
       redirect_to root_path
     end
+  end
+
+  def user_params
+    params.require(:user).permit(:nickname, :profile)
   end
 
 end
