@@ -2,24 +2,35 @@
   %section.item-show__item
     %h1.item-show__item__name
       = @item.name
-    - unless user_signed_in? && current_user.id == @item.user.id
-      %p.item-show__item__wording
-        = @item.name
-        は、2205回の取引実績を持つ玲奈さんから出品されました。その他/家電・スマホ・カメラの商品で、埼玉県から
-        = @item.days.name
-        で発送されます。
+    - unless current_user.id == @item.user.id
+      - if @item.status_id == 2
+      - else
+        %p.item-show__item__wording
+          = @item.name
+          は、
+          = trade_count(@item)
+          回の取引実績を持つ
+          = @item.user.nickname
+          さんから出品されました。
+          = @category.name + "/" + @category.parent.name + "の商品で、"
+          = @item.prefecture.name
+          から
+          = @item.days.name
+          で発送されます。
     .item-show__item__main
       .item-show__item__main__image
         .item-show__item__main__image__display
-          = image_tag asset_path("stand_1.jpg")
-          -# = image_tag @item.images.image.url
+          - if @item.status_id != 1 && @item.status_id != 4
+            .item-show__item__main__image__display__badge
+            .item-show__item__main__image__display__badge__sold
+              SOLD
+          %ul.slider
+            - @item.images.each do |image|
+              %li
+                = image_tag image.image.url, {class: "active"}
         .item-show__item__main__image__list
-          = image_tag asset_path("stand_1.jpg"), {class: "active"}
-          = image_tag asset_path("stand_2.jpg")
-          = image_tag asset_path("stand_3.jpg")
-          = image_tag asset_path("stand_4.jpg")
-          = image_tag asset_path("stand_5.jpg")
-          = image_tag asset_path("stand_6.jpg")
+          - @item.images.each do |image|
+            = image_tag image.image.url, {class: "active"}
       %table.item-show__item__main__detail
         %tr.item-show__item__main__detail__exhibitor
           %th.title
@@ -49,16 +60,16 @@
             カテゴリー
           %th.item-show__item__main__detail__category.contents
             .item-show__item__main__detail__category__top
-              = link_to '', class: "blue" do
-                家電・スマホ・カメラ
+              = link_to category_search_items_path+"?category=" + @category.root.id.to_s, class: "blue" do
+                = @category.root.name
             .item-show__item__main__detail__category__middle
-              = link_to '', class: "blue" do
+              = link_to category_search_items_path+"?category=" + @category.parent.id.to_s, class: "blue" do
                 = icon 'fas', 'angle-right', class: 'angle-right'
-                PC/タブレット
+                = @category.parent.name
             .item-show__item__main__detail__category__bottom
-              = link_to '', class: "blue" do
+              = link_to category_search_items_path+"?category=" + @category.id.to_s, class: "blue" do
                 = icon 'fas', 'angle-right', class: 'angle-right'
-                その他
+                = @category.name
         %tr
           %th.title
             ブランド
@@ -99,7 +110,10 @@
       .item-show__item__price-box__postage
         = price_shipping_cost(@item)
     - unless user_signed_in? && current_user.id == @item.user.id
-      = link_to '購入画面に進む', new_item_purchase_path(@item), class: 'item-show__item__button'
+      - if @item.status_id != 1 && @item.status_id != 4
+        .item-show__item__soldout-btn 売り切れました
+      - else
+        = link_to '購入画面に進む', new_item_purchase_path(@item), class: 'item-show__item__purchase-btn'
     .item-show__item__introduction
       = simple_format(@item.explanation)
     - unless user_signed_in? && current_user.id == @item.user.id
@@ -129,7 +143,7 @@
         or
       %form.item-show__change__stop
         出品を一旦停止する
-      = link_to "この商品を削除する", item_path(@item), class: "item-show__change__delete", method: :delete, data: { confirm: '消すよ？' }
+      = link_to "この商品を削除する", item_path(@item), class: "item-show__change__delete", method: :delete, data: { confirm: '本当に消しますか？' }
   .item-show__comment
     .item-show__comment__container
       .item-show__comment__container__caution
@@ -158,3 +172,5 @@
         %li
           = link_to '', class: "item-show__media-box__medias__pinterest", href: "http://pinterest.com/pin/create/button/?url=hoge", rel: "nofollow", target: "_blank" do
             = icon 'fab', 'pinterest', class: 'pinterest'
+%nav.bread-crumbs-bottom 
+  = render_breadcrumbs tag: :span, separator: ' > '

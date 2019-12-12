@@ -44,23 +44,58 @@
       justify-content: space-between;
       &__image {
         width: 300px;
+        height: 300px;
         background-color: #f8f8f8;
         &__display {
-          img {
-            width: 300px;
-            height: 300px;
+          position: relative;
+          display: flex;
+          overflow: hidden;
+          &__badge {
+            z-index: 1;
+            position: absolute;
+            top:0;
+            left:0;
+            border-top: 50px solid #ea352d;
+            border-left: 50px solid #ea352d;
+            border-bottom: 50px solid transparent;
+            border-right: 50px solid transparent;
+            width:0;
+            height: 0;
+            border-width: 120px 120px 0 0;
+            &__sold {
+              z-index: 2;
+              position:absolute;
+              top: 24px;
+              color: #FFF;
+              transform: rotate(-45deg);
+              letter-spacing: 2px;
+              font-weight: 600;
+              font-size: 28px;
+            }
           }
+          .slider{
+            // display: flex;
+            // overflow: hidden;
+            img {
+              width: 300px;
+              height: 300px;
+            }
+          }
+
         }
         &__list {
           display: flex;
           flex-wrap: wrap;
+          height: 120px;
+          width:100%;
+          background-color: #fafafa;
           img {
             width: 60px;
             height: 60px;
             opacity: 0.6;
           }
           .active {
-            opacity: 1.0;
+            // opacity: 1.0;
           }
         }
       }
@@ -141,7 +176,7 @@
         font-size: 16px;
       }
     }
-    &__button {
+    &__purchase-btn {
       display: block;
       font-size: 24px;
       line-height: 60px;
@@ -152,6 +187,17 @@
       font-weight: 600;
       text-decoration: none;
     }
+    &__soldout-btn {
+      color: #fff;
+      background: #888;
+      cursor: not-allowed;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 60px;
+      margin-top: 16px;
+      text-align: center;
+    }
+
     &__introduction {
       padding: 32px 0 0;
       line-height: 1.5;

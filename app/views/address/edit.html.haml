@@ -1,0 +1,10 @@
+%nav.bread-crumbs 
+  = render_breadcrumbs tag: :span, separator: ' > '
+.address
+  = link_to "", class: "menu-bar" do
+    %p.menu-bar__title 発送元・お届け先住所変更
+    = icon "fas", "angle-right", class: "menu-bar__icon"
+  = render "shared/user-side"
+  = form_with model: @address, url: address_path, local: true, class: 'main' do |f|
+    %h2.top 発送元・お届け先住所変更
+    = render partial: 'shared/address', locals: { "@address": @address, f: f}

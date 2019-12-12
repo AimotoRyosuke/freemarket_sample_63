@@ -8,10 +8,10 @@ class Address < ApplicationRecord
   validates :first_name, :last_name, :first_name_kana,:last_name_kana, format: { with: /\A(?:\p{Hiragana}|\p{Katakana}|[ー－]|[一-龠々])+\z/, message: "%{attribute}に数字や特殊文字は使用できません"}
   validates :first_name_kana, :last_name_kana, format: { with: /\A(?:\p{Katakana})+\z/, message: "%{attribute}はカナ文字を入力してください"}
   validates :zip_code, length: {is: 7, message: "フォーマットが不適切です"}, numericality: {message: "フォーマットが不適切です"}
-  validates :tel, format: {with: /\A\d{10}$|^\d{11}\z/}
 
   def change_string
     self.first_name_kana    = self.first_name_kana.tr('ぁ-ん','ァ-ン')
     self.last_name_kana     = self.last_name_kana.tr('ぁ-ん','ァ-ン')
   end
+
 end

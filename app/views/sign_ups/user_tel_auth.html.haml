@@ -26,7 +26,7 @@
   = form_with model: @user, url: signup_tel_auth_path, local: true, class: 'form' do |f|
     .form__group
       .form__group__name 認証番号（111111を入力してください）
-      = f.text_field :auth, class: 'form__group__input', placeholder: '認証番号を入力'
+      = f.text_field :auth, class: 'form__group__input', placeholder: '認証番号を入力', maxlength: "6"
       - if @msg != ""
         .form__group__err
           .form__group__err__msg= @msg
@@ -45,11 +45,3 @@
         %p ※SMSが届かない場合は
         = link_to "SMS受信設定", ""
         %p を確認して、もう一度電話番号を入力してください。
-%footer.footer
-  .footer__link
-    = link_to "プライバシーポリシー", ""
-    = link_to "メルカリ利用規約"
-    = link_to "特定商取引に関する表記"
-  = link_to root_path, class: "footer__logo" do
-    = image_tag "logo_gray.svg", size: "85x65", alt: "mercari"
-  %p &copy2019 Mercari

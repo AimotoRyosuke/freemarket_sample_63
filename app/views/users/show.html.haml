@@ -1,3 +1,5 @@
+%nav.bread-crumbs 
+  = render_breadcrumbs tag: :span, separator: ' > '
 .user-show
   .user-show__container
     = render "shared/user-side"
@@ -7,7 +9,7 @@
           .user-show__container__contents__user__icon
             = image_tag asset_path("user_icon_default.png"), alt: "", width: "60", height: "60"
           .user-show__container__contents__user__nickname
-            玲奈
+            = current_user.nickname
           .user-show__container__contents__user__counts
             .user-show__container__contents__user__counts__review
               .user-show__container__contents__user__counts__review__title
@@ -18,7 +20,7 @@
               .user-show__container__contents__user__counts__exhibit__title
                 出品数
               .user-show__container__contents__user__counts__exhibit__count
-                40
+                = current_user.items.count
       %section.user-show__container__contents__notification-todo
         %ul.user-show__container__contents__notification-todo__tab
           %li.notification-todo-active

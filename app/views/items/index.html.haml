@@ -1,12 +1,13 @@
-- if user_signed_in?
-  = current_user.nickname
-  = link_to "ログアウト", destroy_user_session_path, method: :delete
-- else
-  = link_to "新規登録", signin_path
-  = link_to "ログイン", signup_path
-
 -# 広告
-.advertisement 画像を入れる
+.advertisement 
+  %ul.slider
+    %li
+      = image_tag "freebanner1.png"
+    %li
+      = image_tag "freebanner2.png"
+    %li
+      = image_tag "freebanner3.png"
+
 
 
 -# 人気のカテゴリー

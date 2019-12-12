@@ -3,10 +3,14 @@
     .new__items__list__item__upper
       %span.new__items__list__item__upper__price
         ¥
-        = item.price
+        = item.price.to_s(:delimited)
+
         %br
-      =image_tag "https://static.mercdn.net/thumb/photos/m83719687124_1.jpg?1574431137", class: 'new__items__list__item__upper__btm'
+      - if item.status_id != 1 && item.status_id != 4
+        .new__items__list__item__upper__badge
+        .new__items__list__item__upper__badge__sold
+          SOLD
+      = image_tag item.images[0].image.url, class: 'new__items__list__item__upper__btm'
     .new__items__list__item__description 
-      %p
-        = item.name
+      %p= item.name
       

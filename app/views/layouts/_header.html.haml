@@ -3,10 +3,11 @@
     .header__container__top
       = link_to root_path, class: "header__container__top__icon" do
         = render "shared/fmarket_logo_red"
-      .header__container__top__search
-        %input{name: "keyword", type: "search", placeholder: "何かお探しですか？", class: "header__top__search__input"}
-        %button
+      = form_with model: @item, url: search_items_path, method: :get, local: true, class: "header__container__top__search" do |f|
+        = f.search_field :search, name: "keyword", placeholder: "何かお探しですか？", class: "header__top__search__input"
+        = f.button type: :submit do
           = icon 'fas', 'search'
+
     .header__container__bottom
       .header__container__bottom__box1
         .box-one
@@ -149,7 +150,7 @@
       -#   %p ジャージ
       -#   %p その他     
       .header__container__bottom__left
-        = link_to '', class: "header__container__bottom__left__category" do
+        = link_to category_items_path, class: "header__container__bottom__left__category" do
           .header__container__bottom__left__category__icon
             = icon 'fas','list-ul', class: 'icon'
           .header__container__bottom__left__category__character
@@ -171,6 +172,6 @@
           .header__container__bottom__right__logout
             = link_to '', class: "header__container__bottom__right__logout__registration", href: signup_path, type: '' do
               新規会員登録
-            = link_to '', class: "header__container__bottom__right__logout__login", href: signin_path, type: '' do
+            = link_to '', class: "header__container__bottom__right__logout__login", href:  new_user_session_path, type: '' do
               ログイン
 

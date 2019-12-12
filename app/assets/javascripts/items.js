@@ -1,4 +1,5 @@
 $(function(){
+  // ここから販売利益と手数料の表示
   $('#item_price').on('keyup', function(){ 
     var data = $('#item_price').val();
     
@@ -20,5 +21,82 @@ $(function(){
     $('.l-right-line').html('');
     $('.l-right-line__bold').html('');
     };
+  });
+  $('.slider').slick({
+    autoplay:true,
+    autoplaySpeed:4000,
+    dots:true,
+  });
+
+  //カテゴリーのセレクト機能追加
+
+  function appendMidSelect() {
+    var select_tag = `<div class="select-enclose mid-category">
+    <i class="icon-rod-bottom"></i>
+    <select class="select-normal search__side__contents__category__input" name="item[mid_id]" id="item_mid_id"><option value="">---</option></select>
+    </div>`
+    $('.add-box').append(select_tag);
+  }
+
+  function appendSmallSelect() {
+    var select_tag = `<div class="select-enclose small-category">
+    <i class="icon-rod-bottom"></i>
+    <select class="select-normal search__side__contents__category__input" name="item[category_id]" id="item_small_id"><option value="">---</option></select>
+    </div>`
+    $('.add-box').append(select_tag);
+  }
+
+  function appendMidOption(mid) {
+    var midOption = `<option value="${mid.id}">${mid.name}</option>`
+    $('#item_mid_id').append(midOption)
+  }
+
+  function appendSmallOption(small) {
+    var smallOption = `<option value="${small.id}">${small.name}</option>`
+    $('#item_small_id').append(smallOption)
+  }
+
+
+  $('.large-category').change(function(){
+    let value = $('#item_large_id').val();
+    $.ajax({
+      type: 'GET',
+      url: '/items/mid_category',
+      data: {'large_category' :value},
+      dataType: 'json'
+    })
+    .done(function(midCategory){
+      $('.mid-category').remove();
+      $('.small-category').remove();
+      appendMidSelect()
+      midCategory.forEach(function(mid){
+        appendMidOption(mid);
+      })
+    })
+    .fail(function(){
+      alert('error');
+    });
+  });
+
+  $(document).on('change', '.mid-category', function(){
+    let value = $('#item_mid_id').val();
+    $.ajax({
+      type: 'GET',
+      url: '/items/small_category',
+      data: {'mid_category' :value},
+      dataType: 'json'
+    })
+    .done(function(smallCategory){
+      $('.small-category').remove();
+      
+      appendSmallSelect()
+      smallCategory.forEach(function(small){
+        appendSmallOption(small);
+      })
+    })
+    .fail(function(){
+      alert('error');
+    });
+
   });
 });

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_01_082648) do
+ActiveRecord::Schema.define(version: 2019_12_06_131843) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "first_name", null: false
@@ -28,6 +28,31 @@ ActiveRecord::Schema.define(version: 2019_12_01_082648) do
     t.datetime "updated_at", null: false
     t.index ["prefecture_id"], name: "index_addresses_on_prefecture_id"
     t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "customer_id", null: false
+    t.string "card_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cards_on_user_id"
+  end
+
+  create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "parent_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parent_id"], name: "index_categories_on_parent_id"
+  end
+
+  create_table "category_hierarchies", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "ancestor_id", null: false
+    t.integer "descendant_id", null: false
+    t.integer "generations", null: false
+    t.index ["ancestor_id", "descendant_id", "generations"], name: "category_anc_desc_idx", unique: true
+    t.index ["descendant_id"], name: "category_desc_idx"
   end
 
   create_table "credits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -63,6 +88,8 @@ ActiveRecord::Schema.define(version: 2019_12_01_082648) do
     t.bigint "user_id", null: false
     t.bigint "shipping_method_id", default: 4, null: false
     t.bigint "status_id", default: 1, null: false
+    t.bigint "category_id", null: false
+    t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["condition_id"], name: "index_items_on_condition_id"
     t.index ["days_id"], name: "index_items_on_days_id"
     t.index ["prefecture_id"], name: "index_items_on_prefecture_id"
@@ -106,6 +133,7 @@ ActiveRecord::Schema.define(version: 2019_12_01_082648) do
   end
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "cards", "users"
   add_foreign_key "credits", "users"
   add_foreign_key "images", "items"
   add_foreign_key "items", "users"

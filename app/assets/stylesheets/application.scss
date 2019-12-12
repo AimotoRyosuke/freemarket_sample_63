@@ -4,10 +4,12 @@
 @import "shared/*";
 @import "layouts/*";
 @import "items/*";
-@import "credits/*";
+@import "cards/*";
+@import "address/*";
 @import "purchases/*";
 @import "users/*";
-
+@import "slick-theme"; 
+@import "slick";
 
 body {
   font-family: Arial,游ゴシック体,YuGothic,メイリオ,Meiryo,sans-serif;
