@@ -1,6 +1,6 @@
 class CardsController < ApplicationController
   before_action :authenticate_user!
-  before_action :other_user!
+  before_action :other_user!, except: :destroy
   before_action :set_card, only: [:destroy, :index]
 
 
