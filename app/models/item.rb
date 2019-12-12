@@ -1,5 +1,6 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
+  validates :name, :price, :explanation, :condition_id, :shipping_cost_id, :days_id, :prefecture_id, :shipping_method_id, :status_id, :category_id, :images, presence: true
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :days
   belongs_to_active_hash :shipping_cost
@@ -11,6 +12,7 @@ class Item < ApplicationRecord
   has_one                :category
   belongs_to             :user
   accepts_nested_attributes_for :images
+
 
   # belongs_to :brand
   # has_many   :likes
