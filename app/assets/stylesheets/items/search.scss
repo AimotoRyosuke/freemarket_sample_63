@@ -369,6 +369,10 @@
           }
         }
       }
+
+      .new__items__list__item:nth-child(5n) {
+        margin:0 20px 20px 0 !important;
+      }
       li:nth-child(4n) {
         margin:0 0 20px 0;
       }

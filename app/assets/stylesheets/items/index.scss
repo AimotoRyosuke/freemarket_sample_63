@@ -66,6 +66,7 @@
         line-height: 1.4em;
         flex: 1 1 0%;
         font-weight: 600;
+        margin-bottom: 10px;
       }
       &__btn {
         display:inline-block;
@@ -90,8 +91,7 @@
       &__item {
         height: 252px;
         width: 188px;
-        padding: 10px 0;
-        margin-right:20px;
+        margin:0 20px 20px 0;
         
         a {
           text-decoration: none;
@@ -168,7 +168,7 @@
         }
       }
       &__item:nth-child(5n) {
-      margin-right: 0px;
+      margin: 0 0 20px 0;
       }
     }
   }
