@@ -37,7 +37,6 @@ Rails.application.routes.draw do
       resources :address
       get  'identification', to: 'users#idetification'
       get  'logouts',        to: 'users#logouts'
-      get  'mypage/SNS',        to: 'users#SNS'
     end
   end
 end
