@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   end
 
   def logouts
-    add_breadcrumb "ログイン"
+    add_breadcrumb "ログアウト"
   end
 
   def edit
