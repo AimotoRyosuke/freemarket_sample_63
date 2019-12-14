@@ -87,6 +87,13 @@ class ItemsController < ApplicationController
     add_breadcrumb @keyword if @keyword != ""
   end
 
+  def large_category
+    @large_category = Category.roots.order(:id).to_a
+    respond_to do |format|
+      format.json {@large_category}
+    end
+  end
+
   def mid_category
     @mid_category = Category.find_all_by_generation(1).with_ancestor(params[:large_category]).order(id: :asc).to_a
     respond_to do |format|

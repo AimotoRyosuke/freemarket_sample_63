@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   get  'registrate/complete',   to: 'sign_ups#user_complete'
   get  'mypage/identification', to: 'users#idetification'
   get  'mypage/logouts',        to: 'users#logouts'
+  get  'items/large_category',  to: 'items#large_category'
   get  'items/mid_category',    to: 'items#mid_category'
   get  'items/small_category',  to: 'items#small_category'
   resources :items do

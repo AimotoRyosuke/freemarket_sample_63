@@ -83,7 +83,7 @@ $(function(){
     $.ajax({
       type: 'GET',
       url: '/items/small_category',
-      data: {'mid_category' :value},
+      data: {'mid_category': value},
       dataType: 'json'
     })
     .done(function(smallCategory){
