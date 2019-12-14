@@ -38,7 +38,6 @@ class SignUpsController < ApplicationController
     )
 
     @user.valid?
-    binding.pry
     change_birthday_validate_message(params)
     skip_tel_validate(@user.errors)
 
